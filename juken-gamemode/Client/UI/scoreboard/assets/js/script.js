@@ -24,7 +24,7 @@ function addPlayer(players) {
     divplayer.innerHTML += `
     <div>
                     <div>
-                        <img src="../leaderboard/assets/img/wifi.svg" alt="">
+                        <img src="../scoreboard/assets/img/wifi.svg" alt="">
                         <h3>${players[players.length -1].nom}</h3>
                     </div>
                     <div>

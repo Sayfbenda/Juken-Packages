@@ -1,6 +1,6 @@
 local scoreboard = WebUI(
     "ScoreBard",
-    "file://UI/leaderboard/index.html",
+    "file://UI/scoreboard/index.html",
     WidgetVisibility.Hidden
 )
 
