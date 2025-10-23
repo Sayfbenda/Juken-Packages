@@ -18,10 +18,10 @@ function UpdateHealth(health)
     mainhud:CallEvent("UpdateHealth", health)
 end
 
-function UpdateScoreBoard(player)
-    
-end
-
 Character.Subscribe("HealthChange", function(character)
     UpdateHealth(character:GetHealth())
+end)
+
+Player.Subscribe("Spawn", function(self)
+	UpdateScoreBoard(self)
 end)

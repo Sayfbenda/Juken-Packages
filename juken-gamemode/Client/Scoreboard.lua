@@ -12,3 +12,13 @@ Input.Bind("Scoreboard", InputEvent.Pressed, function()
     end
 end)
 
+
+function UpdateScoreBoard(self)
+    local icon = "I"
+    local nom = self:GetName()
+    local fight = 0
+    local ping = self:GetPing()
+    Console.Log("Test")
+    scoreboard:CallEvent("UpdateScoreBoard", icon, nom, fight, ping)
+end
+

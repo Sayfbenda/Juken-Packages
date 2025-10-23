@@ -1,39 +1,21 @@
 const divplayer = document.getElementById("players")
 
-console.log(divplayer)
-
-let players = []
-
-let player = new Object()
-player.image
-player.name
-player.pvp
-player.ping
-
-function registerPlayer(image, nom, pvp, ping) {
-    player.image = image
-    player.nom = nom
-    player.pvp = pvp
-    player.ping = ping
-    players.push(player)
-    addPlayer(players)
-    console.log(players)
-}
-
-function addPlayer(players) {
+function UpdateScoreBoard(icon, nom, fight, ping) {
+    console.log("TTTTTTTTTTTTTT")
     divplayer.innerHTML += `
     <div>
                     <div>
-                        <img src="../scoreboard/assets/img/wifi.svg" alt="">
-                        <h3>${players[players.length -1].nom}</h3>
+                        <h3>${icon}</h3>
+                        <h3>${nom}</h3>
                     </div>
                     <div>
-                        <h4>${players[players.length -1].pvp}</h4>
+                        <h4>${fight}</h4>
                     </div>
                     <div>
-                        <h4>${players[players.length -1].ping}</h4>
+                        <h4>${ping}</h4>
                     </div>
     </div>
                     `
 }
 
+Events.Subscribe("UpdateScoreBoard", UpdateScoreBoard);
