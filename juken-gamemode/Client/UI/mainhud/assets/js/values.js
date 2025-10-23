@@ -17,4 +17,4 @@ function UpdateHealth(health) {
     document.getElementById("health").innerText = health;
 }
 
-Event.Subscribe("UpdateHealth", UpdateHealth);
+Events.Subscribe("UpdateHealth", UpdateHealth);
