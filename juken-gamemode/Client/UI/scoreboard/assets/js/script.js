@@ -5,7 +5,7 @@ function UpdateScoreBoard(icon, nom, fight, ping) {
     divplayer.insertAdjacentHTML("afterbegin", `
     <div>
                     <div>
-                        <h3>${icon}</h3>
+                        <img src="${icon}" alt="">
                         <h3>${nom}</h3>
                     </div>
                     <div>

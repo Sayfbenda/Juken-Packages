@@ -14,7 +14,7 @@ end)
 
 
 function UpdateScoreBoard(self)
-    local icon = "I"
+    local icon = self:GetAccountIconURL()
     local nom = self:GetName()
     local fight = 0
     local ping = self:GetPing()
