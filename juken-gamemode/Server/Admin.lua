@@ -1,5 +1,9 @@
-Events.BroadcastRemote("ToggleNoclip", function (player)
+Events.SubscribeRemote("ToggleNoclip", function (player)
     local character = player:GetControlledCharacter()
-    Console.Log("Toggling flying mode for " .. player:GetName())
-    character:SetFlyingMode(true)
+    if (not character) then return end
+    if character:GetFlyingMode() == true then
+        character:SetFlyingMode(false)
+    else
+        character:SetFlyingMode(true)
+    end
 end)

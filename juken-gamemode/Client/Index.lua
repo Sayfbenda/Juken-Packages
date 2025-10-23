@@ -7,10 +7,10 @@ local mainhud = WebUI(
     WidgetVisibility.Visible
 )
 
-Input.Register("NoClip", "B", "Toggle le noclip")
+Input.Register("ToggleNoclip", "B", "Toggle le noclip")
 Input.Register("Scoreboard", "Tab", "Affiche le scoreboard")
 
-Input.Bind("NoClip", InputEvent.Pressed, function()
+Input.Bind("ToggleNoclip", InputEvent.Pressed, function()
     Events.CallRemote("ToggleNoclip")
 end)
 
