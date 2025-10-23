@@ -2,7 +2,7 @@ const divplayer = document.getElementById("players")
 
 function UpdateScoreBoard(icon, nom, fight, ping) {
     console.log("TTTTTTTTTTTTTT")
-    divplayer.innerHTML += `
+    divplayer.insertAdjacentHTML("afterbegin", `
     <div>
                     <div>
                         <h3>${icon}</h3>
@@ -15,7 +15,7 @@ function UpdateScoreBoard(icon, nom, fight, ping) {
                         <h4>${ping}</h4>
                     </div>
     </div>
-                    `
+                    `)
 }
 
 Events.Subscribe("UpdateScoreBoard", UpdateScoreBoard);
