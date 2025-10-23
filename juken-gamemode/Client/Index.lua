@@ -1,3 +1,4 @@
+Package.Require("Config.lua")
 Package.Require("Scoreboard.lua")
 Package.Require("Mainhud.lua")
 
@@ -6,6 +7,8 @@ local mainhud = WebUI(
     "file://UI/mainhud/index.html",
     WidgetVisibility.Visible
 )
+
+Console.Log(GRADES)
 
 Input.Register("ToggleNoclip", "B", "Toggle le noclip")
 Input.Register("Scoreboard", "Tab", "Affiche le scoreboard")

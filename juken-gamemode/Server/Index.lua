@@ -1,3 +1,4 @@
+Package.Require("Config.lua")
 Package.Require("Admin.lua")
 Package.Require("Player.lua")
 

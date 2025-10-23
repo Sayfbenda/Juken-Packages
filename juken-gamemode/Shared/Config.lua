@@ -1,0 +1,4 @@
+GRADES = {
+    "Sayf",
+    "Le GOAT"
+}
