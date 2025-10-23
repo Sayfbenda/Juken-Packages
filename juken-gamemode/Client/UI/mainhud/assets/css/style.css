@@ -1,0 +1,17 @@
+main > section{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+main > section > div{
+    display: flex;
+    justify-content: space-between;
+}
+main > section > div > div{
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.255);
+    padding: 1rem;
+    border-radius: 1rem;
+}

@@ -1,0 +1,39 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    background-color: black;
+}
+
+main > section{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+main > section > div > img{
+    height: 70vh;
+    filter: grayscale(100%);
+}
+main > section > div > img:first-child{
+    border-radius: 1rem 0 0 1rem;
+}
+main > section > div > img:last-child{
+    border-radius: 0 1rem 1rem 0;
+}
+
+img:hover{
+    transition: 1s;
+    transform: scale(1.05);
+    filter: grayscale(0%);
+    cursor: pointer;
+}
+h1{
+    position: fixed;
+    top: 50;
+    z-index: 1;
+    font-size: 10rem;
+    color: rgb(255, 255, 255);
+}
