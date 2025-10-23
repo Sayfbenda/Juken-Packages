@@ -5,7 +5,7 @@ local scoreboard = WebUI(
 )
 
 Input.Bind("Scoreboard", InputEvent.Pressed, function()
-    if scoreboard.GetVisibility == 1 then
+    if scoreboard:GetVisibility() == 1 then
         scoreboard:SetVisibility(0)
     else
         scoreboard:SetVisibility(1)
