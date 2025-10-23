@@ -1,7 +1,7 @@
 # discover configurations
 [discover]
     # server name
-    name =              "nanos world server"
+    name =              "Juken"
     # server description (max 127 characters)
     description =       ""
     # server IP. we recommend leaving it 0.0.0.0 for default
@@ -11,14 +11,14 @@
     # query port (UDP)
     query_port =        7778
     # announce server in the master server list
-    announce =          true
+    announce =          false
     # true if should run as dedicated server or false to run as P2P - dedicated server requires port forwarding and provides the fastest connection - P2P will provide a fake IP to be used to connect but connection can be slower
     dedicated_server =  true
 
 # general configurations
 [general]
     # max players
-    max_players =       64
+    max_players =       1
     # leave it blank for no password
     password =          ""
     # nanos world server authentication token
@@ -33,7 +33,7 @@
     # default startup map
     map =               "default-blank-map"
     # game-mode package to load (set the main game-mode package to load - you can load only one 'game-mode' package type at once)
-    game_mode =         ""
+    game_mode =         "juken-gamemode"
     # packages list (set the packages you want to load)
     packages = [
                         
@@ -43,7 +43,7 @@
                         
     ]
     # loading-screen package to load (the loading screen will be displayed when players join your server)
-    loading_screen =    ""
+    loading_screen =    "loadingscreen-juken"
 
 # custom settings values
 # those values can be accessed through Server.GetCustomSettings() method from any package
