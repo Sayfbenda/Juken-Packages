@@ -1,3 +1,4 @@
+Package.Require("Admin.lua")
 
 
 function SpawnPlayer(player)
