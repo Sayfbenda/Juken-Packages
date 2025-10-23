@@ -5,5 +5,5 @@ local mainhud = WebUI(
 )
 
 Input.Bind("Mainhud", InputEvent.Pressed, function()
-    Console.Log(tostring(mainhud:GetVisibility()))
+    Console.Log("Hello")
 end)
