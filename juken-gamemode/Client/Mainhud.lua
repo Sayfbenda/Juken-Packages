@@ -5,9 +5,9 @@ local mainhud = WebUI(
 )
 
 Input.Bind("Mainhud", InputEvent.Pressed, function()
-    if mainhud.GetVisibility == 1 then
-        mainhud:SetVisibility(0)
+    if mainhud:GetVisibility() == 0 then
+       mainhud:SetVisibility(WidgetVisibility.Visible)
     else
-        mainhud:SetVisibility(1)
+       mainhud:SetVisibility(WidgetVisibility.Hidden) 
     end
 end)
