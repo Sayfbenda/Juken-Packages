@@ -11,16 +11,16 @@
     # query port (UDP)
     query_port =        7778
     # announce server in the master server list
-    announce =          false
+    announce =          true
     # true if should run as dedicated server or false to run as P2P - dedicated server requires port forwarding and provides the fastest connection - P2P will provide a fake IP to be used to connect but connection can be slower
     dedicated_server =  true
 
 # general configurations
 [general]
     # max players
-    max_players =       1
+    max_players =       16
     # leave it blank for no password
-    password =          ""
+    password =          "Sayf"
     # nanos world server authentication token
     token =             ""
     # banned nanos account IDs
