@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function UpdateHealth(health) {
     document.getElementById("health").innerText = health;
+    console.log("Health updated to:");
 }
 
 Events.Subscribe("UpdateHealth", UpdateHealth);
