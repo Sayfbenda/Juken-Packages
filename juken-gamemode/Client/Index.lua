@@ -11,7 +11,7 @@ Input.Bind("ToggleNoclip", InputEvent.Pressed, function()
 end)
 
 Character.Subscribe("HealthChange", function(character)
-    UpdateHealth(character:GetHealth())
+    UpdateHealth(character:GetHealth(), character:GetMaxHealth())
 end)
 
 Player.Subscribe("Spawn", function(self)

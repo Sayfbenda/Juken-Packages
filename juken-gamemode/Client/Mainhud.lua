@@ -4,8 +4,8 @@ local mainhud = WebUI(
     WidgetVisibility.Visible
 )
 
-function UpdateHealth(health)
-    mainhud:CallEvent("UpdateHealth", health)
+function UpdateHealth(health, healthmax)
+    mainhud:CallEvent("UpdateHealth", health, healthmax)
 end
 
 

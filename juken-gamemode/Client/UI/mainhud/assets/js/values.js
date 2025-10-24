@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
 });
 
-function UpdateHealth(health) {
-    divhealth.innerText = health
+function UpdateHealth(health, healthmax) {
+    divhealth.innerText = `${health}/${healthmax}`
 }
 
 function UpdatePlayerValues(image, name, health, healthmax, energy, energymax){
