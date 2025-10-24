@@ -3,6 +3,7 @@ function SpawnPlayer(player, health, energy)
     character:SetMaxHealth(health)
     character:SetHealth(health)
     character:SetValue("energymax", energy, true)
+    character:SetValue("energy", energy, true)
     player:Possess(character)
 end
 
