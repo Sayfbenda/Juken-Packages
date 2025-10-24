@@ -6,7 +6,7 @@ sqlite_db:Execute([[
 		grade VARCHAR(100),
 		steamid INTEGER,
 		accountid INTEGER,
-		ip INTEGER
+		ip VARCHAR(100)
 	)
 ]])
 
@@ -18,7 +18,6 @@ function VerifiyExistingPlayer(player)
     local accountID = player:GetAccountID()
     local playerIP = player:GetIP()
     local character = player:GetControlledCharacter()
-    character:SetValue("grade", GENIN ,true)
     local grade = character:GetValue("grade")
     if (verify == "{}" ) then
         Console.Log("Le joueur a " .. name .. " été enregistré avec succés")
@@ -30,5 +29,12 @@ end
 
 function InsertPlayerInDB(name, grade, steamID, accountID, playerIP)
     sqlite_db:Execute("INSERT INTO players VALUES (:0, :1, :2, :3, :4)", name, grade.nom, steamID, accountID, playerIP)
+end
+
+function SelectGrade(name)
+    local rows_filter = sqlite_db:Select("SELECT grade FROM players WHERE name = :0", name)
+    local grade = NanosTable.Dump(rows_filter):match('%["grade"%]%s*=%s*"([^"]+)"')
+    Console.Log("Le goat est " .. grade)
+    
 end
 

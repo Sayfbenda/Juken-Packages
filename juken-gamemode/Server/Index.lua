@@ -4,8 +4,8 @@ Package.Require("Admin.lua")
 Package.Require("Player.lua")
 
 function PlayerManager(player)
-    local health = HOKAGE.hpmax
-    local energy = HOKAGE.energymax
+    local health = GENIN.hpmax
+    local energy = GENIN.energymax
     SpawnPlayer(player, health, energy)
     VerifiyExistingPlayer(player)
 end
@@ -16,4 +16,9 @@ end)
 
 Player.Subscribe("Destroy", function(player)
 	DestroyPlayer(player)
+end)
+
+Player.Subscribe("Possess", function(self, character)
+	local name = self:GetName()
+    SelectGrade(name)
 end)

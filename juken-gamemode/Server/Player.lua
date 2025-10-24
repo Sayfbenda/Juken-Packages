@@ -5,6 +5,7 @@ function SpawnPlayer(player, health, energy)
     character:SetHealth(health)
     character:SetValue("energymax", energy, true)
     character:SetValue("energy", energy, true)
+    character:SetValue("grade", GENIN ,true)
     player:Possess(character)
 end
 
