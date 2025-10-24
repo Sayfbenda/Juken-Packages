@@ -8,6 +8,22 @@ function UpdateHealth(health)
     mainhud:CallEvent("UpdateHealth", health)
 end
 
+
+
+function UpdatePlayerValues(self)
+    local character = self:GetControlledCharacter()
+    if (not character) then
+        return
+    end
+    local image = self:GetAccountIconURL()
+    local name = self:GetName()
+    local health = character:GetHealth()
+    local healthmax = character:GetMaxHealth()
+    local energy = 1
+    local energymax = 1
+    mainhud:CallEvent("UpdatePlayerValues", image, name, health, healthmax, energy, energymax)
+end
+
 function UpdateCardinalBar()
     local player = Client.GetLocalPlayer()
     if (not player) then

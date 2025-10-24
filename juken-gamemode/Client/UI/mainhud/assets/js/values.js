@@ -1,3 +1,5 @@
+const playermanager = document.getElementById("playermanager")
+
 document.addEventListener("DOMContentLoaded", function() {
     const playerValuesDiv = document.getElementById("playervalues");
     
@@ -18,4 +20,17 @@ function UpdateHealth(health) {
     console.log("Health updated to:");
 }
 
+function UpdatePlayerValues(image, name, health, healthmax, energy, energymax){
+    let html = `
+        <img src=${image} alt="">
+        <span>${name}</span>
+        <span>${health}</span>
+        <span>${healthmax}</span>
+        <span>${energy}</span>
+        <span>${energymax}</span>
+    `
+    playermanager.innerHTML = html
+}
+
+Events.Subscribe("UpdatePlayerValues", UpdatePlayerValues);
 Events.Subscribe("UpdateHealth", UpdateHealth);
