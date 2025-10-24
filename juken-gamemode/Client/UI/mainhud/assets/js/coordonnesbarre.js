@@ -5,6 +5,6 @@ function UpdateCardinalBar(coordiantion) {
     let html = `
     <h2>${coordiantion}</h2>
     `
-    cordinalbar.innerText = html
+    cordinalbar.innerHTML = html
 }
 Events.Subscribe("UpdateCardinalBar", UpdateCardinalBar);
