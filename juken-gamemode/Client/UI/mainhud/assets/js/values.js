@@ -20,14 +20,14 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function UpdateHealth(health) {
-    document.getElementById("health").innerText = health;
+    divhealth.innerText = health
 }
 
 function UpdatePlayerValues(image, name, health, healthmax, energy, energymax){
     img.setAttribute("src", image)
     h3name.innerText = name
-    divhealth.innerText = health
-    divenergy.innerText = energy
+    divhealth.innerText = `${health}/${healthmax}`
+    divenergy.innerText = `${energy}/${energymax}`
 }
 
 Events.Subscribe("UpdatePlayerValues", UpdatePlayerValues);
