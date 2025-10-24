@@ -48,3 +48,28 @@ main > section > div:nth-child(1) > div:nth-child(2) > div > div{
     position: absolute;
     width: 100vw;
 }
+
+main > section > div:nth-child(2) > div > div > div > div > div:nth-child(1) > img{
+    width: 5vw;
+    border: 1px solid black;
+    border-radius: 5vw;
+}
+main > section > div:nth-child(2) > div > div > div > div{
+    display: flex;
+}
+
+main > section > div:nth-child(2) > div > div > div > div > div:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#health{
+    background-color: red;
+    width: 10vw;
+}
+
+#energy{
+    background-color: lightblue;
+    width: 10vw;
+}
