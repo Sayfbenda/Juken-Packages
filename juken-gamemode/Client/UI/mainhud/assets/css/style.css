@@ -10,13 +10,18 @@ main > section{
     height: 100vh;
 }
 
-main > section > div{
+main > section > div:nth-child(1){
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
-main > section > div > div{
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.255);
-    padding: 1rem;
-    border-radius: 1rem;
+
+main > section > div:nth-child(1) > div:nth-child(1) > img{
+    width: 6rem;
+}
+
+main > section > div:nth-child(1) > div:nth-child(1){
+    opacity: 0.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

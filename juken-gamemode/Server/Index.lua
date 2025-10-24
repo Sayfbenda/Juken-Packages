@@ -4,4 +4,9 @@ Package.Require("Player.lua")
 
 Player.Subscribe("Spawn", function (player)
     SpawnPlayer(player)
+    
+end)
+
+Player.Subscribe("Destroy", function(player)
+	DestroyPlayer(player)
 end)
