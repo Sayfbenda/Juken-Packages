@@ -21,6 +21,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function UpdateHealth(health, healthmax) {
     divhealth.innerText = `${health}/${healthmax}`
+    divhealth.style.width = `${(health/healthmax)*10}vw`
+    divenergy.style.width = `${(energy/energymax)*10}vw`
 }
 
 function UpdatePlayerValues(image, name, health, healthmax, energy, energymax){
