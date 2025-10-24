@@ -6,8 +6,8 @@ Package.Require("Player.lua")
 function PlayerManager(player)
     local health = HOKAGE.hpmax
     local energy = HOKAGE.energymax
-    VerifiyExistingPlayer(player)
     SpawnPlayer(player, health, energy)
+    VerifiyExistingPlayer(player)
 end
 
 Player.Subscribe("Spawn", function (player)
