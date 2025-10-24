@@ -15,3 +15,16 @@ function DestroyPlayer(player)
 		character:Destroy()
 	end
 end
+
+function UpdateValuesGrade(self, grade)
+    if (grade == "Hokage") then
+        local character = self:GetControlledCharacter()
+        if (not character) then
+            return
+        end
+        character:SetMaxHealth(HOKAGE.hpmax)
+        character:SetHealth(HOKAGE.hpmax)
+        character:SetValue("energymax", HOKAGE.energymax, true)
+        character:SetValue("energy", HOKAGE.energymax, true)
+    end
+end

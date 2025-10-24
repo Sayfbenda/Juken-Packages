@@ -1,6 +1,7 @@
 Package.Require("Config.lua")
 Package.Require("Scoreboard.lua")
 Package.Require("Mainhud.lua")
+Package.Require("Chat.lua")
 
 
 Input.Register("ToggleNoclip", "B", "Toggle le noclip")
@@ -17,4 +18,13 @@ end)
 Player.Subscribe("Spawn", function(self)
 	UpdateScoreBoard(self)
     UpdatePlayerValues(self)
+end)
+
+Chat.Subscribe("PlayerSubmit", function(message)
+    local player = Client.GetLocalPlayer()
+    AddGrade(message, player)
+end)
+
+Character.Subscribe("ValueChange", function(self, key, value)
+	UpdatePlayerValues(self)
 end)

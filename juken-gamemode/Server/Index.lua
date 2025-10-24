@@ -2,6 +2,7 @@ Package.Require("Database.lua")
 Package.Require("Config.lua")
 Package.Require("Admin.lua")
 Package.Require("Player.lua")
+Package.Require("Commands.lua")
 
 function PlayerManager(player)
     local health = GENIN.hpmax
@@ -20,5 +21,5 @@ end)
 
 Player.Subscribe("Possess", function(self, character)
 	local name = self:GetName()
-    SelectGrade(name)
+    SelectGrade(self, name)
 end)

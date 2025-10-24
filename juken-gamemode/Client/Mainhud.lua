@@ -8,8 +8,6 @@ function UpdateHealth(health, healthmax)
     mainhud:CallEvent("UpdateHealth", health, healthmax)
 end
 
-
-
 function UpdatePlayerValues(self)
     local character = self:GetControlledCharacter()
     if (not character) then
