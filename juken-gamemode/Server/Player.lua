@@ -3,10 +3,6 @@ function SpawnPlayer(player)
     player:Possess(character)
 end
 
-Player.Subscribe("Destroy", function(player)
-	
-end)
-
 function DestroyPlayer(player)
     local character = player:GetControlledCharacter()
 	if (character) then

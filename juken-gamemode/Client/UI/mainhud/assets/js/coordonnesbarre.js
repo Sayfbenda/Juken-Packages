@@ -1,4 +1,10 @@
-addEventListener("mousemove", (event) =>{
-    console.log("X : ", event.screenX)
-    console.log(((event.screenX)/360)*100)
-})
+const cordinalbar = document.getElementById("cordinalbar");
+const canvasbar = document.getElementById("canvasbar")
+
+function UpdateCardinalBar(coordiantion) {
+    let html = `
+    <h2>${coordiantion}</h2>
+    `
+    cordinalbar.innerText = html
+}
+Events.Subscribe("UpdateCardinalBar", UpdateCardinalBar);

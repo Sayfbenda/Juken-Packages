@@ -25,3 +25,26 @@ main > section > div:nth-child(1) > div:nth-child(1){
     flex-direction: column;
     align-items: center;
 }
+
+main > section > div:nth-child(1) > div:nth-child(2){
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+}
+
+main > section > div:nth-child(1) > div:nth-child(2) > div{
+    border: 1px solid black;
+    width: 30vw;
+    height: 4vh;
+    overflow: hidden;
+    position: relative;
+}
+
+main > section > div:nth-child(1) > div:nth-child(2) > div > div{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    position: absolute;
+    width: 100vw;
+}
