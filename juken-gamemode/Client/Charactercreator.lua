@@ -12,13 +12,6 @@ Events.SubscribeRemote("OpenCharacterCreator", function (visibility)
 end)
 
 charactercreator:Subscribe("GetValues", function (playernom, playerprenom, playerage, skin)
-    local player = Client.GetLocalPlayer()
-    Console.Log(player:GetName())
-    Console.Log(playernom)
-    Console.Log(playerprenom)
-    Console.Log(playerage)
-    Console.Log(skin)
-    Console.Log(type(playernom))
     Events.CallRemote("SetPlayerValuesCharacter", playernom, playerprenom, playerage, skin)
 end)
 

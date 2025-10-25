@@ -37,7 +37,6 @@ function SelectGrade(self, name)
     if (grade == nil) then
         return
     end
-    Console.Log("Le goat est " .. grade)
 	UpdateValuesGrade(self, grade)
 end
 
@@ -45,7 +44,6 @@ function SelectName(player)
     local steamid = player:GetSteamID()
     local rows_filter = sqlite_db:Select("SELECT name FROM players WHERE steamid = :0", steamid)
     local name = NanosTable.Dump(rows_filter):match('%["name"%]%s*=%s*"([^"]+)"')
-    Console.Log(name)
     if (name == nil) then
         return
     end

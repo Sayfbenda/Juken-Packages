@@ -39,11 +39,9 @@ end)
 function UpdateValuesGrade(self, grade)
     for i = 1, #GRADES, 1 do
         local newgrade = GRADES[i]
-        Console.Log(newgrade.id)
         if (newgrade.id == grade) then
             local character = self:GetControlledCharacter()
             if (not character) then
-                Console.Log("dommage")
                 return
             end
             character:SetMaxHealth(newgrade.hpmax)
