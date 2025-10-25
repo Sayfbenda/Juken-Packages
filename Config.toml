@@ -20,7 +20,7 @@
     # max players
     max_players =       16
     # leave it blank for no password
-    password =          "Sayf"
+    password =          ""
     # nanos world server authentication token
     token =             ""
     # banned nanos account IDs
@@ -36,7 +36,7 @@
     game_mode =         "juken-gamemode"
     # packages list (set the packages you want to load)
     packages = [
-                        
+                        "juken-spells"
     ]
     # asset packs list (additionally loads the asset packs you define here)
     assets = [
