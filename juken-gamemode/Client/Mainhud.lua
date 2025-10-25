@@ -23,6 +23,8 @@ function UpdatePlayerValuesMainHud(self)
     local healthmax = character:GetMaxHealth()
     local energy = character:GetValue("energymax")
     local energymax = character:GetValue("energymax")
+    Console.Log(health)
+    Console.Log(healthmax)
     mainhud:CallEvent("UpdatePlayerValues", image, name, health, healthmax, energy, energymax)
 end
 

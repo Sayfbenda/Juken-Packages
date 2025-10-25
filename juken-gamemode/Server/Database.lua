@@ -27,8 +27,16 @@ function InsertPlayerInDB(name, age, grade, steamID, accountID, playerIP)
     Console.Log("Le joueur a " .. name .. " été enregistré avec succés")
 end
 
-function UpdateGrade(steamid, grade)
+function UpdateGrade(player, steamid, grade)
     sqlite_db:Execute("UPDATE players SET grade = :0 WHERE steamid = :1", grade.id, steamid)
+    local character = player:GetControlledCharacter()
+    if (not character)then
+        return
+    end
+    character:SetValue("grade", grade, true)
+    local name = player:GetName()
+    SelectGrade(player, name)
+    Events.CallRemote("UpdatePlayerValuesMainHud", player, player)
 end
 
 function SelectGrade(self, name)

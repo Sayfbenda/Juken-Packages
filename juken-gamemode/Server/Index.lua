@@ -7,9 +7,9 @@ Package.Require("Commands.lua")
 function PlayerManager(player)
     local health = GENIN.hpmax
     local energy = GENIN.energymax
+    SelectName(player)
     SpawnPlayer(player, health, energy)
     VerifiyExistingPlayer(player)
-    SelectName(player)
 end
 
 Player.Subscribe("Spawn", function (player)
@@ -22,5 +22,6 @@ end)
 
 Player.Subscribe("Possess", function(self, character)
 	local name = self:GetName()
+    Console.Log(name)
     SelectGrade(self, name)
 end)

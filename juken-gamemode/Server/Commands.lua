@@ -8,5 +8,5 @@ function AddGrade(message, player)
     if grade == nil then
        return 
     end
-    UpdateGrade(steamid, grade)
+    UpdateGrade(player, steamid, grade)
 end
