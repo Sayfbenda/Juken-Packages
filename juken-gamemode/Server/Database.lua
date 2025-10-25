@@ -3,6 +3,7 @@ local sqlite_db = Database(DatabaseEngine.SQLite, "db=database_juken.db timeout=
 sqlite_db:Execute([[
 	CREATE TABLE IF NOT EXISTS players (
 		name VARCHAR(100),
+		age INTEGER,
 		grade VARCHAR(100),
 		steamid INTEGER,
 		accountid INTEGER,
@@ -19,17 +20,18 @@ function VerifiyExistingPlayer(player)
     local playerIP = player:GetIP()
     local character = player:GetControlledCharacter()
     local grade = character:GetValue("grade")
+    local age = character:GetValue("age")
     if (verify == "{}" ) then
         Events.CallRemote("OpenCharacterCreator", player, 1)
         Console.Log("Le joueur a " .. name .. " été enregistré avec succés")
-        InsertPlayerInDB(name, grade, steamID, accountID, playerIP)
+        InsertPlayerInDB(name, age, grade, steamID, accountID, playerIP)
     else
         Console.Log("Le joueur : " .. name .. " est enregistré")
     end
 end
 
-function InsertPlayerInDB(name, grade, steamID, accountID, playerIP)
-    sqlite_db:Execute("INSERT INTO players VALUES (:0, :1, :2, :3, :4)", name, grade.id, steamID, accountID, playerIP)
+function InsertPlayerInDB(name, age, grade, steamID, accountID, playerIP)
+    sqlite_db:Execute("INSERT INTO players VALUES (:0, :1, :2, :3, :4 ,:5)", name, age, grade.id, steamID, accountID, playerIP)
 end
 
 function UpdateGrade(name, grade)

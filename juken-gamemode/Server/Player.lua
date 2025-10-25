@@ -5,6 +5,7 @@ Events.Subscribe("SetPlayerValues", function (player, health, energy)
     character:SetValue("energymax", energy, true)
     character:SetValue("energy", energy, true)
     character:SetValue("grade", GENIN ,true)
+    character:SetValue("age", 10 ,true)
     player:Possess(character)
 end)
 

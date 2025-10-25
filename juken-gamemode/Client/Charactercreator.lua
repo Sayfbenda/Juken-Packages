@@ -7,7 +7,7 @@ local charactercreator = WebUI(
 Events.SubscribeRemote("OpenCharacterCreator", function (visibility)
     charactercreator:SetVisibility(visibility)
     charactercreator:BringToFront()
-    Input.SetInputEnabled(true)
+    Input.SetMouseEnabled(true)
     GetSkinsLength()
 end)
 
