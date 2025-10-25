@@ -3,6 +3,7 @@ Package.Require("Database.lua")
 Package.Require("Admin.lua")
 Package.Require("Player.lua")
 Package.Require("Commands.lua")
+Package.Require("Character.lua")
 
 function PlayerManager(player)
     local health = GENIN.hpmax
