@@ -1,5 +1,5 @@
-Package.Require("Database.lua")
 Package.Require("Config.lua")
+Package.Require("Database.lua")
 Package.Require("Admin.lua")
 Package.Require("Player.lua")
 Package.Require("Commands.lua")
@@ -23,3 +23,4 @@ Player.Subscribe("Possess", function(self, character)
 	local name = self:GetName()
     SelectGrade(self, name)
 end)
+
