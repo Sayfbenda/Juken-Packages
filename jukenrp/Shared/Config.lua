@@ -595,3 +595,21 @@ SKINS = {
     SK_AncientUgandan;
     SK_StackOBot
 }
+
+USER = {
+	permission = false
+}
+
+ADMIN = {
+	permission = true
+}
+
+OWNER = {
+	permission = false
+}
+
+ADMINGRADES = {
+	USER;
+	ADMIN;
+	OWNER;
+}
