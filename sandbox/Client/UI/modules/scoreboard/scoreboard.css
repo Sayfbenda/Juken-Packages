@@ -1,0 +1,48 @@
+#scoreboard {
+	background-color: #0000005e;
+	width: 600px;
+	height: 600px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	overflow: auto;
+	display: none;
+	border-radius: 5px;
+}
+
+#scoreboard table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+#scoreboard td, #scoreboard th {
+	padding: 15px 20px;
+	text-align: left;
+}
+
+#scoreboard_header {
+	background-color: #00000086;
+	font-family: 'Poiret One', cursive;
+	font-size: 20px;
+}
+
+#scoreboard td {
+	padding: 10px 20px 0px;
+	text-align: left;
+}
+
+#scoreboard span.player_name {
+	line-height: 30px;
+	margin-left: 20px;
+}
+
+#scoreboard span.player_image {
+	width: 30px;
+	height: 30px;
+	float: left;
+	background-size: 100%;
+	border-radius: 5px;
+}

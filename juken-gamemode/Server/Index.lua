@@ -26,3 +26,7 @@ Player.Subscribe("Possess", function(self, character)
     Console.Log(name)
     SelectGrade(self, name)
 end)
+
+Character.Subscribe("HealthChange", function (self, old_health, new_health)
+    Events.BroadcastRemote("UpdateHealthMainHud", self, old_health, new_health)
+end)

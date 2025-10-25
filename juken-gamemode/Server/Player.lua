@@ -48,6 +48,7 @@ function UpdateValuesGrade(self, grade)
             character:SetHealth(newgrade.hpmax)
             character:SetValue("energymax", newgrade.energymax, true)
             character:SetValue("energy", newgrade.energymax, true)
+
             break
         end
     end

@@ -4,9 +4,9 @@ local mainhud = WebUI(
     WidgetVisibility.Visible
 )
 
-function UpdateHealth(health, healthmax)
-    mainhud:CallEvent("UpdateHealth", health, healthmax)
-end
+Events.SubscribeRemote("UpdateHealthMainHud", function (self, old_health, new_health)
+    mainhud:CallEvent("UpdateHealth", new_health, self:GetMaxHealth())
+end)
 
 Events.SubscribeRemote("UpdatePlayerValuesMainHud", function (self)
     UpdatePlayerValuesMainHud(self)
