@@ -80,3 +80,23 @@ GRADES = {
     HOKAGE;
     SANIN
 }
+
+SK_Female = { path = "Characters/Female/SK_Female"}
+SK_Male = { path = "Characters/Male/SK_Male"}
+SK_Mannequin = { path = "Characters/Mannequin/SK_Mannequin"}
+SK_Mannequin_Female = { path = "Characters/Mannequin/SK_Mannequin_Female"}
+SK_PostApocalyptic = { path = "Characters/PostApocalyptic/SK_PostApocalyptic"}
+SK_ClassicMale = { path = "Characters/ClassicMale/SK_ClassicMale"}
+SK_AncientUgandan = { path = "Packs/UgandanKnuckles/SK_AncientUgandan"}
+SK_StackOBot = { path = "Packs/StackOBot/Characters/Bot/Mesh/SKM_Bot"}
+
+SKINS = {
+    SK_Female;
+    SK_Male;
+    SK_Mannequin;
+    SK_Mannequin_Female;
+    SK_PostApocalyptic;
+    SK_ClassicMale;
+    SK_AncientUgandan;
+    SK_StackOBot
+}

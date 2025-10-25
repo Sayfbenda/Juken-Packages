@@ -1,5 +1,4 @@
-
-function SpawnPlayer(player, health, energy)
+Events.Subscribe("SetPlayerValues", function (player, health, energy)
     local character = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Mannequin")
     character:SetMaxHealth(health)
     character:SetHealth(health)
@@ -7,6 +6,10 @@ function SpawnPlayer(player, health, energy)
     character:SetValue("energy", energy, true)
     character:SetValue("grade", GENIN ,true)
     player:Possess(character)
+end)
+
+function SpawnPlayer(player, health, energy)
+    Events.Call("SetPlayerValues", player, health, energy)
 end
 
 function DestroyPlayer(player)

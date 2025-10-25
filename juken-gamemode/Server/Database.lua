@@ -20,6 +20,7 @@ function VerifiyExistingPlayer(player)
     local character = player:GetControlledCharacter()
     local grade = character:GetValue("grade")
     if (verify == "{}" ) then
+        Events.CallRemote("OpenCharacterCreator", player, 1)
         Console.Log("Le joueur a " .. name .. " été enregistré avec succés")
         InsertPlayerInDB(name, grade, steamID, accountID, playerIP)
     else

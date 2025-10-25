@@ -1,4 +1,5 @@
 Package.Require("Config.lua")
+Package.Require("Charactercreator.lua")
 Package.Require("Scoreboard.lua")
 Package.Require("Mainhud.lua")
 Package.Require("Chat.lua")
