@@ -20,6 +20,14 @@ function DestroyPlayer(player)
 	end
 end
 
+Events.SubscribeRemote("SetPlayerValuesCharacter", function (player, playernom, playerprenom, playerage, skin)
+    local character = player:GetControlledCharacter()
+    local name = playernom .. " " .. playerprenom
+    player:SetName(name)
+    character:SetValue("name", name, true)
+    character:SetValue("age", playerage, true)
+end)
+
 function UpdateValuesGrade(self, grade)
     for i = 1, #GRADES, 1 do
         local newgrade = GRADES[i]

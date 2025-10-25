@@ -20,16 +20,17 @@ form.addEventListener("submit", (event)=>{
     SetValuesToPlayer()
 })
 
+
 function SetValuesToPlayer() {
-    let playername = nom.value + " " + prenom.value
+    let playernom = nom.value
+    let playerprenom = prenom.value
     let playerage = inputeage.value
     let skin = inputskins.value
-    console.log(playername, playerage, skin)
+    Events.Call("GetValues", playernom, playerprenom, playerage, skin)
 }
 
 function SetSkinLength(length) {
     inputskins.setAttribute("max", length)
-    console.log(length)
 }
 
 Events.Subscribe("SetSkinLength", SetSkinLength);
