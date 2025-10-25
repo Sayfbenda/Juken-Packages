@@ -18,5 +18,5 @@ end)
 
 Player.Subscribe("Spawn", function(self)
 	UpdateScoreBoard(self)
-    UpdatePlayerValues(self)
+    UpdatePlayerValuesMainHud(self)
 end)

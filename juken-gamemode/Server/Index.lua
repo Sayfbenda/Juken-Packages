@@ -24,4 +24,3 @@ Player.Subscribe("Possess", function(self, character)
 	local name = self:GetName()
     SelectGrade(self, name)
 end)
-

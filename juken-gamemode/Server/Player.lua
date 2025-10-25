@@ -27,6 +27,7 @@ Events.SubscribeRemote("SetPlayerValuesCharacter", function (player, playernom, 
     end
     local name = playernom .. " " .. playerprenom
     player:SetName(name)
+    Events.CallRemote("UpdatePlayerValuesMainHud", player, player)
     local grade = character:GetValue("grade")
     local steamID = tostring(player:GetSteamID())
     local accountID = tostring(player:GetAccountID())

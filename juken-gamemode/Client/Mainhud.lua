@@ -8,7 +8,11 @@ function UpdateHealth(health, healthmax)
     mainhud:CallEvent("UpdateHealth", health, healthmax)
 end
 
-function UpdatePlayerValues(self)
+Events.SubscribeRemote("UpdatePlayerValuesMainHud", function (self)
+    UpdatePlayerValuesMainHud(self)
+end)
+
+function UpdatePlayerValuesMainHud(self)
     local character = self:GetControlledCharacter()
     if (not character) then
         return
@@ -38,3 +42,4 @@ function UpdateCardinalBar()
 end
 
 Client.Subscribe("Tick", UpdateCardinalBar)
+Package.Export("UpdatePlayerValuesMainHud", UpdatePlayerValuesMainHud)
