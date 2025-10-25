@@ -12,14 +12,13 @@ sqlite_db:Execute([[
 ]])
 
 function VerifiyExistingPlayer(player)
-    local name = player:GetSteamID()
-    local rows_filter = sqlite_db:Select("SELECT steamid FROM players WHERE steamid = :0", name)
-    local verify = NanosTable.Dump(rows_filter)
     local steamID = player:GetSteamID()
+    local rows_filter = sqlite_db:Select("SELECT steamid FROM players WHERE steamid = :0", steamID)
+    local verify = NanosTable.Dump(rows_filter)
     if (verify == "{}" ) then
         Events.CallRemote("OpenCharacterCreator", player, 1)
     else
-        Console.Log("Le joueur : " .. name .. " est enregistré")
+        Console.Log("Le joueur : " .. steamID .. " est enregistré")
     end
 end
 
@@ -28,8 +27,8 @@ function InsertPlayerInDB(name, age, grade, steamID, accountID, playerIP)
     Console.Log("Le joueur a " .. name .. " été enregistré avec succés")
 end
 
-function UpdateGrade(name, grade)
-    sqlite_db:Execute("UPDATE players SET grade = :0 WHERE name = :1", grade.id, name)
+function UpdateGrade(steamid, grade)
+    sqlite_db:Execute("UPDATE players SET grade = :0 WHERE steamid = :1", grade.id, steamid)
 end
 
 function SelectGrade(self, name)
@@ -40,6 +39,17 @@ function SelectGrade(self, name)
     end
     Console.Log("Le goat est " .. grade)
 	UpdateValuesGrade(self, grade)
+end
+
+function SelectName(player)
+    local steamid = player:GetSteamID()
+    local rows_filter = sqlite_db:Select("SELECT name FROM players WHERE steamid = :0", steamid)
+    local name = NanosTable.Dump(rows_filter):match('%["name"%]%s*=%s*"([^"]+)"')
+    Console.Log(name)
+    if (name == nil) then
+        return
+    end
+    player:SetName(name)
 end
 
 Package.Export("InsertPlayerInDB", InsertPlayerInDB)

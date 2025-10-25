@@ -9,6 +9,7 @@ function PlayerManager(player)
     local energy = GENIN.energymax
     SpawnPlayer(player, health, energy)
     VerifiyExistingPlayer(player)
+    SelectName(player)
 end
 
 Player.Subscribe("Spawn", function (player)
