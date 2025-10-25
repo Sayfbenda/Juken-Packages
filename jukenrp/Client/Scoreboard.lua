@@ -13,12 +13,16 @@ end)
 function UpdatePlayerScoreboard(player)
 	if (not MainHUD or not MainHUD:IsValid()) then return end
 	MainHUD:CallEvent("UpdatePlayer", player:GetID(), true, player:GetAccountIconURL(), player:GetName(), player:GetPing())
+end
+
+function UpdateImage(player)
 	MainHUD:CallEvent("UpdateImage", player:GetAccountIconURL())
 end
 
 --  Adds someone to the scoreboard
 Player.Subscribe("Spawn", function(player)
 	UpdatePlayerScoreboard(player)
+	UpdateImage(player)
 end)
 
 
