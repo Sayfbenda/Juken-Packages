@@ -22,10 +22,17 @@ end
 
 Events.SubscribeRemote("SetPlayerValuesCharacter", function (player, playernom, playerprenom, playerage, skin)
     local character = player:GetControlledCharacter()
+    if (not character) then
+        return
+    end
     local name = playernom .. " " .. playerprenom
     player:SetName(name)
-    character:SetValue("name", name, true)
-    character:SetValue("age", playerage, true)
+    local grade = character:GetValue("grade")
+    local steamID = tostring(player:GetSteamID())
+    local accountID = tostring(player:GetAccountID())
+    local playerIP = tostring(player:GetIP())
+    playerage = tostring(playerage)
+    InsertPlayerInDB(name, playerage, grade, steamID, accountID, playerIP)
 end)
 
 function UpdateValuesGrade(self, grade)
