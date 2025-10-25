@@ -141,6 +141,14 @@ function UpdateHealth(health, max_health)
 	MainHUD:CallEvent("UpdateHealth", health, max_health)
 end
 
+Events.SubscribeRemote("UpdateEnergyMenu", function (energy, max_energy)
+	UpdateEnergy(energy, max_energy)
+end)
+
+function UpdateEnergy(energy, max_energy)
+	MainHUD:CallEvent("UpdateEnergy", energy, max_energy)
+end
+
 -- Callback when Weapon Ammo Clip changes
 function OnAmmoClipChanged(weapon, old_ammo_clip, new_ammo_clip)
 	UpdateAmmo(true, new_ammo_clip, weapon:GetAmmoBag())

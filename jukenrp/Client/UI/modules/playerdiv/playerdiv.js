@@ -6,11 +6,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		<!-- Health container (black background) -->
 		<div id="health_container">
 			<div id="divplayerimage">
-				<img src="modules/health/health.png" id="image">
+				<img src="" id="image">
 			</div>
 			<div>
 				<div id="healthbar">
 					<span id="health_current">100</span>
+				</div>
+				<div id="energybar">
+					<span id="energy_current">100</span>
 				</div>
 			</div>
 		</div>
@@ -27,10 +30,17 @@ function UpdateHealth(health, max_health) {
 	document.getElementById("health_container").style.backgroundColor = health <= 25 ? "#ff05053d" : "#0000003d";
 }
 
+function UpdateEnergy(energy, max_energy){
+	document.getElementById("energybar").setAttribute("style", `width : ${(energy/max_energy)*10}vw`);
+	console.log(energy, max_energy)
+	document.getElementById("energy_current").innerHTML = energy;
+}
+
 function UpdateImage(image){
 	const img = document.getElementById("image")
 	img.setAttribute("src", image)
 }
 
 Events.Subscribe("UpdateHealth", UpdateHealth);
+Events.Subscribe("UpdateEnergy", UpdateEnergy);
 Events.Subscribe("UpdateImage", UpdateImage);

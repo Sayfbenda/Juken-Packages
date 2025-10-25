@@ -160,7 +160,7 @@ function SetGradeToCharacter(new_char)
 	Console.Log(tostring(new_char:GetValue("grade")))
 end
 
-function SetValuesTocharacter(character, grade)
+function SetValuesTocharacter(player, character, grade)
 	for i = 1, #GRADES, 1 do
         local newgrade = GRADES[i]
         if (newgrade.id == grade) then
@@ -174,6 +174,7 @@ function SetValuesTocharacter(character, grade)
             break
         end
     end
+	Events.CallRemote("UpdateEnergyMenu", player, character:GetValue("energy"), character:GetValue("energymax"))
 end
 
 -- When Player Connects, spawns a new Character and gives it to him
