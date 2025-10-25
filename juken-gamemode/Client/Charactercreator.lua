@@ -12,7 +12,8 @@ Events.SubscribeRemote("OpenCharacterCreator", function (visibility)
 end)
 
 charactercreator:Subscribe("GetValues", function (playernom, playerprenom, playerage, skin)
-    Events.CallRemote("SetPlayerValuesCharacter", playernom, playerprenom, playerage, skin)
+    local player = Client.GetLocalPlayer()
+    Events.CallRemote("SetPlayerValuesCharacter",player ,playernom, playerprenom, playerage, skin)
 end)
 
 function GetSkinsLength()
