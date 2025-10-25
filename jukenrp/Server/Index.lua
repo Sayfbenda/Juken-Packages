@@ -142,7 +142,8 @@ function SpawnPlayer(player, location, rotation)
 	end
 
 	player:Possess(new_char)
-	
+
+	SetGradeToCharacter(new_char)
 	VerifiyExistingPlayer(player)
 
 	-- Subscribe to Death event
@@ -152,6 +153,27 @@ function SpawnPlayer(player, location, rotation)
 	new_char:Subscribe("UnPossess", function(self)
 		self:Unsubscribe("Death", OnPlayerCharacterDeath)
 	end)
+end
+
+function SetGradeToCharacter(new_char)
+	new_char:SetValue("grade", GRADES[1], true)
+	Console.Log(tostring(new_char:GetValue("grade")))
+end
+
+function SetValuesTocharacter(character, grade)
+	for i = 1, #GRADES, 1 do
+        local newgrade = GRADES[i]
+        if (newgrade.id == grade) then
+            if (not character) then
+                return
+            end
+            character:SetMaxHealth(newgrade.hpmax)
+            character:SetHealth(newgrade.hpmax)
+            character:SetValue("energymax", newgrade.energymax, true)
+            character:SetValue("energy", newgrade.energymax, true)
+            break
+        end
+    end
 end
 
 -- When Player Connects, spawns a new Character and gives it to him
