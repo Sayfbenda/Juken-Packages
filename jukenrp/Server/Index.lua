@@ -1,4 +1,5 @@
 Package.Require("Config.lua")
+Package.Require("Database.lua")
 Package.Require("SpawnMenu.lua")
 Package.Require("Sky.lua")
 
@@ -141,6 +142,8 @@ function SpawnPlayer(player, location, rotation)
 	end
 
 	player:Possess(new_char)
+	
+	VerifiyExistingPlayer(player)
 
 	-- Subscribe to Death event
 	new_char:Subscribe("Death", OnPlayerCharacterDeath)

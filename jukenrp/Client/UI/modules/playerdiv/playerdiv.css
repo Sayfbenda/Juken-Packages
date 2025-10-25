@@ -1,21 +1,25 @@
 #health_container {
+	display: flex;
 	position: absolute;
 	bottom: 30px;
 	left: 30px;
-	height: 55px;
+	height: fit-content;
+	width: fit-content;
 	background-color: #0000003d;
-	border-radius: 5px;
-	line-height: 60px;
-	padding: 0px 10px;
-	min-width: 90px;
 }
 
 #health_container img {
-	height: 25px;
-	margin-right: 5px;
+	height: 6rem;
+	border: 1px solid black;
+	border-radius: 3rem;
 }
 
 #health_current {
 	font-size: 30px;
 	font-weight: bold;
+}
+
+#healthbar{
+	width: 10vw;
+	background-color: red;
 }

@@ -13,6 +13,7 @@ end)
 function UpdatePlayerScoreboard(player)
 	if (not MainHUD or not MainHUD:IsValid()) then return end
 	MainHUD:CallEvent("UpdatePlayer", player:GetID(), true, player:GetAccountIconURL(), player:GetName(), player:GetPing())
+	MainHUD:CallEvent("UpdateImage", player:GetAccountIconURL())
 end
 
 --  Adds someone to the scoreboard

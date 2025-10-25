@@ -6,6 +6,8 @@ const valueskins = document.getElementById("valueskins")
 const inputskins = document.getElementById("skins")
 const sendinput = document.getElementById("sendinput")
 const form = document.querySelector("form")
+const img = document.getElementById("image")
+console.log(img.setAttribute("src", "zajdizad"))
 
 
 inputeage.addEventListener("mousemove", (event) =>{

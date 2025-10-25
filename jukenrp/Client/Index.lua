@@ -74,7 +74,7 @@ function UpdateLocalCharacter(character)
 	end
 
 	-- Updates the UI with the current character's health
-	UpdateHealth(character:GetHealth())
+	UpdateHealth(character:GetHealth(), character:GetMaxHealth())
 end
 
 -- Setups the Local Player events
@@ -114,9 +114,11 @@ function OnCharacterHealthChange(character, old_health, new_health)
 	if (new_health < old_health) then
 		SoundHitTakenFeedback:Play()
 	end
-
+	if (not character) then
+		return
+	end
 	-- Immediately Updates the Health UI
-	UpdateHealth(new_health)
+	UpdateHealth(new_health, character:GetMaxHealth())
 end
 
 -- Handles Character Dropping an object (weapon, melee)
@@ -135,8 +137,8 @@ function UpdateAmmo(enable_ui, ammo, ammo_bag)
 end
 
 -- Function to update the Health's UI
-function UpdateHealth(health)
-	MainHUD:CallEvent("UpdateHealth", health)
+function UpdateHealth(health, max_health)
+	MainHUD:CallEvent("UpdateHealth", health, max_health)
 end
 
 -- Callback when Weapon Ammo Clip changes
