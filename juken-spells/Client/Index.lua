@@ -1,6 +1,8 @@
 Input.Subscribe("KeyDown", function (key_name, delta)
     if key_name == "Ampersand" then
-        local local_player = Client.GetLocalPlayer()
-        Events.CallRemote("LancerSpell", local_player, local_player)
+        local player = Client.GetLocalPlayer()
+        local playerrotation = player:GetCameraRotation()
+        local character = player:GetControlledCharacter()
+        Events.CallRemote("LunchSpell",character, playerrotation)
     end
 end)

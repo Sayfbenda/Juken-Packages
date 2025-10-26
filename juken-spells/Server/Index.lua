@@ -2,37 +2,21 @@ Package.Require("Config.lua")
 
 local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Female")
 
-Events.SubscribeRemote("LancerSpell", function (player)
-    local character = player:GetControlledCharacter()
+Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation)
+    Console.Log(character)
     local characterLocation = character:GetLocation()
     local characterRotation = character:GetRotation()
-    local particle = Particle(characterLocation, characterRotation, "NanosWorldAssets/Particles/Explosions/Particles/P_ShockWave_14", false)
-    local hitBox = Trigger(particle:GetLocation(), Rotator(), TEST.size, TriggerType.Sphere, false, Color.RED, {"Character"})
-    hitBox:AttachTo(particle, AttachmentRule.SnapToTarget, "" , -1, false)
-    local owner = player:GetName()
-    hitBox:SetValue("owner", owner)
-    LancementSpell(player ,owner, particle, hitBox)
+    SpawnSpell(character:GetLocation(), character:GetRotation(), playerrotation)
 end)
 
-
-function LancementSpell(player ,owner, particle, hitBox)
-    hitBox:Subscribe("BeginOverlap", function(self, entity)
-        local name
-        if (entity:GetPlayer() == nil) then
-            name = "pnj"
-        else
-            local controlledplayer = entity:GetPlayer()
-            name = controlledplayer:GetName()
-        end
-        if ((hitBox:GetValue("owner") == owner) and (name == owner)) then
-           Console.Log("C'est le owner") 
-        else
-            Console.Log("Un Personnage a été touché a été touché")
-            particle:Destroy()
-        end
-    end)
-    particle:Subscribe("Destroy", function (self)
-        Console.Log("La particule a disparue")
-    end)
+function SpawnSpell(characterLocation, characterRotation, playerrotation)
+    local spellprop = Prop(characterLocation, characterRotation, TEST.proppath, CollisionType.StaticOnly)
+    local hitBox = Trigger(spellprop:GetLocation(), spellprop:GetRotation(), TEST.size, TriggerType.Sphere, true, Color.RED, {"Character"})
+    hitBox:AttachTo(spellprop)
+    AddImpulseToSpell(spellprop, characterLocation, characterRotation, playerrotation)
 end
 
+function AddImpulseToSpell(spellprop, characterLocation, characterRotation, playerrotation)
+    local playerRotationForward = playerrotation:GetForwardVector()
+    spellprop:AddImpulse(characterLocation+playerRotationForward*300000)
+end
