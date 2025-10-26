@@ -15,7 +15,7 @@ addEventListener("DOMContentLoaded", function(event){
                 <div id="fourth-spell">
                 
                 </div>
-                <div id="five-spell">
+                <div id="fifth-spell">
                 
                 </div>
                 <div id="sixth-spell">
@@ -27,11 +27,13 @@ addEventListener("DOMContentLoaded", function(event){
 })
 
 function AddSizeStyleToDiv(index) {
-    if (index == 1) {
-        console.log("test")
-        const div = document.getElementById("first-spell")
-        div.classList.add("selectedspell")
+    const spellListe = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
+    for (let i = 0; i < spellListe.length; i++) {
+        let div = document.getElementById(spellListe[i])
+        div.classList.remove("selectedspell")
     }
+    let div = document.getElementById(spellListe[index])
+    div.classList.add("selectedspell")
 }
 
 Events.Subscribe("AddSizeStyleToDiv", AddSizeStyleToDiv)

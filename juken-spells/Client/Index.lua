@@ -12,32 +12,32 @@ Input.Register("SixthSpell", "Hyphen")
 
 Input.Bind("FirstSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 1)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 0)
 end)
 
 Input.Bind("SecondSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 2)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 1)
 end)
 
 Input.Bind("ThirdSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 3)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 2)
 end)
 
 Input.Bind("FourthSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 4)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 3)
 end)
 
 Input.Bind("FifthSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 5)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 4)
 end)
 
 Input.Bind("SixthSpell", InputEvent.Pressed, function ()
     Console.Log("1")
-    SpellHUD:CallEvent("AddSizeStyleToDiv", 6)
+    SpellHUD:CallEvent("AddSizeStyleToDiv", 5)
 end)
 
 Input.Subscribe("KeyDown", function (key_name, delta)
