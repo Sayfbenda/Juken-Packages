@@ -77,6 +77,7 @@ function UpdateLocalCharacter(character)
 	local local_player = Client.GetLocalPlayer()
 	Events.CallRemote("VerifiyExistingPlayer", local_player, local_player)
 	UpdateHealth(character:GetHealth(), character:GetMaxHealth())
+	UpdateImage(local_player)
 end
 
 -- Setups the Local Player events
@@ -141,6 +142,10 @@ end
 -- Function to update the Health's UI
 function UpdateHealth(health, max_health)
 	MainHUD:CallEvent("UpdateHealth", health, max_health)
+end
+
+function UpdateImage(player)
+	MainHUD:CallEvent("UpdateImage", player:GetAccountIconURL())
 end
 
 Events.SubscribeRemote("UpdateEnergyMenu", function (energy, max_energy)
