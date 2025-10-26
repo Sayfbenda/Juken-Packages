@@ -74,6 +74,8 @@ function UpdateLocalCharacter(character)
 	end
 
 	-- Updates the UI with the current character's health
+	local local_player = Client.GetLocalPlayer()
+	Events.CallRemote("VerifiyExistingPlayer", local_player, local_player)
 	UpdateHealth(character:GetHealth(), character:GetMaxHealth())
 end
 

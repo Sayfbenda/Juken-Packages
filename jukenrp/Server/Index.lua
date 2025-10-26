@@ -144,7 +144,6 @@ function SpawnPlayer(player, location, rotation)
 	player:Possess(new_char)
 
 	SetGradeToCharacter(new_char)
-	VerifiyExistingPlayer(player)
 
 	-- Subscribe to Death event
 	new_char:Subscribe("Death", OnPlayerCharacterDeath)

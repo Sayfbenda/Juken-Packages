@@ -11,7 +11,8 @@ sqlite_db:Execute([[
 	)
 ]])
 
-function VerifiyExistingPlayer(player)
+
+Events.SubscribeRemote("VerifiyExistingPlayer", function (player)
     local steamID = player:GetSteamID()
     local rows_filter = sqlite_db:Select("SELECT steamid FROM players WHERE steamid = :0", steamID)
     local verify = NanosTable.Dump(rows_filter)
@@ -29,7 +30,7 @@ function VerifiyExistingPlayer(player)
         local character = player:GetControlledCharacter()
         SelectGrade(player, character, player:GetName())
     end
-end
+end)
 
 function InsertPlayerInDB(name, age, grade, steamID, accountID, playerIP)
     sqlite_db:Execute("INSERT INTO players VALUES (:0, :1, :2, :3, :4 ,:5)", name, age, grade.id, steamID, accountID, playerIP)
