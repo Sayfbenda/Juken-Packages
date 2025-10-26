@@ -26,10 +26,12 @@ addEventListener("DOMContentLoaded", function(event){
         `)
 })
 
-function AddSizeStyleToDiv() {
+function AddSizeStyleToDiv(index) {
+    if (index == 1) {
         console.log("test")
         const div = document.getElementById("first-spell")
         div.classList.add("selectedspell")
+    }
 }
 
 Events.Subscribe("AddSizeStyleToDiv", AddSizeStyleToDiv)
