@@ -76,6 +76,7 @@ end
 
 
 function ApplyDamage(entity)
+    Console.Log(tostring(TEST.basedamage))
     entity:ApplyDamage(TEST.basedamage)
 end
 
