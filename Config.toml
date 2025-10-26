@@ -33,14 +33,14 @@
     # default startup map
     map =               "default-blank-map"
     # game-mode package to load (set the main game-mode package to load - you can load only one 'game-mode' package type at once)
-    game_mode =         "juken-gamemode"
+    game_mode =         "jukenrp"
     # packages list (set the packages you want to load)
     packages = [
-                        "juken-spells"
+                        "juken-spells",
     ]
     # asset packs list (additionally loads the asset packs you define here)
     assets = [
-                        
+                        "jknassets",
     ]
     # loading-screen package to load (the loading screen will be displayed when players join your server)
     loading_screen =    "loadingscreen-juken"
