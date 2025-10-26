@@ -4,26 +4,31 @@ local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_
 
 
 
-Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation)
+Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation, end_location)
+    Console.Log(end_location.Z)
+
     local owner = player:GetName()
-    SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation)
-    
+    SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation, end_location)
+    Events.CallRemote("SpellTrace", player)
 end)
 
-function SpawnSpell(owner ,characterLocation, characterRotation, playerrotation)
-    local spellprop = Prop(characterLocation, characterRotation, TEST.proppath, CollisionType.StaticOnly)
-    local spellparticle = Particle(characterLocation, characterRotation, "jknassets::NS_Zone", false, true)
+function SpawnSpell(owner ,characterLocation, characterRotation, playerrotation, end_location)
+
+    local spellparticle = Particle(characterLocation, characterRotation, "nanos-world::P_Explosion", false, true)
     spellparticle:SetCollision(CollisionType.StaticOnly)
-    spellprop:SetValue("owner", owner)
-    spellprop:SetVisibility(false)
-    local hitBox = Trigger(spellprop:GetLocation(), spellprop:GetRotation(), TEST.size, TriggerType.Sphere, true, Color.RED, {"Character"})
-    spellparticle:AttachTo(spellprop)
-    hitBox:AttachTo(spellprop)
-    SpellManager(hitBox, spellprop, spellparticle, owner)
-    AddImpulseToSpell(spellprop, characterLocation, characterRotation, playerrotation)
+    spellparticle:SetValue("owner", owner)
+
+    local hitBox = Trigger(spellparticle:GetLocation(), spellparticle:GetRotation(), TEST.size, TriggerType.Sphere, true, Color.RED, {"Character"})
+    hitBox:AttachTo(spellparticle)
+
+    local playerRotationForward = playerrotation:GetForwardVector()
+
+    Spell(spellparticle, playerRotationForward, end_location)
+    SpellManager(hitBox, spellparticle, owner)
 end
 
-function SpellManager(hitBox, spellprop, spellparticle, owner)
+function SpellManager(hitBox, spellparticle, owner)
+
     hitBox:Subscribe("BeginOverlap", function (self, entity)
         local player = entity:GetPlayer()
         local name = "bot"
@@ -32,15 +37,43 @@ function SpellManager(hitBox, spellprop, spellparticle, owner)
         end
         if (name ~= owner) then
             ApplyDamage(entity)
-            spellprop:Destroy()
-        end
-    end)
-    spellprop:Subscribe("Destroy", function ()
+            end
+        end)
+    
+    spellparticle:Subscribe("Destroy", function ()
         hitBox:Destroy()
         spellparticle:Destroy()
-        
     end)
 end
+
+function SpellDestroy(spellparticle)
+    Timer.SetTimeout(function()
+        if spellparticle or spellparticle:IsValid() then
+            spellparticle:Destroy()
+        end  
+    end, 500)
+end
+
+function Spell(spellparticle, playerRotationForward, end_location)
+    local tickListener
+
+    tickListener = Server.Subscribe("Tick", function (delta_time)
+        if not spellparticle or not spellparticle:IsValid() then
+
+            Server.Unsubscribe("Tick", tickListener)
+            return
+        end
+
+        spellparticle:SetLocation(spellparticle:GetLocation() + (playerRotationForward * 8000 * delta_time))
+
+        if spellparticle:GetLocation().Z <= end_location.Z then
+            SpellDestroy(spellparticle)
+            Server.Unsubscribe("Tick", tickListener)
+            return
+        end
+    end)
+end
+
 
 function ApplyDamage(entity)
     entity:ApplyDamage(TEST.basedamage)
