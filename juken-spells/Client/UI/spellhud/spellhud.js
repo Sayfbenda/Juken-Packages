@@ -42,7 +42,6 @@ addEventListener("DOMContentLoaded", function(event){
 
 function DragandDrop() {
     const spells = document.getElementsByClassName("hudspell")
-    console.log(spells.length)
     for (let index = 0; index < spells.length; index++) {
         spells.item(index).addEventListener("dragstart", (event)=>{
         event.dataTransfer.setData("spell/html", event.target.outerHTML)
@@ -82,14 +81,13 @@ function AddSpellsToHud(basedamage, energycost, img, nom, identificator) {
     spell.image = img
     spell.name = nom
     spellslist.push(spell)
-    for (let index = 0; index < spellslist.length; index++) {
-        const div = document.getElementById("spellside")
+    console.log(spellslist.length)
+    const div = document.getElementById("spellside")
         div.insertAdjacentHTML("beforeend", `
             <div class="hudspell" draggable="true" id=${spell.id}>
-                <img src=${spellslist[index].image} draggable="false">
+                <img src=${spell.image} draggable="false">
             </div>
             `)
-    }
     DragandDrop()
 }
 function GetSpell() {
