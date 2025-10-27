@@ -5,8 +5,6 @@ local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_
 
 
 Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation, end_location)
-    Console.Log(end_location.Z)
-
     local owner = player:GetName()
     SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation, end_location)
     Events.CallRemote("SpellTrace", player)
@@ -76,7 +74,6 @@ end
 
 
 function ApplyDamage(entity)
-    Console.Log(tostring(TEST.basedamage))
     entity:ApplyDamage(TEST.basedamage)
 end
 
