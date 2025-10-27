@@ -39,7 +39,6 @@ addEventListener("DOMContentLoaded", function(event){
     }
 })
 
-
 function DragandDrop() {
     const spells = document.getElementsByClassName("hudspell")
     console.log(spells.length)
@@ -57,8 +56,14 @@ function DragandDrop() {
             event.preventDefault()
         })
         spellBarListe[index].addEventListener("drop", function(event){
-            const data = event.dataTransfer.getData("spell/html")
-            spellBarListe[index].innerHTML = data
+            for (let i = 0; i < spellBarListe.length; i++) {
+                if(spellBarListe[i].innerHTML == event.dataTransfer.getData("spell/html")){
+                    break
+                }else{
+                    const data = event.dataTransfer.getData("spell/html")
+                    spellBarListe[index].innerHTML = data
+                }
+            }
         })
     }
 }
