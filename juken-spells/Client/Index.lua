@@ -27,32 +27,26 @@ Input.Bind("Menu Spells", InputEvent.Pressed, function ()
 end)
 
 Input.Bind("FirstSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 0)
 end)
 
 Input.Bind("SecondSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 1)
 end)
 
 Input.Bind("ThirdSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 2)
 end)
 
 Input.Bind("FourthSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 3)
 end)
 
 Input.Bind("FifthSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 4)
 end)
 
 Input.Bind("SixthSpell", InputEvent.Pressed, function ()
-    Console.Log("1")
     SpellHUD:CallEvent("AddSizeStyleToDiv", 5)
 end)
 
