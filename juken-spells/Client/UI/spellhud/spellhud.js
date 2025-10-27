@@ -23,8 +23,15 @@ addEventListener("DOMContentLoaded", function(event){
                 </div>
             </div>
         </section>
+        <section id="sectionmenu">
+            <div id="menuspell">
+                <div id="spellside">
+                </div>
+            </div>
+        </section>
         `)
 })
+
 
 function AddSizeStyleToDiv(index) {
     const spellListe = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
@@ -36,4 +43,24 @@ function AddSizeStyleToDiv(index) {
     div.classList.add("selectedspell")
 }
 
+
+function AddSpellsToHud(basedamage, energycost, img, nom) {
+    let spellslist = []
+    let spell = new Object()
+    spell.damage = basedamage
+    spell.energy = energycost
+    spell.image = img
+    spell.name = nom
+    spellslist.push(spell)
+    for (let index = 0; index < spellslist.length; index++) {
+        const div = document.getElementById("menuspell")
+        div.insertAdjacentHTML("beforeend", `
+            <div class="hudspell" draggable="true">
+                <img src=${spellslist[index].image} draggable="false">
+            </div>
+            `)
+    }
+}
+
 Events.Subscribe("AddSizeStyleToDiv", AddSizeStyleToDiv)
+Events.Subscribe("AddSpellsToHud", AddSpellsToHud)

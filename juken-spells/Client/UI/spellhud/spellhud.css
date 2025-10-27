@@ -35,3 +35,36 @@
     scale: 1.05;
     background-color: rgba(0, 0, 0, 0.75) !important;
 }
+
+#sectionmenu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#menuspell{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    height: 65vh;
+    width: 50vw;
+    border-radius: 1rem;
+}
+#spellside{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.hudspell{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 2.5rem;
+    background-color: black;
+    overflow: hidden;
+    border: 2px solid white;
+}
+.hudspell > img{
+    height: 100%;
+    width: 100%;
+}

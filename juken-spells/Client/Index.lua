@@ -1,8 +1,10 @@
+Package.Require("Config.lua")
 local SpellHUD = WebUI("SpellHUD", "file:///UI/index.html")
 
 SpellHUD:BringToFront()
 SpellHUD:SetFocus()
 
+Input.Register("Menu Spells", "F4")
 Input.Register("FirstSpell", "Ampersand")
 Input.Register("SecondSpell", "E_AccentAigu")
 Input.Register("ThirdSpell", 'Quote')
@@ -40,6 +42,20 @@ Input.Bind("SixthSpell", InputEvent.Pressed, function ()
     SpellHUD:CallEvent("AddSizeStyleToDiv", 5)
 end)
 
+
+
+function TEST()
+    for index, spell in ipairs(SPELLS) do
+        local basedamage = SPELLS[index].basedamage
+        local energycost = SPELLS[index].energycost
+        local img = SPELLS[index].img
+        local nom = SPELLS[index].nom
+        SpellHUD:CallEvent("AddSpellsToHud", basedamage, energycost, img, nom)
+    end
+end
+
+TEST()
+
 Input.Subscribe("KeyDown", function (key_name, delta)
     if key_name == "Ampersand" then
         local local_player = Client.GetLocalPlayer()
@@ -62,4 +78,3 @@ Input.Subscribe("KeyDown", function (key_name, delta)
         Events.CallRemote("LunchSpell",character, camera_rotation, trace_result.Location)
     end
 end)
-
