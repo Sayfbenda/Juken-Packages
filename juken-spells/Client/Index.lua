@@ -1,7 +1,6 @@
 Package.Require("Config.lua")
 local SpellHUD = WebUI("SpellHUD", "file:///UI/index.html")
 
-local visibility = false
 
 Input.Register("Menu Spells", "F4")
 Input.Register("FirstSpell", "Ampersand")
@@ -10,6 +9,8 @@ Input.Register("ThirdSpell", 'Quote')
 Input.Register("FourthSpell", "Apostrophe")
 Input.Register("FifthSpell", "LeftParantheses")
 Input.Register("SixthSpell", "Hyphen")
+
+local visibility = false
 
 Input.Bind("Menu Spells", InputEvent.Pressed, function ()
     if (visibility) then

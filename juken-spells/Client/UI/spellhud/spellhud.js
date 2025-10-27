@@ -1,3 +1,6 @@
+let spellListe = [] 
+const spellstringdiv = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
+
 addEventListener("DOMContentLoaded", function(event){
     const body = document.querySelector("body");
     body.insertAdjacentHTML("afterbegin",`
@@ -30,18 +33,19 @@ addEventListener("DOMContentLoaded", function(event){
             </div>
         </section>
         `)
+    for (let index = 0; index < spellstringdiv.length; index++) {
+        spellListe.push(document.getElementById(spellstringdiv[index]))
+        
+    }
 
 })
 
 
 function AddSizeStyleToDiv(index) {
-    const spellListe = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
     for (let i = 0; i < spellListe.length; i++) {
-        let div = document.getElementById(spellListe[i])
-        div.classList.remove("selectedspell")
+        spellListe[i].classList.remove("selectedspell")
     }
-    let div = document.getElementById(spellListe[index])
-    div.classList.add("selectedspell")
+    spellListe[index].classList.add("selectedspell")
 }
 
 
