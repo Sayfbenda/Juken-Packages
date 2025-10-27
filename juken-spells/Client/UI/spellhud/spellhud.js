@@ -63,9 +63,9 @@ function AddSpellsToHud(basedamage, energycost, img, nom) {
     }
 }
 
-function ToggleSpellMenu() {
+function ToggleSpellMenu(visibility) {
     const div = document.getElementById("sectionmenu")
-    if (div.style.visibility == "visible") {
+    if (visibility) {
         div.style.visibility = "hidden"
     }else{
         div.style.visibility = "visible"
