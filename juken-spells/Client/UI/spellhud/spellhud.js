@@ -53,7 +53,7 @@ function AddSpellsToHud(basedamage, energycost, img, nom) {
     spell.name = nom
     spellslist.push(spell)
     for (let index = 0; index < spellslist.length; index++) {
-        const div = document.getElementById("menuspell")
+        const div = document.getElementById("spellside")
         div.insertAdjacentHTML("beforeend", `
             <div class="hudspell" draggable="true">
                 <img src=${spellslist[index].image} draggable="false">
