@@ -1,9 +1,6 @@
 Package.Require("Config.lua")
 local SpellHUD = WebUI("SpellHUD", "file:///UI/index.html")
 
-SpellHUD:BringToFront()
-SpellHUD:SetFocus()
-
 Input.Register("Menu Spells", "F4")
 Input.Register("FirstSpell", "Ampersand")
 Input.Register("SecondSpell", "E_AccentAigu")
@@ -11,6 +8,16 @@ Input.Register("ThirdSpell", 'Quote')
 Input.Register("FourthSpell", "Apostrophe")
 Input.Register("FifthSpell", "LeftParantheses")
 Input.Register("SixthSpell", "Hyphen")
+
+Input.Bind("Menu Spells", InputEvent.Pressed, function ()
+    if (Input.IsMouseEnabled()) then
+        Input.SetMouseEnabled(false)
+        SpellHUD:RemoveFocus()
+    else
+        Input.SetMouseEnabled(true)
+    end
+    SpellHUD:CallEvent("ToggleSpellMenu")
+end)
 
 Input.Bind("FirstSpell", InputEvent.Pressed, function ()
     Console.Log("1")

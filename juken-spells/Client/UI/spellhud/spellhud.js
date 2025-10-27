@@ -30,6 +30,7 @@ addEventListener("DOMContentLoaded", function(event){
             </div>
         </section>
         `)
+
 })
 
 
@@ -62,5 +63,16 @@ function AddSpellsToHud(basedamage, energycost, img, nom) {
     }
 }
 
+function ToggleSpellMenu() {
+    const div = document.getElementById("sectionmenu")
+    if (div.style.visibility == "visible") {
+        div.style.visibility = "hidden"
+    }else{
+        div.style.visibility = "visible"
+    }
+}
+
+
 Events.Subscribe("AddSizeStyleToDiv", AddSizeStyleToDiv)
 Events.Subscribe("AddSpellsToHud", AddSpellsToHud)
+Events.Subscribe("ToggleSpellMenu", ToggleSpellMenu)
