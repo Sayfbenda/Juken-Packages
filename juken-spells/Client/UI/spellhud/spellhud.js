@@ -1,6 +1,7 @@
 let spellBarListe = [] 
 spellslist = []
 const spellstringdiv = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
+let selectedSpell
 
 addEventListener("DOMContentLoaded", function(event){
     const body = document.querySelector("body");
@@ -69,6 +70,7 @@ function AddSizeStyleToDiv(index) {
         spellBarListe[i].classList.remove("selectedspell")
     }
     spellBarListe[index].classList.add("selectedspell")
+    selectedSpell = spellBarListe[index].firstChild.id
 }
 
 
@@ -90,6 +92,11 @@ function AddSpellsToHud(basedamage, energycost, img, nom, identificator) {
     }
     DragandDrop()
 }
+function GetSpell() {
+    console.log("GetSpell has been called")
+    Events.Call("LancerSpell")
+}
+
 
 function ToggleSpellMenu(visibility) {
     const div = document.getElementById("sectionmenu")
@@ -104,3 +111,4 @@ function ToggleSpellMenu(visibility) {
 Events.Subscribe("AddSizeStyleToDiv", AddSizeStyleToDiv)
 Events.Subscribe("AddSpellsToHud", AddSpellsToHud)
 Events.Subscribe("ToggleSpellMenu", ToggleSpellMenu)
+Events.Subscribe("GetSpell", GetSpell)
