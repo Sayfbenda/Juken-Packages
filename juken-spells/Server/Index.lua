@@ -4,28 +4,28 @@ local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_
 
 
 
-Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation, end_location)
+Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation, end_location, spell)
     local owner = player:GetName()
-    SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation, end_location)
+    SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation, end_location, spell)
     Events.CallRemote("SpellTrace", player)
 end)
 
-function SpawnSpell(owner ,characterLocation, characterRotation, playerrotation, end_location)
+function SpawnSpell(owner ,characterLocation, characterRotation, playerrotation, end_location, spell)
 
-    local spellparticle = Particle(characterLocation, characterRotation, "nanos-world::P_Explosion", false, true)
+    local spellparticle = Particle(characterLocation, characterRotation, spell.particlepath, false, true)
     spellparticle:SetCollision(CollisionType.StaticOnly)
     spellparticle:SetValue("owner", owner)
 
-    local hitBox = Trigger(spellparticle:GetLocation(), spellparticle:GetRotation(), TEST.size, TriggerType.Sphere, true, Color.RED, {"Character"})
+    local hitBox = Trigger(spellparticle:GetLocation(), spellparticle:GetRotation(), spell.size, TriggerType.Sphere, true, Color.RED, {"Character"})
     hitBox:AttachTo(spellparticle)
 
     local playerRotationForward = playerrotation:GetForwardVector()
 
     Spell(spellparticle, playerRotationForward, end_location)
-    SpellManager(hitBox, spellparticle, owner)
+    SpellManager(hitBox, spellparticle, owner, spell)
 end
 
-function SpellManager(hitBox, spellparticle, owner)
+function SpellManager(hitBox, spellparticle, owner, spell)
 
     hitBox:Subscribe("BeginOverlap", function (self, entity)
         local player = entity:GetPlayer()
@@ -34,7 +34,7 @@ function SpellManager(hitBox, spellparticle, owner)
             name = player:GetName()
         end
         if (name ~= owner) then
-            ApplyDamage(entity)
+            ApplyDamage(entity, spell)
             end
         end)
     
@@ -73,8 +73,8 @@ function Spell(spellparticle, playerRotationForward, end_location)
 end
 
 
-function ApplyDamage(entity)
-    entity:ApplyDamage(TEST.basedamage)
+function ApplyDamage(entity, spell)
+    entity:ApplyDamage(spell.basedamage)
 end
 
 function AddImpulseToSpell(spellprop, characterLocation, characterRotation, playerrotation)

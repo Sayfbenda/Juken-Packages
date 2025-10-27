@@ -36,7 +36,7 @@ SpellHUD:Subscribe("LancerSpell", function (selectedSpell)
 
             local trace_result = Trace.LineSingle(start_location, end_location, collision_trace, trace_mode)
 
-            Events.CallRemote("LunchSpell",character, camera_rotation, trace_result.Location)
+            Events.CallRemote("LunchSpell",character, camera_rotation, trace_result.Location, SPELLS[index])
         end
     end
 end)
