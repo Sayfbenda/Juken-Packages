@@ -46,10 +46,6 @@ function DragandDrop() {
         spells.item(index).addEventListener("dragstart", (event)=>{
         event.dataTransfer.setData("spell/html", event.target.outerHTML)
     })  
-    spells.item(index).addEventListener("dragend", (event)=>{
-        console.log("finished")
-        
-    }) 
     }
     for (let index = 0; index < spellBarListe.length; index++) {
         spellBarListe[index].addEventListener("dragover", function(event){
