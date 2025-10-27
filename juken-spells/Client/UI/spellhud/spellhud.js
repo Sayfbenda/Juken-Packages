@@ -93,8 +93,7 @@ function AddSpellsToHud(basedamage, energycost, img, nom, identificator) {
     DragandDrop()
 }
 function GetSpell() {
-    console.log("GetSpell has been called")
-    Events.Call("LancerSpell")
+    Events.Call("LancerSpell", selectedSpell)
 }
 
 

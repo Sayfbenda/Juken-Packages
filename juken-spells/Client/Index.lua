@@ -17,25 +17,28 @@ Input.Bind("Lancer Spell", InputEvent.Pressed, function ()
     
 end)
 
-SpellHUD:Subscribe("LancerSpell", function ()
-    Console.Log("LancerSpell Has been called")
-    local local_player = Client.GetLocalPlayer()
-    local camera_rotation = local_player:GetCameraRotation()
-    local start_location = local_player:GetCameraLocation()
+SpellHUD:Subscribe("LancerSpell", function (selectedSpell)
+    for index, value in ipairs(SPELLS) do
+        if selectedSpell == SPELLS[index].id then
+            local local_player = Client.GetLocalPlayer()
+            local camera_rotation = local_player:GetCameraRotation()
+            local start_location = local_player:GetCameraLocation()
 
-    local character = local_player:GetControlledCharacter()
+            local character = local_player:GetControlledCharacter()
 
-    local direction =  camera_rotation:GetForwardVector()
+            local direction =  camera_rotation:GetForwardVector()
 
-    local end_location = start_location + direction * 20000
+            local end_location = start_location + direction * 20000
 
-    local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.WorldDynamic | CollisionChannel.PhysicsBody | CollisionChannel.Vehicle
+            local collision_trace = CollisionChannel.WorldStatic | CollisionChannel.WorldDynamic | CollisionChannel.PhysicsBody | CollisionChannel.Vehicle
 
-    local trace_mode = TraceMode.TraceOnlyVisibility | TraceMode.DrawDebug | TraceMode.TraceComplex | TraceMode.ReturnEntity
+            local trace_mode = TraceMode.TraceOnlyVisibility | TraceMode.DrawDebug | TraceMode.TraceComplex | TraceMode.ReturnEntity
 
-    local trace_result = Trace.LineSingle(start_location, end_location, collision_trace, trace_mode)
+            local trace_result = Trace.LineSingle(start_location, end_location, collision_trace, trace_mode)
 
-    Events.CallRemote("LunchSpell",character, camera_rotation, trace_result.Location)
+            Events.CallRemote("LunchSpell",character, camera_rotation, trace_result.Location)
+        end
+    end
 end)
 
 Input.Bind("Menu Spells", InputEvent.Pressed, function ()
