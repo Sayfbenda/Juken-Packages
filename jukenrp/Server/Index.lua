@@ -141,6 +141,9 @@ function SpawnPlayer(player, location, rotation)
 		new_char:SetTeam(1)
 	end
 
+	new_char:SetCanAim(false)
+
+
 	player:Possess(new_char)
 
 	SetGradeToCharacter(new_char)

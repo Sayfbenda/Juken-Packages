@@ -1,4 +1,5 @@
 TEST = {
+    id = "TESTSPELL";
     nom = "spell de test";
     img = "spellhud/images/rasengan.png";
     basedamage = 220;

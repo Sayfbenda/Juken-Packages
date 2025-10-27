@@ -58,7 +58,8 @@ function TEST()
         local energycost = SPELLS[index].energycost
         local img = SPELLS[index].img
         local nom = SPELLS[index].nom
-        SpellHUD:CallEvent("AddSpellsToHud", basedamage, energycost, img, nom)
+        local id = SPELLS[index].id
+        SpellHUD:CallEvent("AddSpellsToHud", basedamage, energycost, img, nom, id)
     end
 end
 

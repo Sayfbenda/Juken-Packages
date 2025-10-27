@@ -72,17 +72,18 @@ function AddSizeStyleToDiv(index) {
 }
 
 
-function AddSpellsToHud(basedamage, energycost, img, nom) {
+function AddSpellsToHud(basedamage, energycost, img, nom, identificator) {
     let spell = new Object()
     spell.damage = basedamage
     spell.energy = energycost
+    spell.id = identificator
     spell.image = img
     spell.name = nom
     spellslist.push(spell)
     for (let index = 0; index < spellslist.length; index++) {
         const div = document.getElementById("spellside")
         div.insertAdjacentHTML("beforeend", `
-            <div class="hudspell" draggable="true">
+            <div class="hudspell" draggable="true" id=${spell.id}>
                 <img src=${spellslist[index].image} draggable="false">
             </div>
             `)
