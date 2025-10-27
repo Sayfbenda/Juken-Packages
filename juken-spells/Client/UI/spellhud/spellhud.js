@@ -2,6 +2,8 @@ let spellBarListe = []
 spellslist = []
 const spellstringdiv = ["first-spell", "second-spell", "third-spell", "fourth-spell", "fifth-spell", "sixth-spell"]
 let selectedSpell
+let data 
+let id
 
 addEventListener("DOMContentLoaded", function(event){
     const body = document.querySelector("body");
@@ -44,7 +46,8 @@ function DragandDrop() {
     const spells = document.getElementsByClassName("hudspell")
     for (let index = 0; index < spells.length; index++) {
         spells.item(index).addEventListener("dragstart", (event)=>{
-        event.dataTransfer.setData("spell/html", event.target.outerHTML)
+        id = event.target.id
+        data = event.target.outerHTML
     })  
     }
     for (let index = 0; index < spellBarListe.length; index++) {
@@ -52,15 +55,8 @@ function DragandDrop() {
             event.preventDefault()
         })
         spellBarListe[index].addEventListener("drop", function(event){
-            for (let i = 0; i < spellBarListe.length; i++) {
-                if(spellBarListe[i].innerHTML == event.dataTransfer.getData("spell/html")){
-                    break
-                }else{
-                    const data = event.dataTransfer.getData("spell/html")
-                    spellBarListe[index].innerHTML = data
-                }
-            }
-        })
+                event.target.innerHTML = data
+        })        
     }
 }
 
@@ -81,7 +77,6 @@ function AddSpellsToHud(basedamage, energycost, img, nom, identificator) {
     spell.image = img
     spell.name = nom
     spellslist.push(spell)
-    console.log(spellslist.length)
     const div = document.getElementById("spellside")
         div.insertAdjacentHTML("beforeend", `
             <div class="hudspell" draggable="true" id=${spell.id}>
