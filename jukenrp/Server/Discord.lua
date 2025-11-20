@@ -1,5 +1,5 @@
 local headers = {
-    Authorization = "Bot MTI3NjI0MzU4ODQzODU2MDgwMQ.GFzbhP.CZqGrSd5nl6s6uoDdQnFWadouMW3PBFzwWX2iE",
+    Authorization = "Bot ",
 }
 
 function SendToDiscord(message, channel)
@@ -16,7 +16,7 @@ end
 
 
 function DiscordPlayerConnect(player)
-    SendToDiscord(player:GetName() .. " a quitté le serveur", CHANNELS.join_disconnect)
+	SendToDiscord(player:GetName() .. " s'est connecté au serveur", CHANNELS.join_disconnect)
 end
 
 Package.Export("SendToDiscord", SendToDiscord)

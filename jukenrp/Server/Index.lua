@@ -332,11 +332,11 @@ Server.Subscribe("Stop", function()
 end)
 
 Player.Subscribe("Ready", function(self)
-	SendToDiscord(self:GetName() .. " s'est connecté au serveur", CHANNELS.join_disconnect)
+	DiscordPlayerConnect(self)
 end)
 
 Player.Subscribe("UnPossess", function(self, character)
-	DiscordPlayerConnect(self)
+	SendToDiscord(self:GetName() .. " s'est deconnecté", CHANNELS.join_disconnect)
 end)
 
 
