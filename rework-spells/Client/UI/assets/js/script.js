@@ -1,4 +1,5 @@
 let kidodivlist = []
+let kido = Object()
 
 const body = document.querySelector("body")
 addEventListener("DOMContentLoaded", function(e){
@@ -48,6 +49,9 @@ addEventListener("DOMContentLoaded", function(e){
         </div>
     </div>
 `
+    let KidoMenu = `
+    
+    `
     body.insertAdjacentHTML("beforeend", kidoBarHTML)
     const kidoDiv = document.getElementById("globaldiv")
     addKidoDivTolist(kidodivlist, kidoDiv)
@@ -68,5 +72,11 @@ Events.Subscribe("SelectKido", function(i){
         kidodivlist[i].classList.add("size")
     }else{
         kidodivlist[i].classList.remove("size")
+    }
+})
+
+Events.Subscribe("LoadKido", function(element){
+    kido.hado = {
+        
     }
 })

@@ -1,6 +1,8 @@
 Package.Require("Config.lua")
 Package.Require("SpellMenu.lua")
 
+
+
 Input.Register("Lancer Spell", "RightMouseButton")
 Input.Register("Menu Spells", "F4")
 Input.Register("FirstSpell", "Ampersand")

@@ -44,3 +44,18 @@ body{
     background-color: rgba(0, 0, 0, 0.25);
     border: 0.2rem solid white;
 }
+
+body > section{
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    padding-top: 5rem;
+    width: 100vw;
+    height: 100vh;
+}
+
+#globalMenu{
+    background-color: rgba(0, 0, 0, 0.25);
+    width: 70vw;
+    height: 70vh;
+}
