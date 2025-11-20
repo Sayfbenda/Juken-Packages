@@ -2,6 +2,8 @@ Package.Require("Config.lua")
 Package.Require("Database.lua")
 Package.Require("SpawnMenu.lua")
 Package.Require("Sky.lua")
+Package.Require("DiscordConfig.lua")
+Package.Require("Discord.lua")
 
 -- List of Spawn Locations
 SPAWN_POINTS = Server.GetMapSpawnPoints()
@@ -315,6 +317,16 @@ Package.Subscribe("Load", function()
 	end
 
 	Chat.BroadcastMessage("The package <cyan>Sandbox</> has been reloaded!")
+end)
+
+local channels = Package.GetPersistentData("channels")
+
+Server.Subscribe("Start", function()
+    SendToDiscord("Server UP", CHANNELS.statut)
+end)
+
+Server.Subscribe("Stop", function()
+    SendToDiscord("Server DOWN", CHANNELS.statut)
 end)
 
 -- Exposes this to other packages
