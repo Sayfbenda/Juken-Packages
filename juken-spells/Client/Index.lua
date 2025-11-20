@@ -1,15 +1,6 @@
 Package.Require("Config.lua")
 local SpellHUD = WebUI("SpellHUD", "file:///UI/index.html")
 
-Input.Register("Lancer Spell", "RightMouseButton")
-Input.Register("Menu Spells", "F4")
-Input.Register("FirstSpell", "Ampersand")
-Input.Register("SecondSpell", "E_AccentAigu")
-Input.Register("ThirdSpell", 'Quote')
-Input.Register("FourthSpell", "Apostrophe")
-Input.Register("FifthSpell", "LeftParantheses")
-Input.Register("SixthSpell", "Hyphen")
-
 local visibility = false
 
 Input.Bind("Lancer Spell", InputEvent.Pressed, function ()

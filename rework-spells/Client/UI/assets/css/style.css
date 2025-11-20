@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+:root{
+
+    --kidodiv : 4vw;
+    --kidodivB : 5rem;
+    --globalivgap : 0.5rem;
+}
+
+body{
+    color: white;
+}
+
+.size{
+    transform: scale(1.1);
+    transition: 100ms;
+}
+
+#globaldiv{
+    display: flex;
+    padding-bottom: 3vh;
+    bottom: 0;
+    gap: var(--globalivgap);
+    position: fixed;
+    width: 100vw;
+    justify-content: center;
+}
+
+#globaldiv > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kidodiv{
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--kidodivB);
+    height: var(--kidodiv);
+    width: var(--kidodiv);
+    background-color: rgba(0, 0, 0, 0.25);
+    border: 0.2rem solid white;
+}

@@ -3,7 +3,6 @@ Package.Require("Config.lua")
 local woman = Character(Vector(100, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Female")
 
 
-
 Events.SubscribeRemote("LunchSpell", function (player, character, playerrotation, end_location, spell)
     local owner = player:GetName()
     SpawnSpell(owner, character:GetLocation(), character:GetRotation(), playerrotation, end_location, spell)
@@ -81,3 +80,5 @@ function AddImpulseToSpell(spellprop, characterLocation, characterRotation, play
     local playerRotationForward = playerrotation:GetForwardVector()
     spellprop:AddImpulse(characterLocation+(playerRotationForward*3000), true)
 end
+
+
