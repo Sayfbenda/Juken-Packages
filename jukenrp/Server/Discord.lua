@@ -1,5 +1,5 @@
 local headers = {
-    Authorization = "Bot ",
+    Authorization = "Bot MTI3NjI0MzU4ODQzODU2MDgwMQ.GHwloq.HBurtDhhRx_5BcwsuzpOFV0OYifPe9mpo6gbQE",
 }
 
 function SendToDiscord(message, channel)
@@ -18,5 +18,22 @@ end
 function DiscordPlayerConnect(player)
 	SendToDiscord(player:GetName() .. " s'est connecté au serveur", CHANNELS.join_disconnect)
 end
+
+Chat.Subscribe("PlayerSubmit", function(message, player)
+	SendToDiscord(player:GetName() .. " : " .. message, CHANNELS.chat)
+end)
+
+Character.Subscribe("ValueChange", function(self, key, value)
+    if self:GetPlayer() == nil then
+        Console.Log("aaaa")
+        return
+    end
+    local player = self:GetPlayer()
+    local name = player:GetName()
+    if type(value) == "table" and key == "grade" then
+        value = value.nom
+    end
+	SendToDiscord("La valuer " .. key .. " a été modifié sur le joueur " .. name .. " nouvelle valeur : " .. tostring(value), CHANNELS.values)
+end)
 
 Package.Export("SendToDiscord", SendToDiscord)

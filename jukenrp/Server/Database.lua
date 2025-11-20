@@ -45,3 +45,9 @@ function SelectGrade(player, character, name)
     end
 	SetValuesTocharacter(player, character, grade)
 end
+
+function ChangeGradeInDB(grade, steamid)
+    sqlite_db:Execute("UPDATE players SET grade = :0 WHERE steamid = :1", grade, steamid)
+end
+
+Package.Export("ChangeGradeInDB", ChangeGradeInDB)

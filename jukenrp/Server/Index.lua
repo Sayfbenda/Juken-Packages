@@ -4,6 +4,7 @@ Package.Require("SpawnMenu.lua")
 Package.Require("Sky.lua")
 Package.Require("DiscordConfig.lua")
 Package.Require("Discord.lua")
+Package.Require("Admin/Commands.lua")
 
 -- List of Spawn Locations
 SPAWN_POINTS = Server.GetMapSpawnPoints()
