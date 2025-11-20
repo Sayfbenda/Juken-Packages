@@ -14,4 +14,9 @@ function SendToDiscord(message, channel)
     headers)
 end
 
+
+function DiscordPlayerConnect(player)
+    SendToDiscord(player:GetName() .. " a quitté le serveur", CHANNELS.join_disconnect)
+end
+
 Package.Export("SendToDiscord", SendToDiscord)

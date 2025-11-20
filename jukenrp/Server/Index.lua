@@ -115,11 +115,14 @@ function OnPlayerCharacterDeath(chara, last_damage_taken, last_bone_damaged, dam
 	if (instigator) then
 		if (instigator == controller) then
 			Chat.BroadcastMessage("<cyan>" .. instigator:GetName() .. "</> committed suicide")
+			SendToDiscord(instigator:GetName() .. " s'est suicidé", CHANNELS.pvp)
 		else
 			Chat.BroadcastMessage("<cyan>" .. instigator:GetName() .. "</> killed <cyan>" .. controller:GetName() .. "</>")
+			SendToDiscord(instigator:GetName() .. " a été tué par " .. controller:GetName(), CHANNELS.pvp)
 		end
 	else
 		Chat.BroadcastMessage("<cyan>" .. controller:GetName() .. "</> died")
+		SendToDiscord(controller:GetName() .. " est mort ", CHANNELS.pvp)
 	end
 
 	-- Respawns the Character after 5 seconds, we Bind the Timer to the Character, this way if the Character gets destroyed in the meanwhile, this Timer never gets destroyed
@@ -156,6 +159,7 @@ function SpawnPlayer(player, location, rotation)
 	-- Unsubscribe to Death event if unpossessed (in case we got possessed into another Character)
 	new_char:Subscribe("UnPossess", function(self)
 		self:Unsubscribe("Death", OnPlayerCharacterDeath)
+
 	end)
 end
 
@@ -184,7 +188,6 @@ end
 -- When Player Connects, spawns a new Character and gives it to him
 Player.Subscribe("Spawn", function(player)
 	Chat.BroadcastMessage("<cyan>" .. player:GetName() .. "</> has joined the server")
-
 	SpawnPlayer(player)
 end)
 
@@ -319,7 +322,6 @@ Package.Subscribe("Load", function()
 	Chat.BroadcastMessage("The package <cyan>Sandbox</> has been reloaded!")
 end)
 
-local channels = Package.GetPersistentData("channels")
 
 Server.Subscribe("Start", function()
     SendToDiscord("Server UP", CHANNELS.statut)
@@ -328,6 +330,16 @@ end)
 Server.Subscribe("Stop", function()
     SendToDiscord("Server DOWN", CHANNELS.statut)
 end)
+
+Player.Subscribe("Ready", function(self)
+	SendToDiscord(self:GetName() .. " s'est connecté au serveur", CHANNELS.join_disconnect)
+end)
+
+Player.Subscribe("UnPossess", function(self, character)
+	DiscordPlayerConnect(self)
+end)
+
+
 
 -- Exposes this to other packages
 Package.Export("SpawnPlayer", SpawnPlayer)
