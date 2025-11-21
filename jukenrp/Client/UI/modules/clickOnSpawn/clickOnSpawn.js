@@ -14,10 +14,11 @@ function EventListenerToDiv(div) {
     })
 }
 
-function ToggleClickOnSpawn() {
+function ToggleClickOnSpawn(self) {
     const clickonspawn = document.querySelector("#clickonspawn")
     if (clickonspawn.style.display == "block") {
         clickonspawn.style.display = "none"
+        Events.Call("ClickedOnspanw")
     }else{
         clickonspawn.style.display = "block"
     }

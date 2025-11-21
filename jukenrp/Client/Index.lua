@@ -26,13 +26,17 @@ Player.Subscribe("Spawn", function (self)
 
     Events.CallRemote("SendToDiscord", tostring((self:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
 
-    MainHUD:CallEvent("ToggleClickOnSpawn")
+    MainHUD:CallEvent("ToggleClickOnSpawn", self)
 
-    Events.CallRemote("SelectCharactersFromSteamID", self)
+
+    MainHUD:Subscribe("ClickedOnspanw", function ()
+        Events.CallRemote("SelectCharactersFromSteamID", self)
+        MainHUD:CallEvent("AddCharacters")
+    end)
+
 end)
 
 Events.SubscribeRemote("GetSelectedCharacters", function (player, select)
-    Console.Log(player:GetName())
     Console.Log(select)
 end)
 
