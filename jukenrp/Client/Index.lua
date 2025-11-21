@@ -1,6 +1,7 @@
 Package.Require("CharacterCreator.lua")
 Package.Require("DiscordConfig.lua")
 
+
 MainHUD = WebUI(
     "MainHud",
     "file://UI//index.html",
@@ -16,7 +17,7 @@ Input.Bind("MouseToggle", InputEvent.Pressed, function ()
 end)
 
 Player.Subscribe("Spawn", function (self)
-    Events.CallRemote("SendToDiscord", self, self)
+    Events.CallRemote("SendToDiscord", tostring((self:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
 end)
 
 
