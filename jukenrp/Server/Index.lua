@@ -343,4 +343,6 @@ end)
 
 
 -- Exposes this to other packages
+
+Package.Export("SetValuesTocharacter", SetValuesTocharacter)
 Package.Export("SpawnPlayer", SpawnPlayer)
