@@ -1,4 +1,5 @@
 Package.Require("CharacterCreator.lua")
+Package.Require("DiscordConfig.lua")
 
 MainHUD = WebUI(
     "MainHud",
@@ -6,11 +7,19 @@ MainHUD = WebUI(
     WidgetVisibility.Visible
 )
 
+MainHUD:BringToFront()
+
 Input.Register("MouseToggle", "C")
 
 Input.Bind("MouseToggle", InputEvent.Pressed, function ()
     MouseToggle(Input.IsMouseEnabled())
 end)
+
+Player.Subscribe("Spawn", function (self)
+    Events.CallRemote("SendToDiscord", self, self)
+end)
+
+
 
 function MouseToggle(isToggle)
     if isToggle then
