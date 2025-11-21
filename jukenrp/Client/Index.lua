@@ -1,12 +1,12 @@
-Package.Require("CharacterCreator.lua")
-Package.Require("DiscordConfig.lua")
-
-
 MainHUD = WebUI(
     "MainHud",
     "file://UI//index.html",
     WidgetVisibility.Visible
 )
+
+Package.Require("CharacterCreator.lua")
+Package.Require("DiscordConfig.lua")
+
 
 MainHUD:BringToFront()
 
@@ -14,10 +14,7 @@ Input.Register("MouseToggle", "C")
 
 Input.Bind("MouseToggle", InputEvent.Pressed, function ()
     MouseToggle(Input.IsMouseEnabled())
-end)
-
-MainHUD:Subscribe("GetAllValuesFromCreator", function (values)
-    Console.Log(NanosTable.Dump(values))
+    MainHUD:CallEvent("ToggleCharacterCreator")
 end)
 
 Player.Subscribe("Spawn", function (self)
@@ -32,6 +29,4 @@ function MouseToggle(isToggle)
         Input.SetMouseEnabled(true)
     end
 end
-
-
 

@@ -19,6 +19,15 @@ addEventListener("DOMContentLoaded", function(){
         AddOnclickOnDivs(div.children, div.children.length)
 })
 
+function ToggleCharacterCreator() {
+    const creatorMenu = document.querySelector("#creatorMenu")
+    if (creatorMenu.style.display == "flex") {
+        creatorMenu.style.display = "none"
+    }else{
+        creatorMenu.style.display = "flex"
+    }
+}
+
 function AddOnclickOnDivs(divs, length) {
     for (let index = 0; index < length; index++) {
         divs[index].addEventListener("click", function(e){
@@ -92,10 +101,10 @@ function GetAllValues() {
     }
     Events.Call("GetAllValuesFromCreator",
         {
-            "name" : name,
-            "lastname": lastname,
-            "age": age,
-            "genre": genre
+            name : name,
+            lastname: lastname,
+            age: age,
+            genre: genre
         }
         ) 
 }
@@ -103,3 +112,5 @@ function GetAllValues() {
 Events.Subscribe("AddCharacters", function(){
 
 })
+
+Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)
