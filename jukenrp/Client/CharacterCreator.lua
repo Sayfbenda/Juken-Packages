@@ -1,0 +1,1 @@
+local characterNumbers = 3
