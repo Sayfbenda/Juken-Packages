@@ -1,5 +1,5 @@
 local headers = {
-    Authorization = "Bot",
+    Authorization = "Bot ",
 }
 
 function SendToDiscord(message, channel)
