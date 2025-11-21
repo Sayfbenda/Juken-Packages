@@ -27,3 +27,13 @@ function InsertPlayerToDB(player)
     end
 end
 
+Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
+    local select = database:Select("SELECT charactersid FROM players WHERE steamid = :0", tostring(player:GetSteamID()))
+    local characters_string = select[1]["charactersid"]
+    local characters_table = {}
+    for char_id_string in characters_string:gmatch("(%d+)") do
+        table.insert(characters_table, tonumber(char_id_string))
+    end
+
+    Events.CallRemote("GetSelectedCharacters", player, player, NanosTable.Dump(characters_table))
+end)

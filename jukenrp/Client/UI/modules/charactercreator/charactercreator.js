@@ -109,7 +109,7 @@ function GetAllValues() {
         ) 
 }
 
-Events.Subscribe("AddCharacters", function(){
+Events.Subscribe("AddCharacters", function(player, characters){
 
 })
 

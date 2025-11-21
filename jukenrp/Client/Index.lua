@@ -27,8 +27,14 @@ Player.Subscribe("Spawn", function (self)
     Events.CallRemote("SendToDiscord", tostring((self:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
 
     MainHUD:CallEvent("ToggleClickOnSpawn")
+
+    Events.CallRemote("SelectCharactersFromSteamID", self)
 end)
 
+Events.SubscribeRemote("GetSelectedCharacters", function (player, select)
+    Console.Log(player:GetName())
+    Console.Log(select)
+end)
 
 function MouseToggle(isToggle)
     if isToggle then

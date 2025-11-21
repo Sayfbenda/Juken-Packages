@@ -23,4 +23,5 @@ function ToggleClickOnSpawn() {
     }
 }
 
+
 Events.Subscribe("ToggleClickOnSpawn", ToggleClickOnSpawn)
