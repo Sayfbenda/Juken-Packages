@@ -62,6 +62,31 @@ function SelectCharacterInDB(steamid)
     return characters
 end
 
-function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade)
+function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade, characters)
     database:Execute("INSERT INTO characters VALUES (?, ?, ?, ?, ?, ?, ?)", id, steamid, name, lastname, age, genre, grade)
+    UpdateCharacterInPlayerTable(steamid, id, characters)
+end
+
+function UpdateCharacterInPlayerTable(steamid, id, characters)
+    local new_id_string = tostring(id) 
+    
+    local new_values_list = {}
+    local slot_filled = false
+    
+    for index = 1, 3 do
+
+        local current_value = characters[index]["id"] or "0"
+        
+        if current_value == "0" and not slot_filled then
+            table.insert(new_values_list, new_id_string)
+            slot_filled = true
+        else
+            table.insert(new_values_list, current_value)
+        end
+    end
+    
+    local result_string = table.concat(new_values_list, ", ")
+    Console.Log(result_string)
+
+    database:Execute("UPDATE players SET charactersid = ? WHERE steamid = ?", result_string, tostring(steamid))
 end

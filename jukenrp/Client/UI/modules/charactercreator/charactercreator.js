@@ -128,6 +128,7 @@ function AddTrueCharacterToDiv(index) {
 }
 
 Events.Subscribe("AddCharacters", function(self, steamid, characters){
+    console.log(characters)
     for (let index = 0; index < characters.length; index++) {
         if (characters[index] == 0) {
             AddBlankCharactersToDiv(index)

@@ -30,7 +30,6 @@ end)
 
 function VerifyCharactersLength(steamid, character)
     local characters = SelectCharacterInDB(steamid)
-    Console.Log(NanosTable.Dump(characters))
     if characters[3] == "0" then
         InsertCharacterToDB(
             character:GetValue("name"),
@@ -38,7 +37,8 @@ function VerifyCharactersLength(steamid, character)
             tostring(character:GetValue("age")),
             character:GetValue("genre"),
             character:GetValue("id"), steamid,
-            "noob"
+            "noob",
+            characters
         )
     end
 end
