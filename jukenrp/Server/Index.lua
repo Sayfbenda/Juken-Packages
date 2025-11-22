@@ -21,7 +21,12 @@ Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
     
     character:AddValues(values)
 
-    SetGrade(character, character:GetValue("id"))
+    local grade = SelectGradeInDB(character:GetValue("id"))
+    if #grade == 0 then
+        SetGrade(character, character:GetValue("id"))
+    else
+        SetGrade(character, character:GetValue("id"), grade)
+    end
 
     self:Possess(character)
 
@@ -49,18 +54,18 @@ end
 
 function SetGrade(character, id, grade)
     if grade == nil then
-        grade = SelectGradeInDB(id)
-        grade = grade[1]["grade"]
-
-        local gradetable = GetGradeByID(grade)
-        character:SetValue("grade", gradetable, true)
+        Console.Log("ssss")
+        grade = GetGradeByID(GRADES[1]["id"])
+        character:SetValue("grade", grade, true)
+    else
+        local grade = GetGradeByID(grade[1]["grade"])
+        character:SetValue("grade", grade, true)
     end
 end
 
 function GetGradeByID(id)
     for _, grade in ipairs(GRADES) do
         if grade.id == id then
-            Console.Log(NanosTable.Dump(grade))
             return grade
         end
     end
