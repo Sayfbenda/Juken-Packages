@@ -3,10 +3,31 @@
     display: none;
     width: 100vw;
     height: 100vh;
+    color: white;
+    align-items: flex-end;
 }
 
 #charactervaluesdiv{
-    width: 10vw;
-    height: 10vh;
-    background-color: black;
+    width: fit-content;
+    height: fit-content;
+}
+
+#healthmax{
+    background-color: #fe485780;
+}
+
+#reiatsuhmax{
+    background-color: #00265f80;
+}
+
+#playerui > div > div{
+    display: flex;
+}
+#playerui > div > div > div{
+    display: flex;
+    flex-direction: column;
+}
+#playerui > div > div > div > div{
+    display: flex;
+    flex-direction: column;
 }

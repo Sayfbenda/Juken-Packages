@@ -8,23 +8,43 @@ addEventListener("DOMContentLoaded", function(){
         `)
 })
 
-function UpdateValuesInScrenn(params) {
+function UpdateValuesInScreen(params) {
     
 }
 
-Events.Subscribe("UpdateValues", function(health, reiatsu, displayedname){
-    console.log(health, displayedname, reiatsu)
-
-
+Events.Subscribe("UpdateValues", function(health, reiatsu, displayedname, icon){
+    const div = document.getElementById("charactervaluesdiv")
+    div.innerHTML = `
+        <div>
+            <img src="${icon}"/>
+            <div>
+                <span>${displayedname}</span>
+                <div>
+                    <div id="healthmax">
+                        <div id="healthbar">
+                            <span>${health}</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div id="reiatsuhmax">
+                        <div id="reiatsubar">
+                            <span>${reiatsu}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
 })
 
 
 function TogglePlayerUi() {
     const playerui = document.getElementById("playerui")
-    if (playerui.style.display == "block") {
+    if (playerui.style.display == "flex") {
         playerui.style.display = "none"
     }else{
-        playerui.style.display = "block"
+        playerui.style.display = "flex"
     }
 }
 

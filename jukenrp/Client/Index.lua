@@ -12,6 +12,11 @@ MainHUD:BringToFront()
 
 Input.Register("MouseToggle", "C")
 Input.Register("TTTT", "Tab")
+Input.Register("DevTool", "P")
+
+Input.Bind("DevTool", InputEvent.Pressed, function ()
+    MainHUD:OpenDevTools()
+end)
 
 Input.Bind("MouseToggle", InputEvent.Pressed, function ()
     MouseToggle(Input.IsMouseEnabled())
@@ -48,3 +53,6 @@ function MouseToggle(isToggle)
     end
 end
 
+Character.Subscribe("HealthChange", function(self, old_health, new_health)
+
+end)

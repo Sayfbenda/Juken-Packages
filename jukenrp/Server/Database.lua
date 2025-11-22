@@ -33,7 +33,6 @@ end
 
 Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
     local select = SelectCharacterInDB(player:GetSteamID())
-    Console.Log(NanosTable.Dump(select))
     Events.CallRemote("GetSelectedCharacters", player, player, select)
 end)
 
@@ -59,6 +58,13 @@ end
 
 function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade, characters)
     database:Execute("INSERT INTO characters VALUES (?, ?, ?, ?, ?, ?, ?)", id, steamid, name, lastname, age, genre, grade)
+    SendToDiscord(tostring("Un nouveau personnage vient d'être crée : \n" ..
+        "nom : " .. name .. 
+        "\nNom de famille : " .. lastname .. 
+        "\nAge : " .. age .. 
+        "\nGenre : " .. genre ..
+        "\nGrade : " .. grade),
+        CHANNELS.newcharacter)
     UpdateCharacterInPlayerTable(steamid, id, characters)
 end
 
@@ -84,4 +90,3 @@ function UpdateCharacterInPlayerTable(steamid, id, characters)
 
     database:Execute("UPDATE players SET charactersid = ? WHERE steamid = ?", result_string, tostring(steamid))
 end
-
