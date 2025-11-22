@@ -32,14 +32,9 @@ function InsertPlayerToDB(player)
 end
 
 Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
-    local select = database:Select("SELECT charactersid FROM players WHERE steamid = :0", tostring(player:GetSteamID()))
-    local characters_string = select[1]["charactersid"]
-    local characters_table = {}
-    for char_id_string in characters_string:gmatch("(%d+)") do
-        table.insert(characters_table, tonumber(char_id_string))
-    end
-
-    Events.CallRemote("GetSelectedCharacters", player, player, characters_table)
+    local select = SelectCharacterInDB(player:GetSteamID())
+    Console.Log(NanosTable.Dump(select))
+    Events.CallRemote("GetSelectedCharacters", player, player, select)
 end)
 
 function SelectHighestChracterID()
@@ -90,3 +85,4 @@ function UpdateCharacterInPlayerTable(steamid, id, characters)
 
     database:Execute("UPDATE players SET charactersid = ? WHERE steamid = ?", result_string, tostring(steamid))
 end
+

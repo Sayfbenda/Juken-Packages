@@ -117,23 +117,27 @@ function GetAllValues() {
 function AddBlankCharactersToDiv(index) {
     const div = document.getElementById("creatorMenu")
     const divs = div.children
-    for (let i = 0; i < divs.length; i++) {
-        div.children[i].innerHTML = "None"
-        
-    }
+    div.children[index].innerHTML = "None"
 }
 
-function AddTrueCharacterToDiv(index) {
-    
+function AddTrueCharacterToDiv(index, characters) {
+    const div = document.getElementById("creatorMenu")
+    const divs = div.children
+    divs[index].innerHTML = `
+        ${characters.name}
+        ${characters.lastname}
+        ${characters.age}
+        ${characters.genre}
+    `
 }
 
 Events.Subscribe("AddCharacters", function(self, steamid, characters){
-    console.log(characters)
-    for (let index = 0; index < characters.length; index++) {
+    for (let index = 0; index < characters.length+1; index++) {
+        console.log()
         if (characters[index] == 0) {
             AddBlankCharactersToDiv(index)
         }else{
-            AddTrueCharacterToDiv(index)
+            AddTrueCharacterToDiv(index, characters[index])
         }
     }
     player = self
