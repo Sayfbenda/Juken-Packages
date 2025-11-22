@@ -1,4 +1,5 @@
 let player
+let playercharacters
 
 addEventListener("DOMContentLoaded", function(){
     const body = document.querySelector("body")
@@ -33,6 +34,7 @@ function ToggleCharacterCreator() {
 function AddOnclickOnDivs(divs, length) {
     for (let index = 0; index < length; index++) {
         divs[index].addEventListener("click", function(e){
+            SelecExesitingCharacter(index)
             CreateCharacter(index)
         })
         
@@ -93,6 +95,20 @@ function SubmitByPlayer(input) {
     })
 }
 
+function SelecExesitingCharacter(index) {
+    console.log(playercharacters)
+    Events.Call("GetAllValuesFromCreator",
+        {
+            name : playercharacters[index].name,
+            lastname: playercharacters[index].lastname,
+            age: playercharacters[index].age,
+            genre: playercharacters[index].genre,
+            id: playercharacters[index].id
+        },
+        player
+    ) 
+}
+
 function GetAllValues() {
     const name = document.getElementById("name").value
     const lastname = document.getElementById("lastname").value
@@ -124,23 +140,25 @@ function AddTrueCharacterToDiv(index, characters) {
     const div = document.getElementById("creatorMenu")
     const divs = div.children
     divs[index].innerHTML = `
-        ${characters.name}
-        ${characters.lastname}
-        ${characters.age}
-        ${characters.genre}
+        <span>${characters.name}</span>
+        <span>${characters.lastname}</span>
+        <span>${characters.age}</span>
+        <span>${characters.genre}</span>
+        <span>${characters.id}</span>
     `
 }
 
 Events.Subscribe("AddCharacters", function(self, steamid, characters){
-    for (let index = 0; index < characters.length+1; index++) {
-        console.log()
+    player = self
+    playercharacters = characters
+    
+    for (let index = 0; index < characters.length; index++) {
         if (characters[index] == 0) {
             AddBlankCharactersToDiv(index)
         }else{
             AddTrueCharacterToDiv(index, characters[index])
         }
     }
-    player = self
 })
 
 Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)

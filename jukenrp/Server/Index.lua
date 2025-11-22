@@ -11,7 +11,7 @@ function Character:AddValues(values)
     self:SetValue("lastname", values["lastname"], true)
     self:SetValue("age", values["age"], true)
     self:SetValue("genre", values["genre"], true)
-    local id = SelectHighestChracterID()
+    local id = values["id"] or SelectHighestChracterID()
     self:SetValue("id", id, true)
 end
 
