@@ -35,7 +35,7 @@ Events.Subscribe("UpdateValues", function(heath, healthmax, reiatsu, displayedna
 
             <div class="stat-row">
                 <div class="stat-header">
-                    <span><i class="fa-solid fa-heart" style="color:var(--accent-red); margin-right:4px;"></i> HP</span>
+                    <span><i class="fa-solid fa-heart" style="color:var(--accent-red); margin-right:4px;"></i> Health</span>
                     <span>${healthpourcentage}</span>
                 </div>
                 <div class="bar-track">
@@ -45,7 +45,7 @@ Events.Subscribe("UpdateValues", function(heath, healthmax, reiatsu, displayedna
 
             <div class="stat-row">
                 <div class="stat-header">
-                    <span><i class="fa-solid fa-bolt" style="color:var(--accent-blue); margin-right:4px;"></i> MP</span>
+                    <span><i class="fa-solid fa-bolt" style="color:var(--accent-blue); margin-right:4px;"></i> Reiatsu</span>
                     <span>60%</span>
                 </div>
                 <div class="bar-track">
