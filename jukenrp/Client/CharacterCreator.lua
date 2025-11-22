@@ -1,4 +1,4 @@
-MainHUD:Subscribe("GetAllValuesFromCreator", function (values, self)
+MainHUD:Subscribe("GetAllValuesFromCreator", function (values, self, index)
 
     Events.CallRemote("SendToDiscord", tostring("Un nouveau personnage vient d'être crée : \n" ..
     "nom : " .. values["name"] .. 
@@ -8,5 +8,5 @@ MainHUD:Subscribe("GetAllValuesFromCreator", function (values, self)
     
     local player = self
 
-    Events.CallRemote("CreateCharacter", self, values)
+    Events.CallRemote("CreateCharacter", self, values, index)
 end)

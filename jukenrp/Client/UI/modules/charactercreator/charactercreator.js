@@ -44,7 +44,7 @@ function AddOnclickOnDivs(divs, length) {
     }
 }
 
-function CreateCharacter(characterNumbrer) {
+function CreateCharacter(index) {
     const creatorMenu = document.getElementById("creatorMenu")
     let html = `
             <section id="form">
@@ -87,13 +87,13 @@ function CreateCharacter(characterNumbrer) {
             </section>
         `
     creatorMenu.innerHTML = html
-    SubmitByPlayer(document.getElementById("submit"))
+    SubmitByPlayer(document.getElementById("submit"), index)
 }
 
-function SubmitByPlayer(input) {
+function SubmitByPlayer(input, index) {
     input.addEventListener("click", function(e){
         ToggleCharacterCreator()
-        GetAllValues()
+        GetAllValues(index)
         
     })
 }
@@ -108,11 +108,12 @@ function SelecExesitingCharacter(index) {
             genre: playercharacters[index].genre,
             id: playercharacters[index].id
         },
-        player
+        player,
+        index
     ) 
 }
 
-function GetAllValues() {
+function GetAllValues(index) {
     const name = document.getElementById("name").value
     const lastname = document.getElementById("lastname").value
     const age = document.getElementById("age").value
@@ -129,7 +130,8 @@ function GetAllValues() {
             age: age,
             genre: genre
         },
-        player
+        player,
+        index
         ) 
 }
 

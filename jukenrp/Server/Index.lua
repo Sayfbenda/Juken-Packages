@@ -15,7 +15,7 @@ function Character:AddValues(values)
     self:SetValue("id", id, true)
 end
 
-Events.SubscribeRemote("CreateCharacter", function (self, player, values)
+Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
     local character = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Male")
     
     self:Possess(character)
@@ -23,14 +23,15 @@ Events.SubscribeRemote("CreateCharacter", function (self, player, values)
     character:AddValues(values)
 
 
-    VerifyCharactersLength(self:GetSteamID(), character)
+    VerifyCharactersLength(self:GetSteamID(), character, index)
 
 end)
 
 
-function VerifyCharactersLength(steamid, character)
+function VerifyCharactersLength(steamid, character, index)
     local characters = SelectCharacterInDB(steamid)
-    if characters[3] == "0" then
+    
+    if characters[index+1] == "0" then
         InsertCharacterToDB(
             character:GetValue("name"),
             character:GetValue("lastname"),
