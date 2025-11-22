@@ -34,8 +34,11 @@ function ToggleCharacterCreator() {
 function AddOnclickOnDivs(divs, length) {
     for (let index = 0; index < length; index++) {
         divs[index].addEventListener("click", function(e){
-            SelecExesitingCharacter(index)
-            CreateCharacter(index)
+            if (e.target.classList == "taken") {
+                SelecExesitingCharacter(index)
+            }else{
+                CreateCharacter(index)
+            }
         })
         
     }
@@ -96,7 +99,7 @@ function SubmitByPlayer(input) {
 }
 
 function SelecExesitingCharacter(index) {
-    console.log(playercharacters)
+    ToggleCharacterCreator()
     Events.Call("GetAllValuesFromCreator",
         {
             name : playercharacters[index].name,
@@ -134,6 +137,7 @@ function AddBlankCharactersToDiv(index) {
     const div = document.getElementById("creatorMenu")
     const divs = div.children
     div.children[index].innerHTML = "None"
+    divs[index].classList.add("blank")
 }
 
 function AddTrueCharacterToDiv(index, characters) {
@@ -146,6 +150,7 @@ function AddTrueCharacterToDiv(index, characters) {
         <span>${characters.genre}</span>
         <span>${characters.id}</span>
     `
+    divs[index].classList.add("taken")
 }
 
 Events.Subscribe("AddCharacters", function(self, steamid, characters){
