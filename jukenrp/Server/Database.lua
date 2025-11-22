@@ -90,3 +90,8 @@ function UpdateCharacterInPlayerTable(steamid, id, characters)
 
     database:Execute("UPDATE players SET charactersid = ? WHERE steamid = ?", result_string, tostring(steamid))
 end
+
+function SelectGradeInDB(id)
+    local select = database:Select("SELECT grade FROM characters WHERE id = ?", id)
+    return select
+end

@@ -1,3 +1,4 @@
+Package.Require("Config.lua")
 Package.Require("Database.lua")
 Package.Require("Discord.lua")
 
@@ -20,7 +21,10 @@ Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
     
     character:AddValues(values)
 
+    SetGrade(character, character:GetValue("id"))
+
     self:Possess(character)
+
 
     VerifyCharactersLength(self:GetSteamID(), character, index)
 
@@ -37,8 +41,28 @@ function VerifyCharactersLength(steamid, character, index)
             tostring(character:GetValue("age")),
             character:GetValue("genre"),
             character:GetValue("id"), steamid,
-            "noob",
+            GRADES[1].id,
             characters
         )
     end
+end
+
+function SetGrade(character, id, grade)
+    if grade == nil then
+        grade = SelectGradeInDB(id)
+        grade = grade[1]["grade"]
+
+        local gradetable = GetGradeByID(grade)
+        character:SetValue("grade", gradetable, true)
+    end
+end
+
+function GetGradeByID(id)
+    for _, grade in ipairs(GRADES) do
+        if grade.id == id then
+            Console.Log(NanosTable.Dump(grade))
+            return grade
+        end
+    end
+    return nil
 end
