@@ -26,18 +26,18 @@ Player.Subscribe("Spawn", function (self)
 
     Events.CallRemote("SendToDiscord", tostring((self:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
 
-    MainHUD:CallEvent("ToggleClickOnSpawn", self)
+    MainHUD:CallEvent("ToggleClickOnSpawn", NanosTable.Dump(self))
 
 
     MainHUD:Subscribe("ClickedOnspanw", function ()
         Events.CallRemote("SelectCharactersFromSteamID", self)
-        MainHUD:CallEvent("AddCharacters")
+        MainHUD:CallEvent("ToggleCharacterCreator")
     end)
 
 end)
 
 Events.SubscribeRemote("GetSelectedCharacters", function (player, select)
-    Console.Log(select)
+    MainHUD:CallEvent("AddCharacters", player:GetSteamID(), select)
 end)
 
 function MouseToggle(isToggle)

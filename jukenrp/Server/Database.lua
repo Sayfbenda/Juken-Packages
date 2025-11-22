@@ -35,5 +35,5 @@ Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
         table.insert(characters_table, tonumber(char_id_string))
     end
 
-    Events.CallRemote("GetSelectedCharacters", player, player, NanosTable.Dump(characters_table))
+    Events.CallRemote("GetSelectedCharacters", player, player, characters_table)
 end)

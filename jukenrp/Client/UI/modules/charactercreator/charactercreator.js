@@ -109,8 +109,28 @@ function GetAllValues() {
         ) 
 }
 
-Events.Subscribe("AddCharacters", function(player, characters){
+function AddBlankCharactersToDiv(index) {
+    const div = document.getElementById("creatorMenu")
+    const divs = div.children
+    for (let i = 0; i < divs.length; i++) {
+        div.children[i].innerHTML = "None"
+        
+    }
+}
 
+function AddTrueCharacterToDiv(index) {
+    
+}
+
+Events.Subscribe("AddCharacters", function(steamid, characters){
+    console.log(steamid)
+    for (let index = 0; index < characters.length; index++) {
+        if (characters[index] == 0) {
+            AddBlankCharactersToDiv(index)
+        }else{
+            AddTrueCharacterToDiv(index)
+        }
+    }
 })
 
 Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)

@@ -12,6 +12,7 @@
     align-items: center;
     justify-content: space-around;
     display: none;
+    color: white;
 }
 
 #creatorMenu > div{
