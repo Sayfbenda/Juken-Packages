@@ -13,7 +13,11 @@ database:Execute([[
 database:Execute([[
     CREATE TABLE IF NOT EXISTS characters (
 		id INTEGER,
-		playersteamid INTEGER,
+		playersteamid VARCHAR(100),
+		name VARCHAR(100),
+		lastname VARCHAR(100),
+		age VARCHAR(100),
+		genre VARCHAR(100),
 		grade VARCHAR(100)
 	)
 ]])
@@ -37,3 +41,15 @@ Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
 
     Events.CallRemote("GetSelectedCharacters", player, player, characters_table)
 end)
+
+function SelectHighestChracterID()
+    local select = database:Select("SELECT id FROM characters DESC")
+    if NanosTable.Dump(select) == "{}" then
+        return 0
+    end
+    return NanosTable.Dump(select[1]["id"])
+end
+
+function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade)
+    database:Execute("INSERT INTO characters VALUES (?, ?, ?, ?, ?, ?, ?)", id, steamid, name, lastname, age, genre, grade)
+end

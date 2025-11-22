@@ -37,7 +37,7 @@ Player.Subscribe("Spawn", function (self)
 end)
 
 Events.SubscribeRemote("GetSelectedCharacters", function (player, select)
-    MainHUD:CallEvent("AddCharacters", player:GetSteamID(), select)
+    MainHUD:CallEvent("AddCharacters", NanosTable.Dump(player), player:GetSteamID(), select)
 end)
 
 function MouseToggle(isToggle)

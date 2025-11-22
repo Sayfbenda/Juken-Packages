@@ -1,3 +1,5 @@
+let player
+
 addEventListener("DOMContentLoaded", function(){
     const body = document.querySelector("body")
     body.insertAdjacentHTML("beforeend", `
@@ -85,7 +87,9 @@ function CreateCharacter(characterNumbrer) {
 
 function SubmitByPlayer(input) {
     input.addEventListener("click", function(e){
+        ToggleCharacterCreator()
         GetAllValues()
+        
     })
 }
 
@@ -105,7 +109,8 @@ function GetAllValues() {
             lastname: lastname,
             age: age,
             genre: genre
-        }
+        },
+        player
         ) 
 }
 
@@ -122,8 +127,7 @@ function AddTrueCharacterToDiv(index) {
     
 }
 
-Events.Subscribe("AddCharacters", function(steamid, characters){
-    console.log(steamid)
+Events.Subscribe("AddCharacters", function(self, steamid, characters){
     for (let index = 0; index < characters.length; index++) {
         if (characters[index] == 0) {
             AddBlankCharactersToDiv(index)
@@ -131,6 +135,7 @@ Events.Subscribe("AddCharacters", function(steamid, characters){
             AddTrueCharacterToDiv(index)
         }
     }
+    player = self
 })
 
 Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)
