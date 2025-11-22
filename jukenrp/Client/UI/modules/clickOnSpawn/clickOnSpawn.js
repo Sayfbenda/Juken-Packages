@@ -14,7 +14,7 @@ function EventListenerToDiv(div) {
     })
 }
 
-function ToggleClickOnSpawn(self) {
+function ToggleClickOnSpawn() {
     const clickonspawn = document.querySelector("#clickonspawn")
     if (clickonspawn.style.display == "block") {
         clickonspawn.style.display = "none"

@@ -22,15 +22,15 @@ Input.Bind("TTTT", InputEvent.Pressed, function ()
     MainHUD:CallEvent("ToggleCharacterCreator")
 end)
 
-Player.Subscribe("Spawn", function (self)
+Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
-    Events.CallRemote("SendToDiscord", tostring((self:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
+    Events.CallRemote("SendToDiscord", tostring((local_player:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
 
-    MainHUD:CallEvent("ToggleClickOnSpawn", NanosTable.Dump(self))
+    MainHUD:CallEvent("ToggleClickOnSpawn")
 
 
     MainHUD:Subscribe("ClickedOnspanw", function ()
-        Events.CallRemote("SelectCharactersFromSteamID", self)
+        Events.CallRemote("SelectCharactersFromSteamID", local_player)
         MainHUD:CallEvent("ToggleCharacterCreator")
     end)
 

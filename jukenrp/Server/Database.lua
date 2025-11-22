@@ -81,7 +81,6 @@ function UpdateCharacterInPlayerTable(steamid, id, characters)
     end
     
     local result_string = table.concat(new_values_list, ", ")
-    Console.Log(result_string)
 
     database:Execute("UPDATE players SET charactersid = ? WHERE steamid = ?", result_string, tostring(steamid))
 end

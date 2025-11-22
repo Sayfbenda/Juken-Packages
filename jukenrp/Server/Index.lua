@@ -18,10 +18,9 @@ end
 Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
     local character = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Male")
     
-    self:Possess(character)
-
     character:AddValues(values)
 
+    self:Possess(character)
 
     VerifyCharactersLength(self:GetSteamID(), character, index)
 

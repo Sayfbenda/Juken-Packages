@@ -1,0 +1,12 @@
+#playerui{
+    position: relative;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+}
+
+#charactervaluesdiv{
+    width: 10vw;
+    height: 10vh;
+    background-color: black;
+}
