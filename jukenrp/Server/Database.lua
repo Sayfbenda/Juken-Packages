@@ -43,11 +43,23 @@ Events.SubscribeRemote("SelectCharactersFromSteamID", function (player)
 end)
 
 function SelectHighestChracterID()
-    local select = database:Select("SELECT id FROM characters DESC")
-    if NanosTable.Dump(select) == "{}" then
-        return 0
+    local select = database:Select("SELECT id FROM characters ORDER BY id DESC")
+    if #select == 0 then
+        return 1
     end
-    return NanosTable.Dump(select[1]["id"])
+    return NanosTable.Dump(select[1]["id"]+1)
+end
+
+function SelectCharacterInDB(steamid)
+    local select = database:Select("SELECT * FROM characters WHERE playersteamid = ?", steamid)
+    local characters = {}
+    for index, value in ipairs(select) do
+        table.insert(characters, value)
+    end
+    while #characters < 3 do
+            table.insert(characters, "0")
+    end
+    return characters
 end
 
 function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade)

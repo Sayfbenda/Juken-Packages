@@ -12,7 +12,7 @@ function Character:AddValues(values)
     self:SetValue("age", values["age"], true)
     self:SetValue("genre", values["genre"], true)
     local id = SelectHighestChracterID()
-    self:SetValue("id", id+1, true)
+    self:SetValue("id", id, true)
 end
 
 Events.SubscribeRemote("CreateCharacter", function (self, player, values)
@@ -23,6 +23,22 @@ Events.SubscribeRemote("CreateCharacter", function (self, player, values)
     character:AddValues(values)
 
 
-    InsertCharacterToDB(character:GetValue("name"), character:GetValue("lastname"), tostring(character:GetValue("age")), character:GetValue("genre"), character:GetValue("id"), tostring(self:GetSteamID()), "noob")
+    VerifyCharactersLength(self:GetSteamID(), character)
 
 end)
+
+
+function VerifyCharactersLength(steamid, character)
+    local characters = SelectCharacterInDB(steamid)
+    Console.Log(NanosTable.Dump(characters))
+    if characters[3] == "0" then
+        InsertCharacterToDB(
+            character:GetValue("name"),
+            character:GetValue("lastname"),
+            tostring(character:GetValue("age")),
+            character:GetValue("genre"),
+            character:GetValue("id"), steamid,
+            "noob"
+        )
+    end
+end
