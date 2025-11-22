@@ -4,6 +4,6 @@ end)
 
 
 Character.Subscribe("Possess", function(self, player)
-	MainHUD:CallEvent("UpdateValues", self:GetMaxHealth(), 10, self:GetValue("lastname") .. " " .. self:GetValue("name"), player:GetAccountIconURL())
+	MainHUD:CallEvent("UpdateValues", self:GetHealth(), self:GetMaxHealth(), 10, self:GetValue("lastname") .. " " .. self:GetValue("name"), player:GetAccountIconURL(), self:GetValue("grade"))
     MainHUD:CallEvent("TogglePlayerUi")
 end)
