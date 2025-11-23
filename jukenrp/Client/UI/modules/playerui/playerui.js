@@ -36,10 +36,10 @@ Events.Subscribe("UpdateValues", function(heath, healthmax, reiatsu, displayedna
             <div class="stat-row">
                 <div class="stat-header">
                     <span><i class="fa-solid fa-heart" style="color:var(--accent-red); margin-right:4px;"></i> Health</span>
-                    <span>${healthpourcentage}</span>
+                    <span id="spanhp">${healthpourcentage}</span>
                 </div>
                 <div class="bar-track">
-                    <div class="bar-fill hp-fill" style="width: ${healthpourcentage}%;"></div>
+                    <div id="hpbar" class="bar-fill hp-fill" style="width: ${healthpourcentage}%;"></div>
                 </div>
             </div>
 
@@ -58,6 +58,14 @@ Events.Subscribe("UpdateValues", function(heath, healthmax, reiatsu, displayedna
     `
 })
 
+
+Events.Subscribe("ChangeHealOnMenu", function(new_heal, maxhealth){
+    const hp = (new_heal/maxhealth)*100
+    const healthspan = document.getElementById("spanhp")
+    const hpbar = document.getElementById("hpbar")
+    healthspan.innerHTML = new_heal
+    hpbar.style.width = `${hp}%`
+})
 
 function TogglePlayerUi() {
     const playerui = document.getElementById("playerui")

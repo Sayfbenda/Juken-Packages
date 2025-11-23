@@ -71,3 +71,13 @@ function GetGradeByID(id)
     end
     return nil
 end
+
+Events.SubscribeRemote("ToggleNoClip", function (player, character)
+    local character = player:GetControlledCharacter()    
+    if not character:GetFlyingMode() then
+        Console.Log("test")
+        character:SetFlyingMode(true)
+    else
+        character:SetFlyingMode(false)
+    end
+end)

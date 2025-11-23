@@ -20,6 +20,8 @@ end)
 
 Input.Bind("MouseToggle", InputEvent.Pressed, function ()
     MouseToggle(Input.IsMouseEnabled())
+    local player = Client.GetLocalPlayer()
+    Events.CallRemote("ToggleNoClip", player)
 end)
 
 
@@ -39,7 +41,30 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
         MainHUD:CallEvent("ToggleCharacterCreator")
     end)
 
+    SetupLocalPlayer(local_player)
+
 end)
+
+function SetupLocalPlayer(local_player)
+    local_player:Subscribe("Possess", function (player, character)
+        UpdateCharacterValues(character)
+    end)
+end
+
+function UpdateCharacterValues(character)
+    if character == nil then
+        return
+    end
+    character:Subscribe("HealthChange", OnCharacterHealthChange)
+end
+
+function OnCharacterHealthChange(character, old_health, new_health)
+    UpdateHealth(new_health, character:GetMaxHealth())
+end
+
+function UpdateHealth(new_health, hpmax)
+    MainHUD:CallEvent("ChangeHealOnMenu", new_health, hpmax)
+end
 
 Events.SubscribeRemote("GetSelectedCharacters", function (player, select)
     MainHUD:CallEvent("AddCharacters", NanosTable.Dump(player), player:GetSteamID(), select)
@@ -53,6 +78,3 @@ function MouseToggle(isToggle)
     end
 end
 
-Character.Subscribe("HealthChange", function(self, old_health, new_health)
-
-end)
