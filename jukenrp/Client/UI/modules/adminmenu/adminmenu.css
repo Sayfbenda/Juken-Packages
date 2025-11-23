@@ -1,4 +1,5 @@
 #adminmenu{
+    display: none;
     padding: 1rem;
     position: fixed;
     left: 0;

@@ -6,7 +6,7 @@ addEventListener("DOMContentLoaded", function(){
         
         <header class="panel-header">
             <span>Juken Admin Pannel</span>
-            <button title="Fermer"><i class="fas fa-times"></i></button>
+            <button onclick="ToggleAdminMenu()" title="Fermer"><i class="fas fa-times"></i></button>
         </header>
 
         <div class="body-container">
@@ -177,6 +177,16 @@ function ToggleNoClipFromJS(){
     Events.Call("ToggleNoClipFromJS")
 }
 
+function ToggleAdminMenu() {
+    const adminmenu = document.getElementById("adminmenu")
+    if (adminmenu.style.display == "block") {
+        adminmenu.style.display = "none"
+    }else{
+        adminmenu.style.display = "block"
+    }
+}
+
+
 function KickAll() {
     Events.Call("KickallFromJS")
 }
@@ -185,3 +195,4 @@ function ReviveFromMenu() {
     Events.Call("ReviveFromMenu")
 }
 
+Events.Subscribe("ToggleAdminMenu", ToggleAdminMenu)
