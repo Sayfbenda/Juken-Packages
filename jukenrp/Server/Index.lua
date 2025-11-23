@@ -110,3 +110,8 @@ Events.SubscribeRemote("RevivePlayer", function (player)
 
     character:Respawn(character:GetLocation(), character:GetRotation())
 end)
+
+
+Events.SubscribeRemote("SelectAllCharacterInDB", function (player)
+    Events.CallRemote("GetAllCharacterInDB", player, SelectAllCharacterInDB())
+end)    

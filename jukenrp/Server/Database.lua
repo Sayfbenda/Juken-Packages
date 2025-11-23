@@ -100,3 +100,8 @@ function SelectGradeInDB(id)
     local select = database:Select("SELECT grade FROM characters WHERE id = ?", id)
     return select
 end
+
+function SelectAllCharacterInDB()
+    local select = database:Select("SELECT * FROM characters")
+    return select
+end

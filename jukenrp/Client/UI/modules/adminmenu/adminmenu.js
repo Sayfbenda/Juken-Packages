@@ -239,6 +239,9 @@ function ToggleAdminMenu() {
     }
 }
 
+Events.Subscribe("GetCharatersbyDB", function(characters){
+    console.log(characters)
+})
 
 function KickAll() {
     Events.Call("KickallFromJS")
