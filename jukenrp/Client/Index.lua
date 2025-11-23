@@ -4,6 +4,7 @@ MainHUD = WebUI(
     WidgetVisibility.Visible
 )
 
+Package.Require("Config.lua")
 Package.Require("CharacterCreator.lua")
 Package.Require("Admin.lua")
 Package.Require("DiscordConfig.lua")
@@ -40,7 +41,7 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
     end)
 
     SetupLocalPlayer(local_player)
-
+    MainHUD:CallEvent("SetPermissionsArray", GRADESPERMISSIONS)
 end)
 
 function SetupLocalPlayer(local_player)

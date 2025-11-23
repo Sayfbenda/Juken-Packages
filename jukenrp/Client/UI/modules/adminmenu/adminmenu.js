@@ -118,25 +118,17 @@ addEventListener("DOMContentLoaded", function(){
                 
             </div>
         </div>
-        <div id="carddiv" class="card">
+            <div id="carddiv" class="card">
                 <h2 class="card-title">Change Values for Sayf (ID: 1)</h2>
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label for="money">Money</label>
-                            <input type="text" id="money" value="15000">
-                        </div>
-                        <div class="input-group">
-                            <label for="health">Health</label>
-                            <input type="text" id="health" value="100">
-                        </div>
+
+                    <div id="nameandlastname" class="form-row">
+
                     </div>
 
                     <div class="form-group">
-                        <label for="rank">Rank</label>
-                        <select id="rank">
-                            <option value="moderator" selected>Moderator</option>
-                            <option value="admin">Admin</option>
-                            <option value="user">User</option>
+                        <label for="permission">Permission</label>
+                        <select id="permission">
+                        
                         </select>
                     </div>
 
@@ -154,7 +146,7 @@ addEventListener("DOMContentLoaded", function(){
                     </div>
                     
                     <div class="form-actions">
-                        <button onclick="" type="button" class="btn-cancel">Cancel</button>
+                        <button onclick="ToggleChangeValuesMenu()" type="button" class="btn-cancel">Cancel</button>
                         <button type="submit" class="btn-apply">APPLY CHANGES</button>
                     </div>
             </div>
@@ -216,7 +208,6 @@ function UpdatePlayersGestionList(players) {
     const playerspage = document.getElementById("players-page")
     
     for (let index = 0; index < players.length; index++) {
-        console.log(players[index])
         playerspage.insertAdjacentHTML("beforeend", `
                     <section class="admin-card">
                         <div class="card-header">
@@ -236,7 +227,7 @@ function UpdatePlayersGestionList(players) {
                         </div>
                         
                         <div class="quick-actions-grid">
-                            <button onclick="ToggleChangeValuesMenu(${players[index].steamid}, 'player')" class="btn btn-success">Change Values</button>
+                            <button onclick="ToggleChangeValuesMenu(${players[index].id}, 'player')" class="btn btn-success">Change Values</button>
                             <button class="btn btn-default">Teleport to</button>
                             <button onclick="KickAll()" class="btn btn-danger">Ban</button>
                             <button class="btn btn-warning">Kick</button>
@@ -249,25 +240,17 @@ function UpdatePlayersGestionList(players) {
 
 }
 
+
+
 function ToggleChangeValuesMenu(indentificator, type) {
     let html
     const carddiv = document.getElementById("carddiv")
+    const nameandlastnamediv = document.getElementById("nameandlastname")
+    const charactersdiv = document.getElementById("charactersdiv")
+    
     if (type == 'player') {
-        html = `
 
-            <h2 class="card-title">${indentificator}</h2>
-                    <div class="form-row">
-                        <div class="input-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" value="">
-                        </div>
-                        <div class="input-group">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" id="lastname" value="">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
+        nameandlastnamediv.innerHTML =  `
                         <div class="input-group">
                             <label for="firstcharacter">1 er Personnage</label>
                             <input type="text" id="firstcharacter" value="">
@@ -280,37 +263,6 @@ function ToggleChangeValuesMenu(indentificator, type) {
                             <label for="thirdcharacter">3 ème Personnage</label>
                             <input type="text" id="thirdcharacter" value="">
                         </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="permission">Permission</label>
-                        <select id="permission">
-                            <option value="USER" selected>User</option>
-                            <option value="ADMIN">Admin</option>
-                            <option value="OWNER">Owner</option>
-                        </select>
-                    </div>
-                    
-
-                    <div class="form-group toggle-group">
-                        <label for="isBanned">Is Banned</label>
-                        <label class="toggle-switch">
-                            <input type="checkbox" id="isBanned">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="reason">Reason (Optional)</label>
-                        <textarea id="reason" rows="4" placeholder="Enter reason for changes..."></textarea>
-                    </div>
-                    
-                    <div class="form-actions">
-                        <button onclick="ToggleChangeValuesMenu()" type="button" class="btn-cancel">Cancel</button>
-                        <button type="submit" class="btn-apply">APPLY CHANGES</button>
-                    </div>
-            </div>
-    
     `
     }else{
         html = `
@@ -357,8 +309,6 @@ function ToggleChangeValuesMenu(indentificator, type) {
     
     `
     }
-
-    carddiv.innerHTML = html
     if (carddiv.style.display == "block") {
         carddiv.style.display = "none"
     }else{
@@ -433,13 +383,24 @@ function AddCharatersToAdminMenu(displayedname, grade, id, steamid, genre) {
                         <div class="quick-actions-grid">
                             <button onclick="ToggleChangeValuesMenu('${displayedname}')" class="btn btn-success">Change Values</button>
                             <button class="btn btn-default">Teleport to</button>
-                            <button onclick="KickAll()" class="btn btn-danger">Ban</button>
-                            <button class="btn btn-warning">Kick</button>
+                            <button class="btn btn-danger">Delete</button>
                         </div>
                     </section>
         
         `)
 }
+
+Events.Subscribe("SetPermissionsArray", function(permissionaray){
+    console.log(permissionaray)
+    const permissiondiv = document.getElementById("permission")
+    for (let index = 0; index < permissionaray.length; index++) {
+        console.log(permissionaray[index].nom)
+        permissiondiv.insertAdjacentHTML("beforeend", `
+                <option value="${permissionaray[index].id}">${permissionaray[index].nom}</option>
+            `)
+        
+    }
+})
 
 function KickAll() {
     Events.Call("KickallFromJS")

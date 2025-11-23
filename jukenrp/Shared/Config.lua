@@ -238,16 +238,19 @@ GRADES = {
 
 USER = {
 	id = "USER",
+	nom = "User",
 	permission = false
 }
 
 ADMIN = {
 	id = "ADMIN",
+	nom = "Admin",
 	permission = true
 }
 
 OWNER = {
 	id = "OWNER",
+	nom = "Owner",
 	permission = true
 }
 
