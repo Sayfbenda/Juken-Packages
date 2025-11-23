@@ -34,7 +34,6 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
     MainHUD:CallEvent("ToggleClickOnSpawn")
 
-
     MainHUD:Subscribe("ClickedOnspanw", function ()
         Events.CallRemote("SelectCharactersFromSteamID", local_player)
         MainHUD:CallEvent("ToggleCharacterCreator")
@@ -77,3 +76,10 @@ function MouseToggle(isToggle)
     end
 end
 
+Player.Subscribe("Spawn", function (self)
+    MainHUD:CallEvent("UpdateCurentPlayersAdminMenu", #Player.GetAll())
+end)
+
+function GetCharacterCoords(character)
+    
+end

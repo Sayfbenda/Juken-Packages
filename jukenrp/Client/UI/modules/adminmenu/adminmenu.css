@@ -1,0 +1,208 @@
+#adminmenu{
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+:root {
+            --bg-dark: #1f2125;
+            --bg-card: #2c2e33;
+            --bg-sidebar: #24262b;
+            --text-light: #ffffff;
+            --text-muted: #aaaaaa;
+            --accent-blue: #3498db;
+            --btn-success: #2ecc71;
+            --btn-danger: #e74c3c;
+            --btn-warning: #e67e22;
+            --btn-default: #4c5564;
+            --border-color: rgba(255, 255, 255, 0.05);
+            --header-color: #3f4247;
+        }
+
+        /* --- CONTENEUR PRINCIPAL (CLÉ DU SCROLL) --- */
+        .flight-admin-panel {
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-light);
+            line-height: 1.6;
+            
+            width: 70%;
+            max-width: 700px;
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            display: flex;
+            height: 70vh; /* Hauteur totale fixe */
+            min-height: 600px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Organise l'en-tête, le corps et le pied de page verticalement */
+            flex-direction: column; 
+        }
+
+        /* --- En-tête --- */
+        .panel-header {
+            background-color: var(--bg-dark);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-bottom: 1px solid var(--header-color);
+            flex-shrink: 0; 
+        }
+        
+        .panel-header button {
+            background: var(--btn-danger);
+            color: var(--text-light);
+            border: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            line-height: 1;
+            font-size: 0.8em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        /* --- Conteneur du Corps (Sidebar + Content) --- */
+        .body-container {
+            display: flex;
+            flex-grow: 1; /* Prend tout l'espace vertical restant */
+            min-height: 0; /* Important pour que le flex-grow fonctionne correctement */
+        }
+
+        /* --- Navigation Latérale (Sidebar) --- */
+        .sidebar {
+            width: 60px;
+            background: var(--bg-sidebar);
+            display: flex;
+            flex-direction: column;
+            padding: 10px 0;
+            gap: 5px;
+            flex-shrink: 0; 
+            border-right: 1px solid var(--border-color);
+        }
+
+        .nav-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 50px;
+            color: var(--text-muted);
+            font-size: 1.4em;
+            cursor: pointer;
+            transition: color 0.2s, background-color 0.2s;
+            position: relative;
+        }
+
+        .nav-icon.active {
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        /* --- Contenu Principal (ZONE DE SCROLL) --- */
+        .admin-content {
+            flex-grow: 1; 
+            padding: 20px;
+            /* FIX CRITIQUE: Gère le défilement interne */
+            overflow-y: auto; 
+            background-color: var(--bg-dark); 
+            /* Rétablit un padding standard */
+            padding-bottom: 20px; 
+        }
+
+        /* --- Cartes de Section (Cards) --- */
+        .admin-card {
+            background: var(--bg-card);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            font-weight: 600;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+        }
+        
+        .card-header i { color: var(--accent-blue); margin-right: 8px; }
+
+        /* FIX: Structure des données en ligne, comme la référence */
+        .data-grid-row { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 5px; 
+            font-size: 0.95em;
+        }
+        .data-grid-item {
+            display: flex;
+            gap: 8px;
+            align-items: baseline;
+        }
+
+        .data-label { color: var(--text-muted); }
+        .data-value { font-weight: 600; color: var(--text-light); }
+        .coords-value { color: var(--btn-warning); font-weight: 800; }
+
+        .btn {
+            padding: 8px 12px; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; transition: background-color 0.2s; font-family: 'Outfit', sans-serif; text-align: center; flex-grow: 1; min-width: 100px; font-size: 0.9em;
+        }
+
+        .btn-flex-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn-primary { background-color: var(--accent-blue); color: var(--text-light); }
+        .btn-success { background-color: var(--btn-success); color: var(--text-light); }
+        .btn-danger { background-color: var(--btn-danger); color: var(--text-light); }
+        .btn-warning { background-color: var(--btn-warning); color: var(--text-light); }
+        .btn-default { background-color: var(--btn-default); color: var(--text-light); }
+
+        .quick-actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 8px;
+            margin-top: 10px;
+        }
+        .quick-actions-grid .btn { padding: 10px 5px; }
+
+
+        /* Elément d'interface en bas (Doit être le dernier élément du panneau principal) */
+        .bottom-ui-elements {
+            background-color: var(--bg-card);
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            flex-shrink: 0;
+            color: var(--text-muted);
+        }
+        .bottom-ui-elements .btn-primary {
+            background-color: #3f4247;
+            border: 1px solid #5c626e;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85em;
+            padding: 4px 10px;
+        }
+        .bottom-ui-elements .btn-primary i {
+            font-size: 0.8em;
+        }
