@@ -3,6 +3,8 @@ Input.Register("ToggleAdminMenu", "F1")
 
 Input.Bind("ToggleNoClip", InputEvent.Pressed, function ()
     Events.CallRemote("ToggleNoClip")
+    MainHUD:CallEvent("ToggleChangeValuesMenu")
+
 end)
 
 Input.Bind("ToggleAdminMenu", InputEvent.Pressed, function ()
@@ -29,3 +31,4 @@ end)
 MainHUD:Subscribe("ReviveFromMenu", function ()
     Events.CallRemote("RevivePlayer")
 end)
+

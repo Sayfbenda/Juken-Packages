@@ -81,6 +81,7 @@ Player.Subscribe("Spawn", function (self)
     UpdatePlayersAdminMenu(Player.GetAll())
 
     Events.CallRemote("SelectAllCharacterInDB")
+
 end)
 
 Events.SubscribeRemote("GetAllCharacterInDB", function (characters)

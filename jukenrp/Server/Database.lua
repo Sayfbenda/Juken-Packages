@@ -101,6 +101,11 @@ function SelectGradeInDB(id)
     return select
 end
 
+function SelectPlayerByID(id)
+    local select = database:Select("SELECT * FROM players WHERE id = ?", id)
+    return select
+end
+
 function SelectAllCharacterInDB()
     local select = database:Select("SELECT * FROM characters")
     return select
