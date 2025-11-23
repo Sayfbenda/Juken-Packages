@@ -11,3 +11,7 @@ end)
 MainHUD:Subscribe("ToggleNoClipFromJS", function ()
     Events.CallRemote("ToggleNoClip")
 end)
+
+MainHUD:Subscribe("ReviveFromMenu", function ()
+    Events.CallRemote("RevivePlayer")
+end)

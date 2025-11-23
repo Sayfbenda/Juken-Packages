@@ -97,3 +97,16 @@ Chat.Subscribe("PlayerSubmit", function(message, player)
 	local character = player:GetControlledCharacter()
     SetGrade(nil, message, character:GetValue("id"))
 end)
+
+Events.SubscribeRemote("RevivePlayer", function (player)
+    local character = player:GetControlledCharacter()
+    if (not character) then
+        return
+    end
+
+    if (not character:IsDead()) then
+        return
+    end
+
+    character:Respawn(character:GetLocation(), character:GetRotation())
+end)

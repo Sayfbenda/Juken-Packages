@@ -72,7 +72,7 @@ addEventListener("DOMContentLoaded", function(){
                         
                         <div class="quick-actions-grid">
                             <button onclick="ToggleNoClipFromJS()" class="btn btn-default">Noclip</button>
-                            <button class="btn btn-default">Revive</button>
+                            <button onclick="ReviveFromMenu()" class="btn btn-default">Revive</button>
                             <button class="btn btn-success">Heal Self</button>
                         </div>
                     </section>
@@ -181,4 +181,7 @@ function KickAll() {
     Events.Call("KickallFromJS")
 }
 
+function ReviveFromMenu() {
+    Events.Call("ReviveFromMenu")
+}
 
