@@ -240,8 +240,50 @@ function ToggleAdminMenu() {
 }
 
 Events.Subscribe("GetCharatersbyDB", function(characters){
-    console.log(characters)
+    for (let index = 0; index < characters.length; index++) {
+        const displayedname = characters[index].name + " " + characters[index].lastname
+        AddCharatersToAdminMenu(displayedname, characters[index].grade, characters[index].id, characters[index].playersteamid, characters[index].genre)
+    }
 })
+
+function AddCharatersToAdminMenu(displayedname, grade, id, steamid, genre) {
+    const personnagespage = document.getElementById("personnages-page")
+    personnagespage.insertAdjacentHTML("beforeend", `
+                    <section class="admin-card">
+                        <div class="card-header">
+                            <span class="title-text"><i class="fa-solid fa-user"></i> ${displayedname}</span>
+                            <i class="fas fa-info-circle" title="Information sur le serveur"></i>
+                        </div>
+                        
+                        <div class="data-grid-column">
+                            <div class="data-grid-item">
+                                <span class="data-label">Grade:</span>
+                                <span id="playerscount" class="data-value">${grade}</span>
+                            </div>
+                            <div class="data-grid-item">
+                                <span class="data-label">Id:</span>
+                                <span id="playerscount" class="data-value">${id}</span>
+                            </div>
+                            <div class="data-grid-item">
+                                <span class="data-label">Steamid:</span>
+                                <span id="playerscount" class="data-value">${steamid}</span>
+                            </div>
+                            <div class="data-grid-item">
+                                <span class="data-label">Genre :</span>
+                                <span id="playerscount" class="data-value">${genre}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-actions-grid">
+                            <button class="btn btn-success">Change Values</button>
+                            <button class="btn btn-default">Teleport to</button>
+                            <button onclick="KickAll()" class="btn btn-danger">Ban</button>
+                            <button class="btn btn-warning">Kick</button>
+                        </div>
+                    </section>
+        
+        `)
+}
 
 function KickAll() {
     Events.Call("KickallFromJS")
