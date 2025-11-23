@@ -4,17 +4,38 @@ let playercharacters
 addEventListener("DOMContentLoaded", function(){
     const body = document.querySelector("body")
     body.insertAdjacentHTML("beforeend", `
-            <div id="creatorMenu">
-                <div id="FirstCharacter">
 
-                </div>
-                <div id="SecondCharacter">
-
-                </div>
-                <div id="ThridCharacter">
-
-                </div>
+    <div id="creatorMenu">
+        
+        <div id="FirstCharacter" class="character-card-active">
+            <div class="character-image">
+                <img src="https://via.placeholder.com/280x250/2E3B29/FFFFFF?text=Alistair" alt="Alistair">
             </div>
+            <div class="character-name" style="color: #3ECF8E;">Alistair</div>
+            <div class="character-subtitle">Le Paladin Juste</div>
+            <button class="character-select-btn">Sélectionné</button>
+        </div>
+
+        <div id="SecondCharacter">
+            <div class="character-image">
+                <img src="https://via.placeholder.com/280x250/00BFFF/FFFFFF?text=Seraphina" alt="Seraphina">
+            </div>
+            <div class="character-name">Seraphina</div>
+            <div class="character-subtitle">La Mage Arcane</div>
+            <button class="character-select-btn">Sélectionner</button>
+        </div>
+
+        <div id="ThridCharacter">
+            <div class="character-image">
+                <img src="https://via.placeholder.com/280x250/333333/FFFFFF?text=Kael" alt="Kael">
+            </div>
+            <div class="character-name">Kael</div>
+            <div class="character-subtitle">Le Voleur de l'Ombre</div>
+            <button class="character-select-btn">Sélectionner</button>
+        </div>
+
+    </div>
+</div>
         `)
 
         const div = document.getElementById("creatorMenu")
@@ -34,7 +55,9 @@ function ToggleCharacterCreator() {
 function AddOnclickOnDivs(divs, length) {
     for (let index = 0; index < length; index++) {
         divs[index].addEventListener("click", function(e){
-            if (e.target.classList == "taken") {
+            if (e.target.classList.contains("taken")) {
+    console.log("test")
+
                 SelecExesitingCharacter(index)
             }else{
                 CreateCharacter(index)

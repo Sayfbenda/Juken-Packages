@@ -116,7 +116,3 @@ Events.SubscribeRemote("SelectAllCharacterInDB", function (player)
     Events.CallRemote("GetAllCharacterInDB", player, SelectAllCharacterInDB())
 end)    
 
-
-Events.SubscribeRemote("GetPlayerById", function (id)
-    Events.CallRemote("GetPlayerByIdAdminMenu", SelectPlayerByID(id))
-end)

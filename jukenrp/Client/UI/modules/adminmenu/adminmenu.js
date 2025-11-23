@@ -128,7 +128,7 @@ addEventListener("DOMContentLoaded", function(){
                     <div class="form-group">
                         <label for="permission">Permission</label>
                         <select id="permission">
-                        
+
                         </select>
                     </div>
 
@@ -202,6 +202,8 @@ Events.Subscribe("UpdatePlayersAdminMenu", function(players){
     UpdatePlayersGestionList(players)
 
 })
+
+
 
 function UpdatePlayersGestionList(players) {
     
@@ -393,14 +395,22 @@ function AddCharatersToAdminMenu(displayedname, grade, id, steamid, genre) {
 Events.Subscribe("SetPermissionsArray", function(permissionaray){
     console.log(permissionaray)
     const permissiondiv = document.getElementById("permission")
+    let html
     for (let index = 0; index < permissionaray.length; index++) {
         console.log(permissionaray[index].nom)
         permissiondiv.insertAdjacentHTML("beforeend", `
                 <option value="${permissionaray[index].id}">${permissionaray[index].nom}</option>
             `)
-        
+        html += `
+        <option value="${permissionaray[index].id}">${permissionaray[index].nom}</option>
+        `
     }
+    
 })
+
+function SetPermissionArray() {
+    return html
+}
 
 function KickAll() {
     Events.Call("KickallFromJS")

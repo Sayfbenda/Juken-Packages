@@ -8,6 +8,7 @@ Package.Require("Config.lua")
 Package.Require("CharacterCreator.lua")
 Package.Require("Admin.lua")
 Package.Require("DiscordConfig.lua")
+Package.Require("Inventaire.lua")
 
 
 MainHUD:BringToFront()
