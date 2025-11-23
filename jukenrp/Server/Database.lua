@@ -69,6 +69,10 @@ function InsertCharacterToDB(name, lastname, age, genre, id, steamid, grade, cha
     UpdateCharacterInPlayerTable(steamid, id, characters)
 end
 
+function UpdateGradeCharacterInDB(id, grade)
+    database:Execute("UPDATE characters SET grade = ? WHERE id = ?", grade, id)
+end
+
 function UpdateCharacterInPlayerTable(steamid, id, characters)
     local new_id_string = tostring(id) 
     

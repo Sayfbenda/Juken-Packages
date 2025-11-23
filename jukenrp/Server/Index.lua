@@ -58,7 +58,11 @@ function SetGrade(character, grade, id)
     if character == nil then
         character = GetCharacterByID(id)
         grade = GetGradeByID(grade)
+        if grade == nil then
+            return
+        end
         character:SetValue("grade", grade, true)
+        UpdateGradeCharacterInDB(id, grade["id"])
         Console.Log(NanosTable.Dump(character:GetValue("grade")))
     elseif grade == nil then
         grade = GetGradeByID(GRADES[1]["id"])
@@ -68,6 +72,8 @@ function SetGrade(character, grade, id)
         character:SetValue("grade", grade, true)
     end
 end
+
+
 
 function GetCharacterByID(id)
     for index, value in ipairs(Character.GetAll()) do
