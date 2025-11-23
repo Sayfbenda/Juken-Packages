@@ -30,7 +30,7 @@ addEventListener("DOMContentLoaded", function(){
                         <div class="data-grid-row">
                             <div class="data-grid-item">
                                 <span class="data-label">Players:</span>
-                                <span id="playerscount" class="data-value">1</span>
+                                <span id="playerscount" class="data-value">0</span>
                             </div>
                         </div>
                         
@@ -50,30 +50,26 @@ addEventListener("DOMContentLoaded", function(){
                         <div class="data-grid-row">
                             <div class="data-grid-item">
                                 <span class="data-label">Coords:</span>
-                                <span class="data-value coords-value">-2652.799, 1721.204, 140.648</span>
-                            </div>
-                            <div class="data-grid-item">
-                                <span class="data-label">Heading:</span>
-                                <span class="data-value">178.33</span>
+                                <span id="refreshcoords" class="data-value coords-value">0, 0, 0</span>
                             </div>
                         </div>
 
                         <div class="btn-flex-group">
-                            <button class="btn btn-primary">Copy coords</button>
+                            <button onclick="GetCoords()" class="btn btn-primary">Réafrichir</button>
                             <button class="btn btn-primary">Set coords</button>
                         </div>
                     </section>
 
                     <section class="admin-card">
                         <div class="card-header">
-                            <span class="title-text"><i class="fas fa-rocket"></i> Quick Actions</span>
+                            <span class="title-text"><i class="fas fa-rocket"></i> Actions rapides</span>
                             <i class="fas fa-angle-double-right"></i>
                         </div>
                         
                         <div class="quick-actions-grid">
                             <button onclick="ToggleNoClipFromJS()" class="btn btn-default">Noclip</button>
                             <button onclick="ReviveFromMenu()" class="btn btn-default">Revive</button>
-                            <button class="btn btn-success">Heal Self</button>
+                            <button class="btn btn-success">Se Heal</button>
                         </div>
                     </section>
 
@@ -130,6 +126,7 @@ addEventListener("DOMContentLoaded", function(){
         
         `)
 
+
 const navIcons = document.querySelectorAll('.nav-icon');
     const contentPages = document.querySelectorAll('.content-page');
         contentPages.forEach(page => {
@@ -168,13 +165,71 @@ const navIcons = document.querySelectorAll('.nav-icon');
         });
 })
 
-Events.Subscribe("UpdateCurentPlayersAdminMenu", function(playerscount){
-    const playerscountspan = document.getElementById("playerscount")
-    playerscountspan.innerText = playerscount 
+Events.Subscribe("UpdatePlayersAdminMenu", function(players){
+
+    UpdatePlayerCount(players.length)
+
+
+    UpdatePlayersGestionList(players)
+
 })
+
+function UpdatePlayersGestionList(players) {
+    
+    const playerspage = document.getElementById("players-page")
+    
+    for (let index = 0; index < players.length; index++) {
+        playerspage.insertAdjacentHTML("beforeend", `
+                    <section class="admin-card">
+                        <div class="card-header">
+                            <span class="title-text"><i class="fas fa-server"></i> ${players[index].name}</span>
+                            <i class="fas fa-info-circle" title="Information sur le serveur"></i>
+                        </div>
+                        
+                        <div class="data-grid-column">
+                            <div class="data-grid-item">
+                                <span class="data-label">ID:</span>
+                                <span id="playerscount" class="data-value">${players[index].id}</span>
+                            </div>
+                            <div class="data-grid-item">
+                                <span class="data-label">SteamID:</span>
+                                <span id="playerscount" class="data-value">${players[index].steamid}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="quick-actions-grid">
+                            <button class="btn btn-success">Change Values</button>
+                            <button class="btn btn-default">Teleport to</button>
+                            <button onclick="KickAll()" class="btn btn-danger">Ban</button>
+                            <button class="btn btn-warning">Kick</button>
+                        </div>
+                    </section>
+
+            `)
+
+    }
+
+}
+
+
+function UpdatePlayerCount(playerscount) {
+
+    const playerscountspan = document.getElementById("playerscount")
+    playerscountspan.innerText = playerscount
+
+}
 
 function ToggleNoClipFromJS(){
     Events.Call("ToggleNoClipFromJS")
+}
+
+Events.Subscribe("UpdateCoordsInMenu", function(coords){
+    const refreshcoords = document.getElementById("refreshcoords")
+    refreshcoords.innerText = coords
+})
+
+function GetCoords() {
+    Events.Call("GetCharacterLocation")
 }
 
 function ToggleAdminMenu() {

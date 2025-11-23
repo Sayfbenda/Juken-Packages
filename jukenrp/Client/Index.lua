@@ -77,9 +77,33 @@ function MouseToggle(isToggle)
 end
 
 Player.Subscribe("Spawn", function (self)
-    MainHUD:CallEvent("UpdateCurentPlayersAdminMenu", #Player.GetAll())
+    
+    UpdatePlayersAdminMenu(Player.GetAll())
+
 end)
+
+function UpdatePlayersAdminMenu(playersrow)
+    local playerstable = {}
+
+    for index, value in ipairs(playersrow) do
+        table.insert(playerstable, {
+            name = value:GetName(),
+            steamid = value:GetSteamID(),
+            id = value:GetID()
+        })
+    end
+    MainHUD:CallEvent("UpdatePlayersAdminMenu", playerstable)
+end
 
 function GetCharacterCoords(character)
     return false
 end
+
+MainHUD:Subscribe("GetCharacterLocation", function ()
+    local player = Client.GetLocalPlayer()
+    local character = player:GetControlledCharacter()
+    if (not character) then
+        return
+    end
+    MainHUD:CallEvent("UpdateCoordsInMenu", tostring(character:GetLocation()))
+end)
