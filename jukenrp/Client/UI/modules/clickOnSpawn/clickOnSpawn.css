@@ -1,12 +1,71 @@
-#clickonspawn{
-    position: relative;
-    top: 0;
-    display: none;
-    background-color: black;
-    height: 100vh;
-    width: 100vw;
-}
+.screen-container {
+            position: fixed;
+            overflow: hidden; 
+            font-family: 'Outfit', sans-serif;
+            /* Changement clé : rendre le fond transparent */
+            background-color: transparent; 
+            color: #f0f0f0; /* Blanc pour le texte */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            cursor: pointer; /* Indiquer que l'élément est cliquable */
+            transition: background-color 0.3s ease;
+            display: block;
+        }
 
-#clickonspawn > h2{
-    color: white;
-}
+        /* Effet de fond subtil au survol (devient très légèrement sombre, pour simuler une interaction) */
+        .screen-container:hover {
+            /* On utilise un noir très, très légèrement transparent pour le survol */
+            background-color: rgba(0, 0, 0, 0.05); 
+        }
+
+        .continue-text {
+            height: 100vh;
+            font-size: 2.2rem; /* Grande taille pour l'impact */
+            font-weight: 600; /* Poids moyen-gras pour l'Outfit (ancienne variable) */
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            
+            /* Définition de la couleur de lueur (ancienne variable) */
+            --glow-color: #00ffff; 
+
+            /* --- EFFET CLÉ : Lueur (Glow) --- */
+            color: #f0f0f0; /* Couleur principale (blanc) */
+            text-shadow: 
+                0 0 5px var(--glow-color),   /* Lueur douce */
+                0 0 10px var(--glow-color),  /* Lueur moyenne */
+                0 0 20px rgba(0, 255, 255, 0.5); /* Lueur diffuse (moins opaque) */
+            
+            /* Animation de pulsation (légère) */
+            animation: pulse 2s infinite alternate;
+        }
+
+        /* --- Animation CSS pour l'effet de pulsation (optionnel) --- */
+        @keyframes pulse {
+            from {
+                opacity: 1;
+                text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+            }
+            to {
+                opacity: 0.9;
+                text-shadow: 0 0 7px var(--glow-color), 0 0 15px var(--glow-color), 0 0 30px rgba(0, 255, 255, 0.7);
+            }
+        }
+
+        /* Amélioration : Ajouter un petit indicateur subtil */
+        .continue-text::after {
+            content: '\203A'; /* Chevron droit (ou '»') */
+            display: inline-block;
+            margin-left: 15px;
+            opacity: 0.8;
+            font-size: 3rem; 
+            transform: translateY(2px);
+            transition: margin-left 0.2s ease;
+        }
+        
+        /* Mouvement subtil de l'indicateur au survol */
+        .screen-container:hover .continue-text::after {
+            margin-left: 20px;
+        }

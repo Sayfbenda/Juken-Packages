@@ -1,9 +1,11 @@
 addEventListener("DOMContentLoaded", function(){
     const body = document.querySelector("body")
     body.insertAdjacentHTML("beforeend", `
-        <div id="clickonspawn">
-            <h2>Cliquez Pour continuer</h2>
-        </div>
+            <div id="clickonspawn" class="screen-container">
+                <div class="continue-text">
+                    Cliquez pour continuer
+                </div>
+            </div>
         `)
     EventListenerToDiv(document.querySelector("#clickonspawn"))
 })
