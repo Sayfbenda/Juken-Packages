@@ -7,3 +7,7 @@ end)
 MainHUD:Subscribe("KickallFromJS", function ()
     Events.CallRemote("KickAll")
 end)
+
+MainHUD:Subscribe("ToggleNoClipFromJS", function ()
+    Events.CallRemote("ToggleNoClip")
+end)

@@ -1,7 +1,12 @@
 #adminmenu{
+    padding: 1rem;
     position: fixed;
     left: 0;
     top: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 :root {
@@ -25,11 +30,12 @@
             color: var(--text-light);
             line-height: 1.6;
             
-            width: 70%;
+            width: 100%;
             max-width: 700px;
             background-color: var(--bg-dark);
             border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.082);
+            overflow: visible;
             display: flex;
             height: 70vh; /* Hauteur totale fixe */
             min-height: 600px;

@@ -81,5 +81,5 @@ Player.Subscribe("Spawn", function (self)
 end)
 
 function GetCharacterCoords(character)
-    
+    return false
 end
