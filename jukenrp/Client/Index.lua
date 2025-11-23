@@ -5,6 +5,7 @@ MainHUD = WebUI(
 )
 
 Package.Require("CharacterCreator.lua")
+Package.Require("Admin.lua")
 Package.Require("DiscordConfig.lua")
 
 
@@ -20,8 +21,6 @@ end)
 
 Input.Bind("MouseToggle", InputEvent.Pressed, function ()
     MouseToggle(Input.IsMouseEnabled())
-    local player = Client.GetLocalPlayer()
-    Events.CallRemote("ToggleNoClip", player)
 end)
 
 

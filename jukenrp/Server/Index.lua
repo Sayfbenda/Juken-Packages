@@ -1,5 +1,6 @@
 Package.Require("Config.lua")
 Package.Require("Database.lua")
+Package.Require("Admin.lua")
 Package.Require("Discord.lua")
 
 
@@ -14,6 +15,7 @@ function Character:AddValues(values)
     self:SetValue("genre", values["genre"], true)
     local id = values["id"] or SelectHighestChracterID()
     self:SetValue("id", id, true)
+    self:SetValue("permission", OWNER, true)
 end
 
 Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
@@ -23,9 +25,9 @@ Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
 
     local grade = SelectGradeInDB(character:GetValue("id"))
     if #grade == 0 then
-        SetGrade(character, character:GetValue("id"))
+        SetGrade(character)
     else
-        SetGrade(character, character:GetValue("id"), grade)
+        SetGrade(character, grade)
     end
 
     self:Possess(character)
@@ -52,14 +54,27 @@ function VerifyCharactersLength(steamid, character, index)
     end
 end
 
-function SetGrade(character, id, grade)
-    if grade == nil then
-        Console.Log("ssss")
+function SetGrade(character, grade, id)
+    if character == nil then
+        character = GetCharacterByID(id)
+        grade = GetGradeByID(grade)
+        character:SetValue("grade", grade, true)
+        Console.Log(NanosTable.Dump(character:GetValue("grade")))
+    elseif grade == nil then
         grade = GetGradeByID(GRADES[1]["id"])
         character:SetValue("grade", grade, true)
     else
-        local grade = GetGradeByID(grade[1]["grade"])
+        grade = GetGradeByID(grade[1]["grade"])
         character:SetValue("grade", grade, true)
+    end
+end
+
+function GetCharacterByID(id)
+    for index, value in ipairs(Character.GetAll()) do
+        if value:GetValue("id") == id then
+            Console.Log("HIHII")
+            return value
+        end
     end
 end
 
@@ -72,12 +87,7 @@ function GetGradeByID(id)
     return nil
 end
 
-Events.SubscribeRemote("ToggleNoClip", function (player, character)
-    local character = player:GetControlledCharacter()    
-    if not character:GetFlyingMode() then
-        Console.Log("test")
-        character:SetFlyingMode(true)
-    else
-        character:SetFlyingMode(false)
-    end
+Chat.Subscribe("PlayerSubmit", function(message, player)
+	local character = player:GetControlledCharacter()
+    SetGrade(nil, message, character:GetValue("id"))
 end)
