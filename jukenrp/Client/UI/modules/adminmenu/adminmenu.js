@@ -13,6 +13,7 @@ addEventListener("DOMContentLoaded", function(){
             <aside class="sidebar">
                 <a href="#" class="nav-icon active" data-target="dashboard" title="Tableau de Bord"><i class="fas fa-home"></i></a>
                 <a href="#" class="nav-icon" data-target="players" title="Joueurs"><i class="fas fa-users"></i></a>
+                <a href="#" class="nav-icon" data-target="personnages" title="Personnages"><i class="fa-solid fa-user"></i></a>
                 <a href="#" class="nav-icon" data-target="settings" title="Settings"><i class="fas fa-sliders-h"></i></a>
                 <a href="#" class="nav-icon" data-target="exit" title="Exit"><i class="fas fa-sign-out-alt"></i></a>
             </aside>
@@ -76,14 +77,11 @@ addEventListener("DOMContentLoaded", function(){
                 </div>
                 
                 <div id="players-page" class="content-page" style="display: none;">
-                    <section class="admin-card">
-                        <div class="card-header">
-                            <span class="title-text"><i class="fas fa-users-cog"></i> Gestion des Joueurs</span>
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <p style="color: var(--text-muted);">Liste des joueurs, bans, mutes, inventaires, etc. (En développement)</p>
-                        <button class="btn btn-primary" style="margin-top: 10px; width: 100%;">Rafraîchir la Liste</button>
-                    </section>
+
+                </div>
+
+                <div id="personnages-page" class="content-page" style="display: none;">
+
                 </div>
                 
                 <div id="settings-page" class="content-page" style="display: none;">
@@ -182,7 +180,7 @@ function UpdatePlayersGestionList(players) {
         playerspage.insertAdjacentHTML("beforeend", `
                     <section class="admin-card">
                         <div class="card-header">
-                            <span class="title-text"><i class="fas fa-server"></i> ${players[index].name}</span>
+                            <span class="title-text"><i class="fa-solid fa-user"></i> ${players[index].name}</span>
                             <i class="fas fa-info-circle" title="Information sur le serveur"></i>
                         </div>
                         

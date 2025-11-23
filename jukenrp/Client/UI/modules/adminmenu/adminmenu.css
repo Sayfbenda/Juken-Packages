@@ -30,9 +30,7 @@
             font-family: 'Outfit', sans-serif;
             color: var(--text-light);
             line-height: 1.6;
-            
-            width: 100%;
-            max-width: 600px;
+            width: 600px;
             background-color: var(--bg-dark);
             border-radius: 8px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.082);
