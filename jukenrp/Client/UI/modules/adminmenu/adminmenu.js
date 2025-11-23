@@ -118,7 +118,46 @@ addEventListener("DOMContentLoaded", function(){
                 
             </div>
         </div>
+        <div id="carddiv" class="card">
+                <h2 class="card-title">Change Values for Sayf (ID: 1)</h2>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="money">Money</label>
+                            <input type="text" id="money" value="15000">
+                        </div>
+                        <div class="input-group">
+                            <label for="health">Health</label>
+                            <input type="text" id="health" value="100">
+                        </div>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="rank">Rank</label>
+                        <select id="rank">
+                            <option value="moderator" selected>Moderator</option>
+                            <option value="admin">Admin</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group toggle-group">
+                        <label for="isBanned">Is Banned</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="isBanned">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason (Optional)</label>
+                        <textarea id="reason" rows="4" placeholder="Enter reason for changes..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button onclick="" type="button" class="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn-apply">APPLY CHANGES</button>
+                    </div>
+            </div>
     </div>
 </div>
         
@@ -177,6 +216,7 @@ function UpdatePlayersGestionList(players) {
     const playerspage = document.getElementById("players-page")
     
     for (let index = 0; index < players.length; index++) {
+        console.log(players[index])
         playerspage.insertAdjacentHTML("beforeend", `
                     <section class="admin-card">
                         <div class="card-header">
@@ -196,7 +236,7 @@ function UpdatePlayersGestionList(players) {
                         </div>
                         
                         <div class="quick-actions-grid">
-                            <button class="btn btn-success">Change Values</button>
+                            <button onclick="ToggleChangeValuesMenu(${players[index].steamid}, 'player')" class="btn btn-success">Change Values</button>
                             <button class="btn btn-default">Teleport to</button>
                             <button onclick="KickAll()" class="btn btn-danger">Ban</button>
                             <button class="btn btn-warning">Kick</button>
@@ -209,6 +249,122 @@ function UpdatePlayersGestionList(players) {
 
 }
 
+function ToggleChangeValuesMenu(indentificator, type) {
+    let html
+    const carddiv = document.getElementById("carddiv")
+    if (type == 'player') {
+        html = `
+
+            <h2 class="card-title">${indentificator}</h2>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" value="">
+                        </div>
+                        <div class="input-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" id="lastname" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="firstcharacter">1 er Personnage</label>
+                            <input type="text" id="firstcharacter" value="">
+                        </div>
+                        <div class="input-group">
+                            <label for="secondcharacter">2 ème Personnage</label>
+                            <input type="text" id="secondcharacter" value="">
+                        </div>
+                        <div class="input-group">
+                            <label for="thirdcharacter">3 ème Personnage</label>
+                            <input type="text" id="thirdcharacter" value="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="permission">Permission</label>
+                        <select id="permission">
+                            <option value="USER" selected>User</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="OWNER">Owner</option>
+                        </select>
+                    </div>
+                    
+
+                    <div class="form-group toggle-group">
+                        <label for="isBanned">Is Banned</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="isBanned">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason (Optional)</label>
+                        <textarea id="reason" rows="4" placeholder="Enter reason for changes..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button onclick="ToggleChangeValuesMenu()" type="button" class="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn-apply">APPLY CHANGES</button>
+                    </div>
+            </div>
+    
+    `
+    }else{
+        html = `
+
+            <h2 class="card-title">${indentificator}</h2>
+                    <div class="form-row">
+                        <div class="input-group">
+                            <label for="money">Money</label>
+                            <input type="text" id="money" value="15000">
+                        </div>
+                        <div class="input-group">
+                            <label for="health">Health</label>
+                            <input type="text" id="health" value="100">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Permission">Permission</label>
+                        <select id="Permission">
+                            <option value="USER" selected>User</option>
+                            <option value="ADMIN">Admin</option>
+                            <option value="OWNER">Owner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group toggle-group">
+                        <label for="isBanned">Is Banned</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="isBanned">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reason">Reason (Optional)</label>
+                        <textarea id="reason" rows="4" placeholder="Enter reason for changes..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button onclick="ToggleChangeValuesMenu()" type="button" class="btn-cancel">Cancel</button>
+                        <button type="submit" class="btn-apply">APPLY CHANGES</button>
+                    </div>
+            </div>
+    
+    `
+    }
+
+    carddiv.innerHTML = html
+    if (carddiv.style.display == "block") {
+        carddiv.style.display = "none"
+    }else{
+        carddiv.style.display = "block"
+    }
+}
 
 function UpdatePlayerCount(playerscount) {
 
@@ -275,7 +431,7 @@ function AddCharatersToAdminMenu(displayedname, grade, id, steamid, genre) {
                         </div>
                         
                         <div class="quick-actions-grid">
-                            <button class="btn btn-success">Change Values</button>
+                            <button onclick="ToggleChangeValuesMenu('${displayedname}')" class="btn btn-success">Change Values</button>
                             <button class="btn btn-default">Teleport to</button>
                             <button onclick="KickAll()" class="btn btn-danger">Ban</button>
                             <button class="btn btn-warning">Kick</button>
