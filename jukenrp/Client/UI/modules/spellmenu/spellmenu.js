@@ -30,97 +30,9 @@ addEventListener("DOMContentLoaded", function(){
                     <input type="text" class="menuspell-search-input" placeholder="Rechercher...">
                 </div>
                 
-                <div class="menuspell-sorts-grid">
-                    <div class="menuspell-spell-icon menuspell-selected">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-B">B</span>
-                    </div>
+                <div id="menuspell-sorts-list" class="menuspell-sorts-grid">
                     
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-A">A</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                     <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-A">A</span>
-                    </div>
-                     <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-B">B</span>
-                    </div>
-                    
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-A">A</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-C">C</span>
-                    </div>
-                     <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
-                    <div class="menuspell-spell-icon">
-                        <div class="menuspell-spell-icon-bg"></div>
-                        <span class="menuspell-spell-rank menuspell-rank-S">S</span>
-                    </div>
+
                 </div>
                 
                 <div class="menuspell-quick-bar">
@@ -147,36 +59,8 @@ addEventListener("DOMContentLoaded", function(){
                     </div>
                 </div>
             </div>
-            
-            <div class="menuspell-right-panel">
-                <div class="menuspell-detail-icon-wrapper">
-                    <div class="menuspell-detail-icon">
-                        <i class="fas fa-hand-sparkles"></i> 
-                    </div>
-                </div>
+            <div id="left-description">
                 
-                <h3 class="menuspell-detail-title">Paume Spirituelle</h3>
-                
-                <p class="menuspell-detail-description">
-                    L'utilisateur concentre son chakra dans la paume de ses mains pour soigner un allié.
-                </p>
-                
-                <div class="menuspell-detail-info">
-                    <div class="menuspell-detail-line">
-                        <span class="menuspell-detail-label">Améliorations :</span>
-                        <span class="menuspell-detail-value">3/3</span>
-                    </div>
-                    <div class="menuspell-upgrade-bar-wrapper">
-                        <div class="menuspell-upgrade-segment menuspell-filled"></div>
-                        <div class="menuspell-upgrade-segment menuspell-filled"></div>
-                        <div class="menuspell-upgrade-segment menuspell-filled"></div>
-                    </div>
-                    
-                    <div class="menuspell-detail-line" style="margin-top: 20px;">
-                        <span class="menuspell-detail-label">Cooldown :</span>
-                        <span class="menuspell-detail-value">60s</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -193,4 +77,83 @@ function ToggleMenuSpell() {
     }
 }
 
+addEventListener("dragstart", function(e){
+    console.log(e.target)
+})
+
 Events.Subscribe("ToggleMenuSpell", ToggleMenuSpell)
+
+Events.Subscribe("AddSpellsTolist", function(spellslist){
+    console.log(spellslist[0].image)
+    const menuspellsortsdiv = document.getElementById("menuspell-sorts-list")
+    for (let index = 0; index < spellslist.length; index++) {
+        menuspellsortsdiv.insertAdjacentHTML("beforeend", `
+            <div class="menuspell-spell-icon" data-target="${spellslist[index].id}" draggable="true">
+                <div class="menuspell-spell-icon-bg" style="background-image: url(${spellslist[index].image}); background-size: cover;" draggable="false"></div>
+                <span class="menuspell-spell-rank menuspell-rank-${spellslist[index].rang}">${spellslist[index].rang}</span>
+            </div>
+            `)
+        
+    }
+    testeee()
+})
+
+function testeee() {
+    const spellsclick = document.querySelectorAll(".menuspell-spell-icon")
+    spellsclick.forEach(element => {
+    element.addEventListener("click", function(e){
+        const menuspellrightpanel = document.querySelectorAll(".menuspell-right-panel-active")
+        menuspellrightpanel.forEach(el=>{
+            el.classList.remove("menuspell-right-panel-active")
+        })
+        spellsclick.forEach(elem =>{
+            elem.classList.remove("menuspell-selected")
+        })
+
+        const attribute = e.target.parentElement.getAttribute('data-target')
+        const targetid = attribute + "-page"
+
+        const target = document.getElementById(targetid)
+        target.classList.add("menuspell-right-panel-active")
+        e.target.parentElement.classList.add("menuspell-selected")
+    })
+});
+}
+
+Events.Subscribe("AddSpellsToleftPart", function(spellslist){
+    const lefdiscriptiondiv = document.getElementById("left-description")
+    for (let index = 0; index < spellslist.length; index++) {
+        lefdiscriptiondiv.insertAdjacentHTML("beforeend", `
+            <div id="${spellslist[index].id}-page" class="menuspell-right-panel">
+                        <div class="menuspell-detail-icon-wrapper">
+                            <div class="menuspell-detail-icon" style="background-image: url(${spellslist[index].image}); background-size: cover;">
+                            </div>
+                        </div>
+                        
+                        <h3 class="menuspell-detail-title">${spellslist[index].nom}</h3>
+                        
+                        <p class="menuspell-detail-description">
+                            ${spellslist[index].description}
+                        </p>
+                        
+                        <div class="menuspell-detail-info">
+                            <div class="menuspell-detail-line">
+                                <span class="menuspell-detail-label">Améliorations :</span>
+                                <span class="menuspell-detail-value">3/3</span>
+                            </div>
+                            <div class="menuspell-upgrade-bar-wrapper">
+                                <div class="menuspell-upgrade-segment menuspell-filled"></div>
+                                <div class="menuspell-upgrade-segment menuspell-filled"></div>
+                                <div class="menuspell-upgrade-segment menuspell-filled"></div>
+                            </div>
+                            
+                            <div class="menuspell-detail-line" style="margin-top: 20px;">
+                                <span class="menuspell-detail-label">Cooldown :</span>
+                                <span class="menuspell-detail-value">60s</span>
+                            </div>
+                        </div>
+                    </div>
+            `)   
+    }
+})
+

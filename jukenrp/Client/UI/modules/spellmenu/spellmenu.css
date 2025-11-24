@@ -152,7 +152,7 @@
             margin-bottom: 20px;
             
             /* Styles pour le défilement */
-            max-height: 300px; /* Définir une hauteur maximale */
+            min-height: 250px;
             overflow-y: auto; /* Activer le défilement vertical si le contenu dépasse */
             padding-right: 15px; /* Pour éviter que la barre de défilement ne chevauche les icônes */
         }
@@ -293,6 +293,10 @@
             /* Définit une hauteur pour caler le panneau de gauche */
             height: 480px; 
             box-sizing: border-box;
+            display: none;
+        }
+        .menuspell-right-panel-active{
+            display: block;
         }
 
         .menuspell-detail-icon-wrapper {

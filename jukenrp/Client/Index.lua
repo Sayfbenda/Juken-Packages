@@ -5,6 +5,7 @@ MainHUD = WebUI(
 )
 
 Package.Require("Config.lua")
+Package.Require("Spells.lua")
 Package.Require("CharacterCreator.lua")
 Package.Require("Admin.lua")
 Package.Require("DiscordConfig.lua")
@@ -46,6 +47,8 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
     MainHUD:Subscribe("ClickedOnspanw", function ()
         MainHUD:CallEvent("ToggleCharacterCreator")
     end)
+    MainHUD:CallEvent("AddSpellsTolist", SPELLS)
+    MainHUD:CallEvent("AddSpellsToleftPart", SPELLS)
 
     SetupLocalPlayer(local_player)
     MainHUD:CallEvent("SetPermissionsArray", GRADESPERMISSIONS)

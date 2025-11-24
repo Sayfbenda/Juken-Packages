@@ -1,4 +1,5 @@
 Package.Require("Config.lua")
+Package.Require("Spells.lua")
 Package.Require("Database.lua")
 Package.Require("Admin.lua")
 Package.Require("Discord.lua")
