@@ -8,9 +8,10 @@ Player.Subscribe("Spawn", function (self)
     InsertPlayerToDB(self)
 end)
 
-function Character:AddValues(values)
+function Character:AddValues(values, grade)
     self:SetValue("name", values["name"], true)
     self:SetValue("lastname", values["lastname"], true)
+
     self:SetValue("age", values["age"], true)
     self:SetValue("genre", values["genre"], true)
     local id = values["id"] or SelectHighestChracterID()
@@ -18,17 +19,25 @@ function Character:AddValues(values)
     self:SetValue("permission", OWNER, true)
 end
 
+function Character:SetHealthAndReiatsu(grade)
+    self:SetMaxHealth(grade["hpmax"])
+    self:SetHealth(grade["hpmax"])
+end
+
 Events.SubscribeRemote("CreateCharacter", function (self, player, values, index)
     local character = Character(Vector(200, 0, 100), Rotator(0, 0, 0), "nanos-world::SK_Male")
-    
-    character:AddValues(values)
 
+    character:AddValues(values, character:GetValue("grade"))
+    
     local grade = SelectGradeInDB(character:GetValue("id"))
+    
     if #grade == 0 then
         SetGrade(character)
     else
         SetGrade(character, grade)
     end
+
+    character:SetHealthAndReiatsu(character:GetValue("grade"))
 
     self:Possess(character)
 

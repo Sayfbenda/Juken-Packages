@@ -36,7 +36,7 @@ Events.Subscribe("UpdateValues", function(heath, healthmax, reiatsu, displayedna
             <div class="stat-row">
                 <div class="stat-header">
                     <span><i class="fa-solid fa-heart" style="color:var(--accent-red); margin-right:4px;"></i> Health</span>
-                    <span id="spanhp">${healthpourcentage}</span>
+                    <span id="spanhp">${heath}</span>
                 </div>
                 <div class="bar-track">
                     <div id="hpbar" class="bar-fill hp-fill" style="width: ${healthpourcentage}%;"></div>
