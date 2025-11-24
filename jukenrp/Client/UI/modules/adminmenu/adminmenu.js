@@ -255,15 +255,15 @@ function ToggleChangeValuesMenu(indentificator, type) {
         nameandlastnamediv.innerHTML =  `
                         <div class="input-group">
                             <label for="firstcharacter">1 er Personnage</label>
-                            <input type="text" id="firstcharacter" value="">
+                            <input type="text" id="input-firstcharacter" value="">
                         </div>
                         <div class="input-group">
                             <label for="secondcharacter">2 ème Personnage</label>
-                            <input type="text" id="secondcharacter" value="">
+                            <input type="text" id="input-secondcharacter" value="">
                         </div>
                         <div class="input-group">
                             <label for="thirdcharacter">3 ème Personnage</label>
-                            <input type="text" id="thirdcharacter" value="">
+                            <input type="text" id="input-thirdcharacter" value="">
                         </div>
     `
     }else{

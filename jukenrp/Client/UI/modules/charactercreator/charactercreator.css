@@ -4,18 +4,6 @@
     overflow: hidden;
 }
 
-#creatorMenu{
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    align-items: center;
-    justify-content: space-around;
-    display: none;
-    color: white;
-}
-
 #character-selection-container, #FirstCharacter, #SecondCharacter, #ThridCharacter {
         box-sizing: border-box;
         font-family: 'Outfit', sans-serif;
@@ -52,7 +40,7 @@
     
     /* --- Grille des Cartes de Personnage (ID: creatorMenu) --- */
     #creatorMenu {
-        display: flex;
+        display: none;
         gap: 30px;
         justify-content: center;
         padding: 20px;

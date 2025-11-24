@@ -3,7 +3,7 @@
             overflow: hidden; 
             font-family: 'Outfit', sans-serif;
             /* Changement clé : rendre le fond transparent */
-            background-color: transparent; 
+            background-color: rgba(0, 0, 0, 0.5);
             color: #f0f0f0; /* Blanc pour le texte */
             display: flex;
             justify-content: center;
@@ -13,15 +13,19 @@
             cursor: pointer; /* Indiquer que l'élément est cliquable */
             transition: background-color 0.3s ease;
             display: block;
+            width: 100vw;
         }
 
         /* Effet de fond subtil au survol (devient très légèrement sombre, pour simuler une interaction) */
         .screen-container:hover {
             /* On utilise un noir très, très légèrement transparent pour le survol */
-            background-color: rgba(0, 0, 0, 0.05); 
+            background-color: rgba(0, 0, 0, 0.9); 
         }
 
         .continue-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             font-size: 2.2rem; /* Grande taille pour l'impact */
             font-weight: 600; /* Poids moyen-gras pour l'Outfit (ancienne variable) */

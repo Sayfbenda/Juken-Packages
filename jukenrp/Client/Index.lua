@@ -33,11 +33,11 @@ end)
 Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
     Events.CallRemote("SendToDiscord", tostring((local_player:GetName() .. " s'est connecté au serveur")), CHANNELS.join_disconnect)
-
+    
+    Events.CallRemote("SelectCharactersFromSteamID", local_player)
     MainHUD:CallEvent("ToggleClickOnSpawn")
 
     MainHUD:Subscribe("ClickedOnspanw", function ()
-        Events.CallRemote("SelectCharactersFromSteamID", local_player)
         MainHUD:CallEvent("ToggleCharacterCreator")
     end)
 
