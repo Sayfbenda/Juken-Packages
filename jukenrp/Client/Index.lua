@@ -16,6 +16,12 @@ MainHUD:BringToFront()
 Input.Register("MouseToggle", "C")
 Input.Register("TTTT", "Tab")
 Input.Register("DevTool", "P")
+Input.Register("SpellMenu", "F4")
+
+Input.Bind("SpellMenu", InputEvent.Pressed, function ()
+    Console.Log("1")
+    MainHUD:CallEvent("ToggleMenuSpell")
+end)
 
 Input.Bind("DevTool", InputEvent.Pressed, function ()
     MainHUD:OpenDevTools()

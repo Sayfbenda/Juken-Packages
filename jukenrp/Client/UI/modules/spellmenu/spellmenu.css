@@ -1,0 +1,386 @@
+.menuspell-container {
+            background-color: #212124; /* menuspell-bg-panel */
+            width: 800px; 
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            /* Hauteur Fixe pour l'exemple (peut être ajustée ou retirée si le body est scrollable) */
+            /* height: 550px; */ 
+            font-family: 'Outfit', sans-serif;
+            color: #E0E0E0; /* menuspell-text-light */
+            position: fixed;
+            display: none;
+        }
+        
+        /* --- STYLES DE BASE INCHANGÉS --- */
+        .menuspell-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #333336; 
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .menuspell-nav-list {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .menuspell-nav-item {
+            margin-right: 25px;
+            cursor: pointer;
+            padding: 5px 0;
+            color: #AAAAAA; /* menuspell-text-muted */
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .menuspell-nav-item:hover {
+            color: #E0E0E0; /* menuspell-text-light */
+        }
+
+        .menuspell-nav-item.menuspell-active {
+            color: #00FFFF; /* menuspell-accent-primary */
+        }
+        
+        .menuspell-nav-item.menuspell-active::after {
+            content: '';
+            position: absolute;
+            bottom: -12px; 
+            left: 0;
+            width: 100%;
+            height: 2px;
+            border-radius: 1px;
+            background-color: #00FFFF; /* menuspell-accent-primary */
+        }
+        
+        .menuspell-nav-icon {
+            margin-right: 5px;
+        }
+
+        .menuspell-close-btn {
+            background: none;
+            border: none;
+            color: #AAAAAA; /* menuspell-text-muted */
+            font-size: 20px;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .menuspell-close-btn:hover {
+            color: #E0E0E0; /* menuspell-text-light */
+        }
+
+        /* --- Contenu Principal --- */
+        .menuspell-main-content {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* AJUSTEMENT : Hauteur fixe ou maximale pour le panneau de gauche */
+        .menuspell-left-panel {
+            flex: 1;
+            padding-right: 20px;
+            display: flex; /* Utilisé pour que le flex-grow fonctionne sur la grille */
+            flex-direction: column;
+            /* Hauteur calculée pour s'adapter au panneau de droite */
+            max-height: 480px; 
+        }
+        
+        .menuspell-journal-title {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .menuspell-journal-title i {
+            font-size: 24px;
+            margin-right: 10px;
+            color: #AAAAAA; /* menuspell-text-muted */
+        }
+        
+        .menuspell-journal-title h2 {
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        
+        .menuspell-journal-subtitle {
+            font-size: 14px;
+            color: #AAAAAA; /* menuspell-text-muted */
+            margin-bottom: 20px;
+        }
+        
+        .menuspell-search-bar {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .menuspell-search-input {
+            width: 100%;
+            padding: 8px 10px 8px 35px; 
+            background-color: #2D2D31; /* menuspell-bg-detail */
+            border: 1px solid #3A3A3E; /* menuspell-border-color */
+            border-radius: 4px;
+            color: #E0E0E0; /* menuspell-text-light */
+            font-family: 'Outfit', sans-serif;
+            font-size: 14px;
+        }
+
+        .menuspell-search-bar i {
+            position: absolute;
+            left: 10px;
+            color: #AAAAAA; /* menuspell-text-muted */
+            font-size: 14px;
+            line-height: 1; 
+        }
+        
+        /* MODIFICATION CLÉ : Rendre la grille scrollable */
+        .menuspell-sorts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+            
+            /* Styles pour le défilement */
+            max-height: 300px; /* Définir une hauteur maximale */
+            overflow-y: auto; /* Activer le défilement vertical si le contenu dépasse */
+            padding-right: 15px; /* Pour éviter que la barre de défilement ne chevauche les icônes */
+        }
+
+        /* Style de la barre de défilement (optionnel, pour correspondre au thème) */
+        .menuspell-sorts-grid::-webkit-scrollbar {
+            width: 8px;
+        }
+        .menuspell-sorts-grid::-webkit-scrollbar-thumb {
+            background-color: #3A3A3E; /* menuspell-border-color */
+            border-radius: 4px;
+        }
+        .menuspell-sorts-grid::-webkit-scrollbar-track {
+            background-color: #2D2D31; /* menuspell-bg-detail */
+        }
+        
+        /* Style des icônes de sort (cercles) */
+        .menuspell-spell-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #3A3A3E; /* menuspell-border-color */
+            border: 3px solid transparent;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.1s, border-color 0.2s;
+            overflow: visible; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Flex-shrink pour qu'elles ne se tassent pas */
+            flex-shrink: 0;
+        }
+        
+        .menuspell-spell-icon:hover {
+            border-color: #00FFFF; /* menuspell-accent-primary */
+            transform: scale(1.05);
+        }
+        
+        .menuspell-spell-icon.menuspell-selected {
+            border-color: #00FFFF; /* menuspell-accent-primary */
+        }
+        
+        .menuspell-spell-icon-bg {
+             width: 100%;
+             height: 100%;
+             background-color: #404045;
+             border-radius: 50%;
+        }
+
+        /* Rangs */
+        .menuspell-spell-rank {
+            position: absolute;
+            bottom: -5px; 
+            right: -5px; 
+
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: 800;
+            color: #212124; /* menuspell-bg-panel pour le texte */
+            
+            box-shadow: 0 0 0 2px #212124; 
+            z-index: 10; 
+        }
+        
+        .menuspell-rank-S { background-color: #FF004C; } 
+        .menuspell-rank-A { background-color: #FFD700; } 
+        .menuspell-rank-B { background-color: #00BFFF; } 
+        .menuspell-rank-C { background-color: #696969; } 
+        
+        /* --- Barre d'action rapide/équipement --- */
+        .menuspell-quick-bar {
+            display: flex;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid #333336;
+        }
+
+        .menuspell-quick-bar-settings {
+            width: 30px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: #2D2D31; /* menuspell-bg-detail */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #AAAAAA; /* menuspell-text-muted */
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        
+        .menuspell-quick-slots {
+            display: flex;
+            gap: 10px;
+        }
+
+        .menuspell-quick-slot {
+            width: 40px;
+            height: 40px;
+            border: 2px solid #3A3A3E; /* menuspell-border-color */
+            border-radius: 4px;
+            background-color: #2D2D31; /* menuspell-bg-detail */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 2px;
+            position: relative;
+            font-size: 10px;
+            color: #AAAAAA; /* menuspell-text-muted */
+            background-position: center;
+            background-size: cover;
+        }
+        
+        .menuspell-quick-slot-number {
+            font-weight: 600;
+        }
+        
+        .menuspell-quick-slot.menuspell-filled {
+             border-color: #00FFFF; /* menuspell-accent-primary */
+        }
+
+        /* --- Colonne de Droite (Détail du Sort - Néon) --- */
+        .menuspell-right-panel {
+            width: 250px;
+            background-color: #2D2D31; /* menuspell-bg-detail */
+            border: 1px solid #3A3A3E; /* menuspell-border-color */
+            border-radius: 6px;
+            padding: 15px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            border-left: 5px solid #00FFFF; /* menuspell-accent-primary */
+            /* Définit une hauteur pour caler le panneau de gauche */
+            height: 480px; 
+            box-sizing: border-box;
+        }
+
+        .menuspell-detail-icon-wrapper {
+            width: 100%;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .menuspell-detail-icon {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-color: #404045; 
+            border: 4px solid #00FFFF; /* menuspell-accent-primary */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.6); 
+        }
+        
+        .menuspell-detail-icon i {
+            font-size: 80px;
+            color: #E0E0E0; /* menuspell-text-light */
+        }
+
+        .menuspell-detail-title {
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 10px;
+            color: #00FFFF; /* menuspell-accent-primary */
+        }
+
+        .menuspell-detail-description {
+            font-size: 13px;
+            text-align: center;
+            color: #AAAAAA; /* menuspell-text-muted */
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* --- Infos Complémentaires --- */
+        .menuspell-detail-info {
+            padding-top: 15px;
+            border-top: 1px solid #3A3A3E; /* menuspell-border-color */
+        }
+
+        .menuspell-detail-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .menuspell-detail-label {
+            font-weight: 600;
+            color: #E0E0E0; /* menuspell-text-light */
+        }
+        
+        .menuspell-detail-value {
+            color: #00FFFF; /* menuspell-accent-primary */
+            font-weight: 800;
+        }
+        
+        .menuspell-upgrade-bar-wrapper {
+            background-color: #17171A; /* menuspell-bg-dark */
+            border-radius: 4px;
+            overflow: hidden;
+            height: 20px;
+            margin-top: 5px;
+            display: flex;
+        }
+        
+        .menuspell-upgrade-segment {
+            flex: 1;
+            height: 100%;
+            margin-right: 1px;
+            background-color: #3A3A3E; /* menuspell-border-color */
+        }
+
+        .menuspell-upgrade-segment:last-child {
+            margin-right: 0;
+        }
+
+        .menuspell-upgrade-segment.menuspell-filled {
+            background-color: #00FFFF; /* menuspell-accent-primary */
+        }
