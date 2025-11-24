@@ -5,6 +5,13 @@ Spell = {
     description = "test test",
     categorie = "test test",
     rang = "C",
+    cooldown = 0,
+    damage = 0,
+    reiatsucost = 0,
+    heal = 0,
+    asset = "",
+    hitbox = 0,
+    velocity = 0,
     execute = function ()
         
     end
@@ -23,7 +30,13 @@ function Spell.new(nom, id, description, image, rang, func)
     return self
 end
 
-local sho = Spell.new("hello", "SHO", "hello heloo", "../UI/modules/img/kisuke.jpeg", "C",function ()
+local byakurai = Spell.new(
+"Byakurai",
+"BYAKURAI",
+"Un éclair blanc qui transperce la cible",
+"../UI/modules/img/byakurai.png", 
+"C",
+function ()
     Console.Log("helloooooo")
 end)
 
@@ -34,6 +47,6 @@ end)
 
 
 SPELLS = {
-    sho,
+    byakurai,
     sss
 }
