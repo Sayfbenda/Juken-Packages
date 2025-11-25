@@ -11,6 +11,18 @@ database:Execute([[
 	)
 ]])
 
+
+database:Execute([[
+	CREATE TABLE IF NOT EXISTS characters (
+		id INTEGER,
+		playersteamid VARCHAR(100),
+		name VARCHAR(100),
+		lastname VARCHAR(100),
+		age INTEGER,
+		grade VARCHAR(100)
+	)
+]])
+
 function InsertNewPlayerToDB(player)
     local insertedplayer = database:Execute("INSERT INTO players VALUES (?, ?, ?, ?, ?, ?)", player:GetID(), player:GetName(), tostring(player:GetSteamID()), "none", player:GetIP(), "")
     return insertedplayer
@@ -23,4 +35,5 @@ end
 
 function UpdatePlayerInDB(player)
     local updatedplayer = database:Execute("UPDATE players SET id = ?, name = ?, ip = ? WHERE steamid = ?", player:GetID(), player:GetName(), player:GetIP(), player:GetSteamID())
+    return updatedplayer
 end
