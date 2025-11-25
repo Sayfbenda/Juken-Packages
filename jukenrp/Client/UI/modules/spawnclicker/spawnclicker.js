@@ -15,7 +15,7 @@ addEventListener("DOMContentLoaded", function(){
     const spawnclicker = document.getElementById("spawnclicker")
     spawnclicker.addEventListener("click", function(e){
         e.target.style.display = "none"
-        Events.Call("ToggleCreatorMenu")
+        Events.Call("DisplayCharacterChooserMenu")
     })
 })
 

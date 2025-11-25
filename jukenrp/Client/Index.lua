@@ -6,7 +6,7 @@ WidgetVisibility.Visible
 
 Input.Register("ToggleCursor", "C")
 
-Package.Require("Spawnclicker.lua")
+Package.Require("Characterui.lua")
 
 
 Input.Bind("ToggleCursor", InputEvent.Pressed, function ()
@@ -21,9 +21,6 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
 end)
 
-MainHUD:Subscribe("ToggleCreatorMenu", function ()
-    MainHUD:CallEvent("ToggleCharacterCreator")
-end)
 
 function SetUpLocalPlayer(local_player)
     local_player:Subscribe("Possess", function (player, character)

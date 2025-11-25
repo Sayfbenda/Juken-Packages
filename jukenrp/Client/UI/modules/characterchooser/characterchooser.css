@@ -1,0 +1,157 @@
+.characterchooser-container {
+            overflow: hidden;
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.75); /* Légère teinte sombre supplémentaire */
+        }
+
+        /* Titre en haut */
+        .characterchooser-title {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 700;
+            font-size: 2rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* --- SECTION DES CARTES --- */
+        .characterchooser-cards-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Style de carte standard */
+        .characterchooser-card {
+            width: 300px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05); /* Fond très transparent */
+            border: 1px solid rgba(255, 255, 255, 0.15); /* Bordure fine */
+            border-radius: 20px;
+            backdrop-filter: blur(15px); /* Effet Glassmorphism */
+            -webkit-backdrop-filter: blur(15px);
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .characterchooser-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Carte centrale mise en avant */
+        .characterchooser-card-center {
+            width: 340px; /* Plus large */
+            height: 560px; /* Plus haute */
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.25);
+            z-index: 2; /* Au-dessus des autres */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+        
+        /* Effet de cercle rouge pour la carte centrale */
+        .characterchooser-card-center::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* --- CONTENU DES CARTES --- */
+        .characterchooser-clan-symbol {
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+
+        .characterchooser-char-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .characterchooser-char-level {
+            font-weight: 400;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* Conteneur de l'image du personnage */
+        .characterchooser-char-image-container {
+            flex: 1; /* Prend tout l'espace restant */
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Aligne l'image en bas */
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Image du personnage (remplacée par une icône géante pour la démo) */
+        .characterchooser-char-placeholder {
+            font-size: 12rem;
+            color: #e0e0e0;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5));
+            /* Simulation de pose différente */
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .characterchooser-card-center .characterchooser-char-placeholder {
+            font-size: 14rem; /* Plus grand au centre */
+            color: #ff4d4d; /* Teinte rouge pour le perso central */
+        }
+        
+        .characterchooser-card:hover .characterchooser-char-placeholder {
+             transform: translateY(10px) scale(1.02);
+        }
+
+
+        /* --- PIED DE PAGE --- */
+        .characterchooser-instruction-text {
+            margin-top: 50px;
+            color: rgba(255,255,255,0.5);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
