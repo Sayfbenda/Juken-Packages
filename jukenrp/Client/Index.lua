@@ -16,9 +16,15 @@ end)
 
 
 Client.Subscribe("SpawnLocalPlayer", function (local_player)
-    
+
+    Events.CallRemote("CharactersForchooserMenu", local_player)
+
     SetUpLocalPlayer(local_player)
 
+end)
+
+Events.SubscribeRemote("GetCharactersForChooser", function (characters)
+    MainHUD:CallEvent("AddCharactersTochooser", characters)
 end)
 
 

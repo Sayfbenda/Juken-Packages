@@ -24,7 +24,7 @@ database:Execute([[
 ]])
 
 function InsertNewPlayerToDB(player)
-    local insertedplayer = database:Execute("INSERT INTO players VALUES (?, ?, ?, ?, ?, ?)", player:GetID(), player:GetName(), tostring(player:GetSteamID()), "none", player:GetIP(), "")
+    local insertedplayer = database:Execute("INSERT INTO players VALUES (?, ?, ?, ?, ?, ?)", player:GetID(), player:GetName(), tostring(player:GetSteamID()), "none", player:GetIP(), "0, 0, 0")
     return insertedplayer
 end
 
@@ -37,3 +37,15 @@ function UpdatePlayerInDB(player)
     local updatedplayer = database:Execute("UPDATE players SET id = ?, name = ?, ip = ? WHERE steamid = ?", player:GetID(), player:GetName(), player:GetIP(), player:GetSteamID())
     return updatedplayer
 end
+
+
+
+function SelectPlayerCharacters(player)
+    local select = database:Select("SELECT * FROM characters WHERE playersteamid = ?", player:GetSteamID())
+    return select
+end
+
+Events.SubscribeRemote("CharactersForchooserMenu", function (local_player)
+    local characters = SelectPlayerCharacters(local_player)
+    Events.CallRemote("GetCharactersForChooser", local_player, characters)
+end)
