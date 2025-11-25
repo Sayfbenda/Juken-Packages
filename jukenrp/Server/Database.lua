@@ -1,4 +1,4 @@
-local database = Database(DatabaseEngine.SQLite, "juken_database.db timeout=2")
+local database = Database(DatabaseEngine.SQLite, "db=database_juken.db timeout=2")
 
 database:Execute([[
 	CREATE TABLE IF NOT EXISTS players (
@@ -11,8 +11,12 @@ database:Execute([[
 	)
 ]])
 
-
-
 function InsertNewPlayerToDB(player)
-    database:Execute("INSERT INTO players VALUES (?, ?, ?, ?, ?, ?)", player:GetID(), player:GetName(), tostring(player:GetSteamID()), "none", player:GetIP(), "")
+    local insertedplayer = database:Execute("INSERT INTO players VALUES (?, ?, ?, ?, ?, ?)", player:GetID(), player:GetName(), tostring(player:GetSteamID()), "none", player:GetIP(), "")
+    return insertedplayer
+end
+
+function SelectPlayerInDB(player)
+    local select = database:Select("SELECT * FROM players WHERE steamid = ?", player:GetSteamID())
+    return select
 end

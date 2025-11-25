@@ -11,6 +11,10 @@ Player.Subscribe("Spawn", function (self)
 end)
 
 
-function UpdateDataBasePlayer(Player)
-    
+function UpdateDataBasePlayer(player)
+    local selection = SelectPlayerInDB(player)
+    if #selection > 0 then
+        return
+    end
+    InsertNewPlayerToDB(player)
 end
