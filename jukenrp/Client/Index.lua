@@ -32,6 +32,10 @@ function SetUpLocalPlayer(local_player)
     local_player:Subscribe("Possess", function (player, character)
         UpdateLocalCharacter(character, player)
     end)
+
+    MainHUD:Subscribe("CreateCharacterByCreator", function (name, lastname, genre)
+        Events.CallRemote("CreateCharacter", name, lastname, genre)
+    end)
 end
 
 function UpdateLocalCharacter(character, player)

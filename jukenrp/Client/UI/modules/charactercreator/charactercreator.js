@@ -37,11 +37,11 @@ addEventListener("DOMContentLoaded", function(){
                         <div class="creatormenu-form-group">
                             <label class="creatormenu-label">Type de corps</label>
                             <div class="creatormenu-gender-grid">
-                                <div class="creatormenu-gender-card creatormenu-selected">
+                                <div id="Homme" class="creatormenu-gender-card creatormenu-selected">
                                     <i class="fa-solid fa-mars"></i>
                                     <span>Homme</span>
                                 </div>
-                                <div class="creatormenu-gender-card">
+                                <div id="Femme" class="creatormenu-gender-card">
                                     <i class="fa-solid fa-venus"></i>
                                     <span>Femme</span>
                                 </div>
@@ -61,8 +61,8 @@ addEventListener("DOMContentLoaded", function(){
                     </div>
 
                     <div class="creatormenu-footer">
-                        <button onclick="ToggleCharacterCreator()" class="creatormenu-btn creatormenu-btn-ghost">Annuler</button>
-                        <button class="creatormenu-btn creatormenu-btn-solid">Créer</button>
+                        <button onclick="RetournToCharacterChooser()" class="creatormenu-btn creatormenu-btn-ghost">Annuler</button>
+                        <button onclick="GetValuesFromInputsCharacterCreator()" class="creatormenu-btn creatormenu-btn-solid">Créer</button>
                     </div>
 
                 </div>
@@ -89,6 +89,22 @@ function ToggleCharacterCreator() {
     }
 }
 
+function RetournToCharacterChooser() {
+    ToggleCharacterCreator()
+    Events.Call("DisplayCharacterChooserMenu")
+}
 
+function GetValuesFromInputsCharacterCreator() {
+    ToggleCharacterCreator()
+    const inputname = document.getElementById("input-name")
+    const inputlastname = document.getElementById("input-lastname")
+    const inputgenre = document.querySelector(".creatormenu-selected")
+    
+    const name = inputname.value
+    const lastname = inputlastname.value
+    const genre = inputgenre.id
+    Events.Call("CreateCharacterByCreator", name, lastname, genre)
+    return {name, lastname, genre}
+}
 
 Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)
