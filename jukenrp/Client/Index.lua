@@ -6,8 +6,13 @@ WidgetVisibility.Visible
 
 Input.Register("ToggleCursor", "C")
 Input.Register("DevConsole", "P")
+Input.Register("ToggleNoclip", "B")
 
 Package.Require("Characterui.lua")
+
+Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
+    Events.CallRemote("ToggleNoclip")
+end)
 
 Input.Bind("DevConsole", InputEvent.Pressed, function ()
     MainHUD:OpenDevTools()
@@ -35,6 +40,7 @@ end)
 function SetUpLocalPlayer(local_player)
     local_player:Subscribe("Possess", function (player, character)
         UpdateLocalCharacter(player, character)
+        character:Subscribe("HealthChange", UpdateHealth)
     end)
 
     MainHUD:Subscribe("CreateCharacterByCreator", function (name, lastname, genre)
@@ -50,6 +56,9 @@ function UpdateLocalCharacter(player, character)
     MainHUD:CallEvent("SetValuesToPlayerUi", player:GetAccountIconURL(), character:GetValue("name"), character:GetValue("lastname"), character:GetMaxHealth(), 10, character:GetValue("grade"))
 end
 
+function UpdateHealth(self, old_health, new_health)
+    MainHUD:CallEvent("UpdateHealthPlayerUI", new_health, self:GetMaxHealth())
+end
 
 
 function ToggleMouseEnabled()

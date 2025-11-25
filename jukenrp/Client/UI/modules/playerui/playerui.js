@@ -32,9 +32,9 @@ Events.Subscribe("SetValuesToPlayerUi", function(icon, name, lastname, maxhealth
                             <i class="fa-solid fa-heart" style="color: #ff6b6b;"></i> Health
                         </div>
                         <div class="playerui-progress-bar-container">
-                            <div class="playerui-progress-bar playerui-health-bar" style="width: 100%;"></div>
+                            <div id="healthprogressbar" class="playerui-progress-bar playerui-health-bar" style="width: 100%;"></div>
                         </div>
-                        <span class="playerui-stat-value">${maxhealth}</span>
+                        <span id="healthvalue" class="playerui-stat-value">${maxhealth}</span>
                     </div>
 
                     <div class="playerui-stat-item">
@@ -51,4 +51,12 @@ Events.Subscribe("SetValuesToPlayerUi", function(icon, name, lastname, maxhealth
             </div>
         </div>
         `)
+})
+
+Events.Subscribe("UpdateHealthPlayerUI", function(health, maxhealth){
+    const pourcentage = (health/maxhealth)*100
+    const healthvalue = document.getElementById("healthvalue")
+    const healthprogressbar = document.getElementById("healthprogressbar")
+    healthprogressbar.style.width = pourcentage
+    healthvalue.innerText = health
 })
