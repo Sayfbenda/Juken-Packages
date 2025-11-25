@@ -5,6 +5,7 @@
 
         /* Le conteneur principal qui assombrit l'image */
         .overlay-screen {
+            position: fixed;
             overflow: hidden;
             font-family: 'Outfit', sans-serif;
             height: 100vh;

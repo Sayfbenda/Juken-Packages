@@ -1,0 +1,283 @@
+.creatormenu-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Le voile noir transparent (RGBA) */
+        .creatormenu-overlay {
+            position: fixed;
+            box-sizing: border-box;
+            outline: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background-color: rgba(5, 5, 10, 0.65); /* Noir bleuté transparent */
+            backdrop-filter: blur(10px); /* Flou global pour la profondeur */
+            z-index: 1;
+            display: none;
+        }
+
+        /* --- ZONE GAUCHE : VISUALISATION --- */
+        .creatormenu-preview-zone {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        /* Cercle décoratif derrière le perso */
+        .creatormenu-glow-circle {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0) 70%);
+            animation: creatormenu-spin 20s linear infinite;
+        }
+
+        .creatormenu-character-render {
+            font-size: 16rem;
+            color: #e0e0e0;
+            filter: drop-shadow(0 0 40px rgba(255, 255, 255, 0.15));
+            z-index: 2;
+            animation: creatormenu-float 6s ease-in-out infinite;
+        }
+
+        /* --- ZONE DROITE : INTERFACE --- */
+        .creatormenu-ui-panel {
+            box-sizing: border-box;
+            width: 500px;
+            height: 100%;
+            background: rgba(10, 10, 12, 0.85); /* Fond très sombre mais transparent */
+            border-left: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            padding: 50px 40px;
+            box-shadow: -20px 0 50px rgba(0,0,0,0.6);
+            backdrop-filter: blur(20px); /* Flou local intense (Glassmorphism) */
+            z-index: 10;
+        }
+
+        .creatormenu-header h2 {
+            font-weight: 700;
+            font-size: 2rem;
+            color: white;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
+        }
+        
+        .creatormenu-header p {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        /* Navigation Tabulaire */
+        .creatormenu-nav-tabs {
+            display: flex;
+            gap: 30px;
+            margin: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 15px;
+        }
+
+        .creatormenu-tab {
+            color: rgba(255,255,255,0.4);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .creatormenu-tab:hover {
+            color: white;
+        }
+
+        .creatormenu-tab.creatormenu-active {
+            color: white;
+        }
+
+        .creatormenu-tab.creatormenu-active::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        /* Formulaire */
+        .creatormenu-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 30px;
+        }
+
+        .creatormenu-label {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .creatormenu-input-text {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 16px;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .creatormenu-input-text:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 15px rgba(255,255,255,0.05);
+        }
+
+        /* Selecteur Genre Moderne (Cartes) */
+        .creatormenu-gender-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .creatormenu-gender-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .creatormenu-gender-card i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .creatormenu-gender-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .creatormenu-gender-card.creatormenu-selected {
+            background: white;
+            border-color: white;
+        }
+        
+        .creatormenu-gender-card.creatormenu-selected span,
+        .creatormenu-gender-card.creatormenu-selected i {
+            color: black;
+            font-weight: 700;
+        }
+
+        /* Range Slider Stylisé */
+        .creatormenu-slider-container {
+            position: relative;
+            padding: 10px 0;
+        }
+
+        .creatormenu-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        .creatormenu-slider::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 2px;
+        }
+
+        .creatormenu-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #fff;
+            margin-top: -8px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transition: transform 0.1s;
+        }
+
+        .creatormenu-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer Boutons */
+        .creatormenu-footer {
+            margin-top: auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 15px;
+        }
+
+        .creatormenu-btn {
+            padding: 18px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .creatormenu-btn-ghost {
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .creatormenu-btn-ghost:hover {
+            border-color: white;
+            color: white;
+        }
+
+        .creatormenu-btn-solid {
+            background: white;
+            color: black;
+            box-shadow: 0 5px 20px rgba(255,255,255,0.1);
+        }
+        .creatormenu-btn-solid:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.2);
+        }
+
+        /* ANIMATIONS */
+        @keyframes creatormenu-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes creatormenu-spin {
+            100% { transform: rotate(360deg); }
+        }

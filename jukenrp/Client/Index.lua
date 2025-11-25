@@ -6,25 +6,23 @@ WidgetVisibility.Visible
 
 Input.Register("ToggleCursor", "C")
 
+Package.Require("Spawnclicker.lua")
+
+
 Input.Bind("ToggleCursor", InputEvent.Pressed, function ()
     ToggleMouseEnabled()
 end)
 
-function ToggleMouseEnabled()
-    if Input.IsMouseEnabled() then
-        Input.SetMouseEnabled(false)
-    else
-        Input.SetMouseEnabled(true)
-    end
-    
-end
 
-Package.Require("Spawnclicker.lua")
 
 Client.Subscribe("SpawnLocalPlayer", function (local_player)
     
     SetUpLocalPlayer(local_player)
 
+end)
+
+MainHUD:Subscribe("ToggleCreatorMenu", function ()
+    MainHUD:CallEvent("ToggleCharacterCreator")
 end)
 
 function SetUpLocalPlayer(local_player)
@@ -34,5 +32,16 @@ function SetUpLocalPlayer(local_player)
 end
 
 function UpdateLocalCharacter(character, player)
+    
+end
+
+
+
+function ToggleMouseEnabled()
+    if Input.IsMouseEnabled() then
+        Input.SetMouseEnabled(false)
+    else
+        Input.SetMouseEnabled(true)
+    end
     
 end
