@@ -25,7 +25,6 @@ function ToggleCharacterChooser() {
 
 Events.Subscribe("AddCharactersTochooser", function(characters){
     const characterchoosercards = document.getElementById("characterchooser-cards")
-    console.log(characterchoosercards.children.length)
     characters.forEach(element => {
         characterchoosercards.insertAdjacentHTML("beforeend", `
                 <div class="characterchooser-card taken" data-target="${element.id}">

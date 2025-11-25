@@ -1,4 +1,6 @@
 Package.Require("Database.lua")
+Package.Require("DiscordConfig.lua")
+Package.Require("Discord.lua")
 
 Player.Subscribe("Spawn", function (self)
 

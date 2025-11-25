@@ -34,7 +34,7 @@ end)
 
 function SetUpLocalPlayer(local_player)
     local_player:Subscribe("Possess", function (player, character)
-        UpdateLocalCharacter(character, player)
+        UpdateLocalCharacter(player, character)
     end)
 
     MainHUD:Subscribe("CreateCharacterByCreator", function (name, lastname, genre)
@@ -46,8 +46,8 @@ function SetUpLocalPlayer(local_player)
 end)
 end
 
-function UpdateLocalCharacter(character, player)
-    
+function UpdateLocalCharacter(player, character)
+    MainHUD:CallEvent("SetValuesToPlayerUi", player:GetAccountIconURL(), character:GetValue("name"), character:GetValue("lastname"), character:GetMaxHealth(), 10, character:GetValue("grade"))
 end
 
 
