@@ -155,3 +155,9 @@
             letter-spacing: 2px;
             text-transform: uppercase;
         }
+        .creatormenu-gender-card > span{
+            color: white;
+        }
+        .creatormenu-selected > span{
+            color: black;
+        }

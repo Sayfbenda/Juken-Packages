@@ -25,12 +25,12 @@ addEventListener("DOMContentLoaded", function(){
                         
                         <div class="creatormenu-form-group">
                             <div>
-                                <label class="creatormenu-label">Alias</label>
-                                <input type="text" class="creatormenu-input-text" placeholder="Ex: CyberWolf_99">
+                                <label class="creatormenu-label">Prénom</label>
+                                <input id="input-name" type="text" class="creatormenu-input-text" placeholder="Ichigo">
                             </div>
                             <div>
-                                <label class="creatormenu-label">Alias</label>
-                                <input type="text" class="creatormenu-input-text" placeholder="Ex: CyberWolf_99">
+                                <label class="creatormenu-label">Nom</label>
+                                <input id="input-lastname" type="text" class="creatormenu-input-text" placeholder="Korusaki">
                             </div>
                         </div>
 
@@ -39,11 +39,11 @@ addEventListener("DOMContentLoaded", function(){
                             <div class="creatormenu-gender-grid">
                                 <div class="creatormenu-gender-card creatormenu-selected">
                                     <i class="fa-solid fa-mars"></i>
-                                    <span>Type A</span>
+                                    <span>Homme</span>
                                 </div>
                                 <div class="creatormenu-gender-card">
                                     <i class="fa-solid fa-venus"></i>
-                                    <span>Type B</span>
+                                    <span>Femme</span>
                                 </div>
                             </div>
                         </div>
@@ -69,6 +69,15 @@ addEventListener("DOMContentLoaded", function(){
 
             </div>
         `)
+        const creatormenugendercard = document.querySelectorAll(".creatormenu-gender-card")
+        creatormenugendercard.forEach(element => {
+            element.addEventListener("click", function(e){
+                creatormenugendercard.forEach(el => {
+                    el.classList.remove("creatormenu-selected")
+                });
+                element.classList.add("creatormenu-selected")
+            })
+        });
 })
 
 function ToggleCharacterCreator() {
@@ -79,5 +88,7 @@ function ToggleCharacterCreator() {
         creatormenu.style.display = "flex"
     }
 }
+
+
 
 Events.Subscribe("ToggleCharacterCreator", ToggleCharacterCreator)
