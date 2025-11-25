@@ -5,9 +5,13 @@ WidgetVisibility.Visible
 )
 
 Input.Register("ToggleCursor", "C")
+Input.Register("DevConsole", "P")
 
 Package.Require("Characterui.lua")
 
+Input.Bind("DevConsole", InputEvent.Pressed, function ()
+    MainHUD:OpenDevTools()
+end)
 
 Input.Bind("ToggleCursor", InputEvent.Pressed, function ()
     ToggleMouseEnabled()
@@ -36,6 +40,10 @@ function SetUpLocalPlayer(local_player)
     MainHUD:Subscribe("CreateCharacterByCreator", function (name, lastname, genre)
         Events.CallRemote("CreateCharacter", name, lastname, genre)
     end)
+
+    MainHUD:Subscribe("ChooseCharacter", function (id)
+    Events.CallRemote("AddValuesToexesitingCharacter", id)
+end)
 end
 
 function UpdateLocalCharacter(character, player)

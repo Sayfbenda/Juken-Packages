@@ -60,6 +60,11 @@ function GetAllCharacters()
     return select
 end
 
+function GetCharacterbyID(id)
+    local select = database:Select("SELECT * FROM characters WHERE id = ?", id)
+    return select
+end
+
 Events.SubscribeRemote("GetAllCharacters", function ()
     GetAllCharacters()
 end)

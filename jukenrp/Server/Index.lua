@@ -19,12 +19,27 @@ end
 function CreateCharacter(player, name, lastname, genre)
     local character = Character(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SK_Male")
     
-    AddValuesToCharacter(character, name, lastname, genre)
+    AddValuesToNewCharacter(character, name, lastname, genre)
     player:Possess(character)
     InsertCharacterToDB(player, character)
 end
 
-function AddValuesToCharacter(character, name, lastname, genre)
+
+function SpawnCharacterByID(player, id)
+    local character = Character(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SK_Male")
+    AddValuesToexesitingCharacter(character, GetCharacterbyID(id)[1])
+    player:Possess(character)
+end
+
+function AddValuesToexesitingCharacter(character, values)
+    character:SetValue("name", values["name"], true)
+    character:SetValue("lastname", values["lastname"], true)
+    character:SetValue("age", values["age"], true)
+    character:SetValue("id", values["id"], true)
+    character:SetValue("grade", values["grade"], true)
+end
+
+function AddValuesToNewCharacter(character, name, lastname, genre)
     character:SetValue("name", name, true)
     character:SetValue("lastname", lastname, true)
     character:SetValue("genre", genre, true)
@@ -33,9 +48,12 @@ function AddValuesToCharacter(character, name, lastname, genre)
     character:SetValue("grade", "GOAT", true)
 end
 
+
 function GenerateNewID()
     local select = GetAllCharacters()
     return #select + 1
 end
+
+Events.SubscribeRemote("AddValuesToexesitingCharacter", SpawnCharacterByID)
 
 Events.SubscribeRemote("CreateCharacter", CreateCharacter)
