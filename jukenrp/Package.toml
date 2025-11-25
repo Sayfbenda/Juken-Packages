@@ -1,11 +1,11 @@
 # vault configurations
 [meta]
     # friendly name
-    title =                 "Juken RP"
+    title =                 "jukenrp"
     # contributors
     author =                "Sayf"
     # version
-    version =               "3.13.2"
+    version =               "0.0.1"
 
 # game-mode configurations
 [game_mode]
@@ -16,11 +16,10 @@
     # whether to load all level entities on client - only enable it if your package needs to use level static meshes entities
     load_level_entities =   false
     # the game version (major.minor) at the time this package was created, for granting compatibility between breaking changes
-    compatibility_version = "1.76"
+    compatibility_version = "1.97"
     # packages requirements
     packages_requirements = [
-                            "default-weapons",
-                            "default-vehicles",
+                            
     ]
     # asset packs requirements
     assets_requirements = [
@@ -35,7 +34,4 @@
 # those settings can be configured through new game menu, Config.toml and server command line
 # and can be accessed through Server.GetCustomSettings() method from any package
 [custom_settings]
-    enable_auto_weather = { label = "auto change weather", type = "boolean", description = "enable weather to change automatically", default = true }
-    enable_default_sky = { label = "spawn default sun & sky", type = "boolean", description = "enable overriding map lights with Ultra Dynamic Sky", default = true }
-    enable_noclip = { label = "noclip", type = "boolean", description = "enable players to noclip", default = true }
-    enable_pvp = { label = "pvp", type = "boolean", description = "enable players to shoot themselves", default = true }
+    # my_toggle_example = { label = "awesome toggle", type = "boolean", description = "press this!", default = true }
