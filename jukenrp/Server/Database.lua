@@ -65,6 +65,11 @@ function GetCharacterbyID(id)
     return select
 end
 
+function UpdateCharacterGradebyID(id, grade)
+    local updatedcharacter = database:Select("UPDATE characters SET grade = ? WHERE id = ?", grade, id)
+    return updatedcharacter
+end
+
 Events.SubscribeRemote("GetAllCharacters", function ()
     GetAllCharacters()
 end)

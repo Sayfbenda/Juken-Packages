@@ -56,6 +56,7 @@ Events.Subscribe("AddCharactersTochooser", function(characters){
         element.addEventListener("click", function(e){
             if (e.target.classList.contains("taken")) {
                 const id = e.target.getAttribute("data-target")
+                ToggleCharacterChooser()
                 Events.Call("ChooseCharacter", id)
             }else{
                 ToggleCharacterChooser()
