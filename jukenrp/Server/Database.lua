@@ -49,3 +49,19 @@ Events.SubscribeRemote("CharactersForchooserMenu", function (local_player)
     local characters = SelectPlayerCharacters(local_player)
     Events.CallRemote("GetCharactersForChooser", local_player, characters)
 end)
+
+function InsertCharacterToDB(player, character)
+    local insertedcharacter = database:Execute("INSERT INTO characters VALUES (?, ?, ?, ?, ?, ?)", character:GetValue("id"), player:GetSteamID(), character:GetValue("name"), character:GetValue("lastname"), character:GetValue("age"), character:GetValue("grade"))
+    return insertedcharacter
+end
+
+function GetAllCharacters()
+    local select = database:Select("SELECT * FROM characters")
+    return select
+end
+
+Events.SubscribeRemote("GetAllCharacters", function ()
+    GetAllCharacters()
+end)
+
+Events.SubscribeRemote("InsertCharacterToDB", InsertCharacterToDB)
