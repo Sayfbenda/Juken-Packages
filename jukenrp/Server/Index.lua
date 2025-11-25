@@ -4,9 +4,6 @@ Player.Subscribe("Spawn", function (self)
 
     UpdateDataBasePlayer(self)
 
-    local character = Character(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SK_Male")
-
-
 
 end)
 
@@ -14,7 +11,8 @@ end)
 function UpdateDataBasePlayer(player)
     local selection = SelectPlayerInDB(player)
     if #selection > 0 then
-        return
+        UpdatePlayerInDB(player)
+    else
+        InsertNewPlayerToDB(player)
     end
-    InsertNewPlayerToDB(player)
 end

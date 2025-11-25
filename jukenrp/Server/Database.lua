@@ -20,3 +20,7 @@ function SelectPlayerInDB(player)
     local select = database:Select("SELECT * FROM players WHERE steamid = ?", player:GetSteamID())
     return select
 end
+
+function UpdatePlayerInDB(player)
+    local updatedplayer = database:Execute("UPDATE players SET id = ?, name = ?, ip = ? WHERE steamid = ?", player:GetID(), player:GetName(), player:GetIP(), player:GetSteamID())
+end
