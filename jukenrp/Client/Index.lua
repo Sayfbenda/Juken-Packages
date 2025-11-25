@@ -20,7 +20,6 @@ Input.Register("DevTool", "P")
 Input.Register("SpellMenu", "F4")
 
 Input.Bind("SpellMenu", InputEvent.Pressed, function ()
-    Console.Log("1")
     MainHUD:CallEvent("ToggleMenuSpell")
 end)
 

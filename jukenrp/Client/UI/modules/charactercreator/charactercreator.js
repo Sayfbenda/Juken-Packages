@@ -28,7 +28,6 @@ addEventListener("DOMContentLoaded", function(){
 })
 
 function ToggleCharacterCreator() {
-    console.log("hiii")
     const creatorMenu = document.querySelector("#creatorMenu")
     if (creatorMenu.style.display == "flex") {
         creatorMenu.style.display = "none"
@@ -44,7 +43,6 @@ function AddOnclickOnDivs(divs, length) {
 
                 SelecExesitingCharacter(index)
             }else{
-    console.log("test")
                 CreateCharacter(index)
             }
         })

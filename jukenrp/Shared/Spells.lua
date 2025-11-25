@@ -37,11 +37,11 @@ local byakurai = Spell.new(
 "../UI/modules/img/byakurai.png", 
 "C",
 function ()
-    Console.Log("helloooooo")
+
 end)
 
 local sss = Spell.new("hello", "SSS", "description", "../UI/modules/img/kisuke.jpeg", "S",function ()
-    Console.Log("helloooooo")
+
 end)
 
 
