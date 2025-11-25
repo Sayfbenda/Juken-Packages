@@ -1,0 +1,74 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Le conteneur principal qui assombrit l'image */
+        .overlay-screen {
+            overflow: hidden;
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            
+            /* --- C'EST ICI : Le fond noir transparent --- */
+            background-color: rgba(0, 0, 0, 0.75); 
+            
+            /* Optionnel : un léger flou arrière-plan pour moderniser (Glassmorphism subtil) */
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            
+            transition: background-color 0.3s ease;
+        }
+
+        /* Effet au survol de la page entière */
+        .overlay-screen:hover {
+            background-color: rgba(0, 0, 0, 0.65); /* S'éclaircit légèrement */
+        }
+
+        /* Contenu textuel */
+        .content {
+            text-align: center;
+            color: #ffffff;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        /* Icône play */
+        .icon-box {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+            animation: pulseSlow 3s infinite;
+        }
+
+        h1 {
+            font-weight: 800; /* Extra bold de Outfit */
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        p {
+            font-weight: 300;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            text-transform: uppercase;
+        }
+
+        /* Animations sans variables */
+        @keyframes pulseSlow {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
