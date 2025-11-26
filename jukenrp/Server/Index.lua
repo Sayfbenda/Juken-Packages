@@ -59,5 +59,4 @@ end
 
 
 Events.SubscribeRemote("AddValuesToexesitingCharacter", SpawnCharacterByID)
-
 Events.SubscribeRemote("CreateCharacter", CreateCharacter)

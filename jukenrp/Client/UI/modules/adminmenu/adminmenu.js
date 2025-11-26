@@ -5,7 +5,7 @@ addEventListener("DOMContentLoaded", function(){
         
         <header class="adminmenu-admin-header">
             <div class="adminmenu-admin-title">Juken Admin Pannel</div>
-            <i class="fa-solid fa-xmark adminmenu-admin-close"></i>
+            <i onclick="ToggleAdminMenu()" class="fa-solid fa-xmark adminmenu-admin-close"></i>
         </header>
 
         <div class="adminmenu-admin-main">
@@ -31,7 +31,7 @@ addEventListener("DOMContentLoaded", function(){
 
                         <div class="adminmenu-stat-line">
                             <span class="adminmenu-stat-label">Players:</span>
-                            <span class="adminmenu-stat-value">1</span>
+                            <span id="currentplayers" class="adminmenu-stat-value">0</span>
                         </div>
 
                         <div class="adminmenu-button-group">
@@ -97,8 +97,6 @@ asideElements.forEach(element => {
         asideElements.forEach(element => {
             const id = e.target.getAttribute('data-target')
             const page = document.getElementById(id)
-            console.log(id)
-            console.log(id)
             adminmenupages.forEach(element => {
                 element.classList.remove("adminmenu-page-active")
                 page.classList.add("adminmenu-page-active")
@@ -107,19 +105,18 @@ asideElements.forEach(element => {
             
         });
         e.target.classList.add("adminmenu-active")
-        console.log(e.target.classList)
     })
 });
 })
 
-Events.Subscribe("ToggleAdminMenu", function(){
+function ToggleAdminMenu() {
     const adminmenu = document.getElementById("adminmenu")
     if (adminmenu.style.display == "flex") {
         adminmenu.style.display = "none"
     }else{
         adminmenu.style.display = "flex"
     }
-})
+}
 
 Events.Subscribe("AddPlayerToAdminMenu", function(playername, accountname, steamid, accountid, id){
     const adminmenujoueurspage = document.getElementById("adminmenujoueurs-page")
@@ -202,3 +199,10 @@ Events.Subscribe("AddCharactersToAdminMenu", function(charaters){
         `) 
     });
 })
+
+Events.Subscribe("UpdateServerInformationAdminMenu", function(playerslength){
+    const players = document.getElementById("currentplayers")
+    players.innerText = playerslength
+})
+
+Events.Subscribe("ToggleAdminMenu", ToggleAdminMenu)
