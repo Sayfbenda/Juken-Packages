@@ -74,4 +74,9 @@ Events.SubscribeRemote("GetAllCharacters", function ()
     GetAllCharacters()
 end)
 
+Events.SubscribeRemote("GetCharactersForAdminMenu", function (player)
+    local characters = GetAllCharacters()
+    Events.CallRemote("AddCharactersToAdminMenu", player, characters)
+end)
+
 Events.SubscribeRemote("InsertCharacterToDB", InsertCharacterToDB)

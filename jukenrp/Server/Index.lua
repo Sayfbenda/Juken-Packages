@@ -57,6 +57,7 @@ function GenerateNewID()
     return #select + 1
 end
 
+
 Events.SubscribeRemote("AddValuesToexesitingCharacter", SpawnCharacterByID)
 
 Events.SubscribeRemote("CreateCharacter", CreateCharacter)

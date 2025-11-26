@@ -29,7 +29,7 @@ end)
 Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
     Events.CallRemote("CharactersForchooserMenu", local_player)
-
+    
     SetUpLocalPlayer(local_player)
 
 end)
@@ -44,6 +44,7 @@ end)
 
 
 function SetUpLocalPlayer(local_player)
+
     local_player:Subscribe("Possess", function (player, character)
         UpdateLocalCharacter(player, character)
         character:Subscribe("HealthChange", UpdateHealth)
@@ -56,6 +57,8 @@ function SetUpLocalPlayer(local_player)
     MainHUD:Subscribe("ChooseCharacter", function (id)
         Events.CallRemote("AddValuesToexesitingCharacter", id)
     end)
+
+    Events.CallRemote("GetCharactersForAdminMenu", local_player)
 end
 
 function UpdateLocalCharacter(player, character)
@@ -75,3 +78,4 @@ function ToggleMouseEnabled()
     end
     
 end
+
