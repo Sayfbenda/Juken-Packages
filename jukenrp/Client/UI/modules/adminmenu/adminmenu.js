@@ -77,25 +77,7 @@ addEventListener("DOMContentLoaded", function(){
 
                 </div>
                 <div id="adminmenujoueurs-page" class="adminmenu-page">
-                    <div class="adminmenu-section">
-                            <div class="adminmenu-section-header">
-                                <div class="adminmenu-section-title">
-                                    <i class="fa-solid fa-server"></i> Server Information
-                                </div>
-                                <i class="fa-solid fa-info-circle adminmenu-info-icon"></i>
-                            </div>
-
-                            <div class="adminmenu-stat-line">
-                                <span class="adminmenu-stat-label">Players:</span>
-                                <span class="adminmenu-stat-value">1</span>
-                            </div>
-
-                            <div class="adminmenu-button-group">
-                                <button class="adminmenu-btn adminmenu-btn-green">Announcement</button>
-                                <button class="adminmenu-btn adminmenu-btn-red">Kick All</button>
-                                <button class="adminmenu-btn adminmenu-btn-orange">Warn All</button>
-                            </div>
-                        </div>
+                        
                 </div>
             </main>
         </div>
@@ -132,4 +114,44 @@ Events.Subscribe("ToggleAdminMenu", function(){
     }else{
         adminmenu.style.display = "flex"
     }
+})
+
+Events.Subscribe("AddPlayerToAdminMenu", function(playername, accountname, steamid, accountid, id){
+    const adminmenujoueurspage = document.getElementById("adminmenujoueurs-page")
+    adminmenujoueurspage.insertAdjacentHTML("afterbegin", `
+                        <div class="adminmenu-section">
+                            <div class="adminmenu-section-header">
+                                <div class="adminmenu-section-title">
+                                    ${playername}
+                                </div>
+                                <i class="fa-solid fa-info-circle adminmenu-info-icon"></i>
+                            </div>
+
+                            <div class="adminmenu-stat-line">
+                                <span class="adminmenu-stat-label">ID :</span>
+                                <span class="adminmenu-stat-value">${id}</span>
+                            </div>
+                            
+                            <div class="adminmenu-stat-line">
+                                <span class="adminmenu-stat-label">Account Name :</span>
+                                <span class="adminmenu-stat-value">${accountname}</span>
+                            </div>
+                            
+                            <div class="adminmenu-stat-line">
+                                <span class="adminmenu-stat-label">Steam ID :</span>
+                                <span class="adminmenu-stat-value">${steamid}</span>
+                            </div>
+                            
+                            <div class="adminmenu-stat-line">
+                                <span class="adminmenu-stat-label">Account ID :</span>
+                                <span class="adminmenu-stat-value">${accountid}</span>
+                            </div>
+
+                            <div class="adminmenu-button-group">
+                                <button class="adminmenu-btn adminmenu-btn-green">Announcement</button>
+                                <button class="adminmenu-btn adminmenu-btn-red">Kick All</button>
+                                <button class="adminmenu-btn adminmenu-btn-orange">Warn All</button>
+                            </div>
+                        </div>
+        `)
 })

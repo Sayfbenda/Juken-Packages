@@ -34,6 +34,10 @@ Client.Subscribe("SpawnLocalPlayer", function (local_player)
 
 end)
 
+Player.Subscribe("Spawn", function (self)
+    MainHUD:CallEvent("AddPlayerToAdminMenu", self:GetName(), self:GetAccountName(),self:GetSteamID(), self:GetAccountID(), self:GetID())
+end)
+
 Events.SubscribeRemote("GetCharactersForChooser", function (characters)
     MainHUD:CallEvent("AddCharactersTochooser", characters)
 end)
