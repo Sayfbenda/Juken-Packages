@@ -1,0 +1,220 @@
+.adminmenu-admin-wrapper {
+            margin: 3rem;
+            position: fixed;
+            font-family: 'Outfit', sans-serif;
+            box-sizing: border-box;
+            color: white;
+            width: 600px;
+            height: 600px; /* Hauteur fixe pour que le contenu puisse déborder */
+            background: rgba(10, 10, 15, 0.95); 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            display: none;
+            flex-direction: column; /* Important pour que main prenne la hauteur restante */
+            backdrop-filter: blur(5px);
+        }
+
+        /* --- EN-TÊTE --- (Aucun changement nécessaire) */
+        .adminmenu-admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #1c1c25; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .adminmenu-admin-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .adminmenu-admin-close {
+            color: #ddd;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.2s;
+        }
+        .adminmenu-admin-close:hover {
+            color: #f44336; 
+        }
+
+        /* --- CORPS PRINCIPAL (SIDEBAR + CONTENT) --- */
+        .adminmenu-admin-main {
+            display: flex;
+            flex-grow: 1;
+            /* Flexbox dans une colonne Flexbox. min-height: 0 est souvent requis. */
+            min-height: 0; 
+        }
+
+        /* --- SIDEBAR DE NAVIGATION --- (Aucun changement nécessaire) */
+        .adminmenu-admin-sidebar {
+            width: 100px;
+            max-width: 100px;
+            background-color: #1c1c25;
+            padding-top: 20px;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .adminmenu-nav-item {
+            /* ... (styles de navigation) */
+            width: 100%;
+            height: 55px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ddd;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            position: relative;
+        }
+
+        .adminmenu-nav-item:hover,
+        .adminmenu-nav-item.adminmenu-active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .adminmenu-nav-item.adminmenu-active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: #2196F3; 
+        }
+
+        /* --- ZONE DE CONTENU PRINCIPAL (CORRECTION CLÉ) --- */
+        .adminmenu-admin-content {
+            flex-grow: 1;
+            padding: 20px 30px;
+            overflow-y: auto; /* Doit fonctionner maintenant */
+            /* Assure que l'élément prend la hauteur restante sans dépasser */
+            min-height: 0; 
+        }
+
+        /* --- BLOCS DE SECTION et autres styles (restent inchangés) --- */
+        .adminmenu-section {
+            background-color: #1e1e24;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .adminmenu-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .adminmenu-section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            color: #2196F3; 
+        }
+
+        .adminmenu-section-title i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .adminmenu-info-icon {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .adminmenu-stat-line {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .adminmenu-stat-label {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .adminmenu-coords-text {
+            color: #FF9800; 
+            font-weight: 500;
+            line-height: 1.4;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .adminmenu-button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .adminmenu-btn {
+            font-family: 'Outfit', sans-serif;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            color: white;
+            transition: background-color 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            flex: 1; 
+            min-width: 150px;
+        }
+        
+        .adminmenu-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .adminmenu-btn-green { background-color: #4CAF50; }
+        .adminmenu-btn-red { background-color: #F44336; }
+        .adminmenu-btn-orange { background-color: #FF9800; }
+        .adminmenu-btn-blue { background-color: #2196F3; }
+        
+        .adminmenu-btn-dark {
+            background-color: #333;
+            color: #ddd;
+        }
+        .adminmenu-btn-dark:hover {
+            background-color: #444;
+        }
+
+        .adminmenu-quick-actions-arrows {
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 1.2rem;
+        }
+        
+        /* SCROLLBAR CUSTOMIZATION */
+        .adminmenu-admin-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .adminmenu-admin-content::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .adminmenu-admin-content::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .adminmenu-page{
+            display: none;
+        }
+        .adminmenu-page-active{
+            display: block;
+        }

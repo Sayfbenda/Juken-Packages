@@ -7,7 +7,9 @@ WidgetVisibility.Visible
 Input.Register("ToggleCursor", "C")
 Input.Register("DevConsole", "P")
 Input.Register("ToggleNoclip", "B")
+Input.Register("ToggleAdminMenu", "F1")
 
+Package.Require("Admin.lua")
 Package.Require("Characterui.lua")
 
 Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
