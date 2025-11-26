@@ -48,8 +48,8 @@ function SetUpLocalPlayer(local_player)
     end)
 
     MainHUD:Subscribe("ChooseCharacter", function (id)
-    Events.CallRemote("AddValuesToexesitingCharacter", id)
-end)
+        Events.CallRemote("AddValuesToexesitingCharacter", id)
+    end)
 end
 
 function UpdateLocalCharacter(player, character)
