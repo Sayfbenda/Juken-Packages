@@ -7,7 +7,7 @@ addEventListener("DOMContentLoaded", function(){
             
             <div class="spawnmenu-header">
                 <h2 class="spawnmenu-title">Menu de Spawning</h2>
-                <span class="spawnmenu-close"><i class="fas fa-times"></i></span>
+                <span onclick="ToggleSpawnMenu()" class="spawnmenu-close"><i class="fas fa-times"></i></span>
             </div>
 
             <div class="spawnmenu-main">
@@ -47,7 +47,7 @@ addEventListener("DOMContentLoaded", function(){
                 </div>
 
                 <div class="spawnmenu-button-group">
-                    <button class="spawnmenu-btn spawnmenu-btn-dark">Annuler</button>
+                    <button onclick="ToggleSpawnMenu()" class="spawnmenu-btn spawnmenu-btn-dark">Annuler</button>
                     <button class="spawnmenu-btn spawnmenu-btn-blue">Apparaître l'Objet</button>
                 </div>
 
