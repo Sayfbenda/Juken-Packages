@@ -330,3 +330,134 @@
      box-shadow: 0 0 20px rgba(0, 188, 212, 0.9);
      transform: scale(1.05);
 }
+
+.spell-hotbar-container {
+            font-family: 'Outfit', sans-serif;
+            color: #dcdcdc; /* Gris clair moderne */
+            position: fixed; /* Fixé en bas de la fenêtre */
+            bottom: 20px; /* 20px du bas */
+            left: 50%; /* Commence au milieu horizontalement */
+            transform: translateX(-50%); /* Décale de la moitié de sa propre largeur vers la gauche pour centrer */
+            
+            display: flex;
+            gap: 10px; /* Espace entre les icônes */
+            padding: 10px 15px;
+            border-radius: 15px;
+            z-index: 1000; /* Assure qu'elle est au-dessus des autres éléments */
+        }
+
+        .hotbar-spell-slot {
+            width: 80px; /* Taille de l'icône */
+            height: 80px;
+            border-radius: 50%; /* Forme circulaire */
+            background: #1c1c1c; /* Fond par défaut */
+            border: 3px solid #34495e; /* Bordure foncée par défaut */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 
+                inset 2px 2px 5px #0a0a0a, 
+                inset -2px -2px 5px #2c2c2c,
+                0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* État sélectionné */
+        .hotbar-spell-slot.selected {
+            border-color: #00bcd4; /* Bordure turquoise */
+            box-shadow: 
+                inset 2px 2px 5px #0a0a0a, 
+                inset -2px -2px 5px #2c2c2c,
+                0 0 20px rgba(0, 188, 212, 0.7); /* Lueur */
+            transform: scale(1.05); /* Légère augmentation de taille */
+        }
+
+        /* Numéro de raccourci (1, 2, 3...) */
+        .hotbar-key-bind {
+            position: absolute;
+            top: -10px; /* Au-dessus du cercle */
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c3e50; /* Fond foncé */
+            color: #ecf0f1; /* Texte clair */
+            font-size: 14px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            border: 1px solid #00bcd4; /* Bordure de la même couleur que l'active */
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Icône principale du sort */
+        .hotbar-spell-icon {
+            font-size: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            position: relative;
+            z-index: 2; /* Au-dessus du cooldown mais sous le key-bind */
+        }
+
+        /* Cooldown numérique */
+        .hotbar-cooldown {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 30px; /* Grande taille pour la visibilité */
+            font-weight: 900;
+            color: #ecf0f1; /* Blanc éclatant */
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+            z-index: 3; /* Au-dessus de l'icône, mais derrière le key-bind */
+            background: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent pour le texte */
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Coût en Chakra */
+        .hotbar-chakra-cost {
+            position: absolute;
+            bottom: 0px; /* Bas du cercle */
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8); /* Fond très sombre */
+            color: #3498db; /* Couleur bleue pour le chakra */
+            font-size: 12px;
+            font-weight: 700;
+            padding: 2px 5px;
+            border-radius: 5px;
+            z-index: 4;
+            box-shadow: inset 0 0 3px rgba(0, 188, 212, 0.5);
+        }
+
+        /* Styles d'image de fond pour des icônes spécifiques (ex: Dragon bleu) */
+        .hotbar-spell-slot.dragon-spell {
+            background: url('https://i.imgur.com/example_dragon_image.png') center center / cover no-repeat; /* Remplacez par votre URL d'image de dragon */
+            border-color: #4CAF50; /* Une bordure verte pour un sort de dragon */
+        }
+
+        /* Overlay de Cooldown */
+        .hotbar-cooldown-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            z-index: 1; /* Sous le texte du cooldown et l'icône */
+            transform-origin: bottom; /* Pour que l'animation de remplissage vienne du bas */
+            /* height: 80%; */ /* Exemple de cooldown à 80% */
+        }
+
+        /* Effet de fondu/grisage pour les sorts non disponibles (hors cooldown ou pas de mana) */
+        .hotbar-spell-slot.disabled {
+            filter: grayscale(80%) brightness(50%);
+            cursor: not-allowed;
+            border-color: #7f8c8d;
+            opacity: 0.7;
+        }

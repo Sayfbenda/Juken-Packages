@@ -82,6 +82,51 @@ addEventListener("DOMContentLoaded", function(){
     </div>
 
 </div>
+
+<div class="spell-hotbar-container">
+    
+    <div class="hotbar-spell-slot disabled">
+        <span class="hotbar-key-bind">1</span>
+        <div class="hotbar-cooldown-overlay" style="height: 40%;"></div> <div class="hotbar-cooldown">39</div>
+        <i class="fas fa-hand-fist hotbar-spell-icon"></i>
+        <span class="hotbar-chakra-cost">100</span>
+    </div>
+
+    <div class="hotbar-spell-slot disabled">
+        <span class="hotbar-key-bind">2</span>
+        <div class="hotbar-cooldown-overlay" style="height: 60%;"></div> 
+        <div class="hotbar-cooldown">46</div>
+        <i class="fas fa-wind hotbar-spell-icon"></i>
+        <span class="hotbar-chakra-cost">120</span>
+    </div>
+
+    <div class="hotbar-spell-slot disabled">
+        <span class="hotbar-key-bind">3</span>
+        <div class="hotbar-cooldown-overlay" style="height: 20%;"></div>
+        <div class="hotbar-cooldown">87</div>
+        <i class="fas fa-bolt hotbar-spell-icon"></i>
+        <span class="hotbar-chakra-cost">150</span>
+    </div>
+
+    <div class="hotbar-spell-slot disabled"> <span class="hotbar-key-bind">4</span>
+        <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
+        <i class="fas fa-long-arrow-alt-right hotbar-spell-icon"></i> <span class="hotbar-chakra-cost">90</span>
+    </div>
+
+    <div class="hotbar-spell-slot disabled"> <span class="hotbar-key-bind">5</span>
+        <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
+        <i class="fas fa-long-arrow-alt-right hotbar-spell-icon"></i> <span class="hotbar-chakra-cost">90</span>
+    </div>
+
+    <div class="hotbar-spell-slot disabled">
+        <span class="hotbar-key-bind">6</span>
+        <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
+        <i class="fas fa-dragon hotbar-spell-icon"></i>
+        <span class="hotbar-chakra-cost">200</span>
+    </div>
+
+</div>
+
         `)
 
 })
@@ -121,9 +166,11 @@ Events.Subscribe("GetSelectedSpell", function(){
 })
 
 Events.Subscribe("SelectSpell", function(index){
-    const spellsinbar = document.querySelectorAll(".spellsinbar")
+    const spellsinbar = document.querySelectorAll(".hotbar-spell-slot")
     spellsinbar.forEach(element => {
-        element.classList.remove("spell-selected")
+        element.classList.remove("selected")
+        element.classList.add("disabled")
     });
-    spellsinbar[index].classList.add("spell-selected")
+    spellsinbar[index].classList.remove("disabled")
+    spellsinbar[index].classList.add("selected")
 })

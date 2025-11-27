@@ -13,10 +13,10 @@ Input.Register("LunchSpell", "RightMouseButton")
 
 Input.Register("FirstSpell", "Ampersand")
 Input.Register("SecondSpell", "E_AccentAigu")
-Input.Register("ThirdSpell", "")
-Input.Register("FourthSpell", "Quote")
+Input.Register("ThirdSpell", "Quote")
+Input.Register("FourthSpell", "Apostrophe")
 Input.Register("FifthSpell", "LeftParantheses")
-Input.Register("SixthSpell", "")
+Input.Register("SixthSpell", "Hyphen")
 
 Package.Require("Spells.lua")
 Package.Require("Admin.lua")
@@ -102,6 +102,12 @@ end
 MainHUD:Subscribe("GetCharacterCoordsAdminMenu", function ()
     local player = Client.GetLocalPlayer()
     local character = player:GetControlledCharacter()
-    local location = character:GetLocation()
+    local location
+    if (character) then
+        location = character:GetLocation()
+    else
+        location = player:GetCameraLocation()
+    end
+    
     MainHUD:CallEvent("SetCharacterCoordsOnrefresh", tostring(location))
 end)
