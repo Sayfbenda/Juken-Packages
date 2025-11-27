@@ -125,7 +125,7 @@
     flex-wrap: wrap;
     gap: 12px;
     max-height: 520px;
-    overflow-y: auto;
+    overflow: visible;
     padding-right: 15px; 
 }
 

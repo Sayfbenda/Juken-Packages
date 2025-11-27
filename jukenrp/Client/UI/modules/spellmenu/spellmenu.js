@@ -106,11 +106,10 @@ Events.Subscribe("ToggleSpellMenu", function(){
 })
 
 Events.Subscribe("AddSpellsToSpellMenu", function(spells){
-    console.log(spells)
     const spellmenudiv = document.getElementById("spellmenudiv")
     spells.forEach(element => {
         spellmenudiv.insertAdjacentHTML("beforeend", `
-            <div draggable="true" class="spellmenu-spell-icon data-target="${element.id}" color-2"><i class="fas fa-hand-holding-heart"></i><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
+            <div draggable="true" class="spellmenu-spell-icon color-2" data-target="${element.id}"><i class="fas fa-hand-holding-heart"></i><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
             `)
     });
 })
