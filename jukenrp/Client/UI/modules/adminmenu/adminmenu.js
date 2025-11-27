@@ -51,12 +51,12 @@ addEventListener("DOMContentLoaded", function(){
                         
                         <div class="adminmenu-stat-line">
                             <span class="adminmenu-stat-label">Coord</span>
-                            <span id="charactercurrentcoords" class="adminmenu-coords-text">Vector(X = 1301.5175734662, Y = 2295.1688905867, Z = 98.149998188019)</span>
+                            <span id="charactercurrentcoords" class="adminmenu-coords-text">(0, 0, 0)</span>
                         </div>
 
                         <div class="adminmenu-button-group">
                             <button onclick="GetCharacterCoordsAdminMenu()" class="adminmenu-btn adminmenu-btn-blue">Réafrichir</button>
-                            <button class="adminmenu-btn adminmenu-btn-blue">Set coords</button>
+                            <button onclick="SetCharacterLocation()" class="adminmenu-btn adminmenu-btn-blue">Set coords</button>
                         </div>
                     </div>
 
@@ -211,6 +211,19 @@ function ToggleNoclipByAdminMenu() {
 
 function GetCharacterCoordsAdminMenu() {
     Events.Call("GetCharacterCoordsAdminMenu")
+}
+
+function ToogleSetCoordsAdminMenu() {
+    const menu = document.getElementById("")
+    if (menu.style.display == "block") {
+        menu.style.display = "none"
+    }else{
+        menu.style.display = "block"
+    }
+}
+
+function SetCharacterLocation() {
+    
 }
 
 Events.Subscribe("SetCharacterCoordsOnrefresh", function(coords){

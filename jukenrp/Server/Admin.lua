@@ -10,4 +10,9 @@ function ToggleNoclip(player)
     end
 end
 
+function SetCharacterLocation(character, coords)
+    character:SetLocation(Vector(coords))
+end
+
+Events.SubscribeRemote("SetCharacterLocation", SetCharacterLocation)
 Events.SubscribeRemote("ToggleNoclip", ToggleNoclip)
