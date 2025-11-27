@@ -69,7 +69,7 @@ addEventListener("DOMContentLoaded", function(){
                         </div>
 
                         <div class="adminmenu-button-group">
-                            <button class="adminmenu-btn adminmenu-btn-dark">Noclip</button>
+                            <button onclick="ToggleNoclipWhiteAdminMenu()" class="adminmenu-btn adminmenu-btn-dark">Noclip</button>
                             <button class="adminmenu-btn adminmenu-btn-dark">Revive</button>
                             <button class="adminmenu-btn adminmenu-btn-green">Se Heal</button>
                         </div>
@@ -205,4 +205,7 @@ Events.Subscribe("UpdateServerInformationAdminMenu", function(playerslength){
     players.innerText = playerslength
 })
 
+function ToggleNoclipWhiteAdminMenu() {
+    Events.Call("ToggleNoclipWhiteAdminMenu")
+}
 Events.Subscribe("ToggleAdminMenu", ToggleAdminMenu)

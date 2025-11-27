@@ -25,10 +25,6 @@ Package.Require("Characterui.lua")
 Package.Require("Spawnmenu.lua")
 Package.Require("Spellmenu.lua")
 
-Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
-    Events.CallRemote("ToggleNoclip")
-end)
-
 Input.Bind("DevConsole", InputEvent.Pressed, function ()
     MainHUD:OpenDevTools()
 end)
