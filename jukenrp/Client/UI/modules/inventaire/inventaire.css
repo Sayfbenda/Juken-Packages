@@ -1,0 +1,280 @@
+.inventory-container {
+            /* Couleurs intégrées */
+            --accent-color: #00ffff;
+            --bg-dark: #111111;
+            --bg-glass: rgba(17, 17, 17, 0.7);
+            --border-light: rgba(0, 255, 255, 0.2);
+            --shadow-glow: rgba(0, 255, 255, 0.4);
+
+            color: #dcdcdc; 
+            font-family: 'Outfit', sans-serif;
+            position: fixed; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            
+            width: 1300px; 
+            height: 800px;
+            background: var(--bg-glass); 
+            border-radius: 15px; 
+            
+            /* EFFET Verre dépoli - Renforcé pour la compatibilité */
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px); 
+
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), 
+                        0 0 50px var(--shadow-glow); 
+            display: none;
+            grid-template-rows: 60px 1fr;
+            overflow: hidden;
+            border: 1px solid var(--border-light); 
+            z-index: 10;
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* 1. BARRE D'ENTÊTE ET BOUTONS DE NAVIGATION                                 */
+        /* -------------------------------------------------------------------------- */
+        .inventory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px;
+            background: rgba(0, 0, 0, 0.5); 
+            border-bottom: 1px solid var(--border-light); 
+        }
+
+        .header-title {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--accent-color); 
+            text-shadow: 0 0 5px var(--shadow-glow); 
+        }
+        .header-title i { margin-right: 10px; }
+
+        .header-button {
+            background: rgba(0, 255, 255, 0.1); 
+            color: var(--accent-color); 
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+        }
+
+        .header-button:hover {
+            background: rgba(0, 255, 255, 0.2); 
+            box-shadow: 0 0 20px var(--shadow-glow);
+        }
+
+        .header-button.exit {
+            background: rgba(231, 76, 60, 0.2); 
+            color: #e74c3c;
+            border: 1px solid rgba(231, 76, 60, 0.5);
+        }
+        .header-button.exit:hover {
+            background: rgba(231, 76, 60, 0.4);
+            box-shadow: 0 0 20px rgba(231, 76, 60, 0.6);
+        }
+
+        /* -------------------------------------------------------------------------- */
+        /* 2. CONTENU PRINCIPAL (INVENTAIRE & PERSONNAGE)                             */
+        /* -------------------------------------------------------------------------- */
+        .inventory-main-content {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr;
+        }
+
+        .inventory-panel {
+            padding: 30px;
+            display: grid;
+            grid-template-rows: auto 1fr auto; /* Onglets, Grille, Footer */
+            border-right: 1px solid var(--border-light); 
+        }
+        
+        /* Onglets Matériaux/Équipements */
+        .inventory-tabs {
+            display: flex;
+            gap: 25px;
+            align-items: flex-end;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            margin-bottom: 25px;
+        }
+
+        .tab-item {
+            color: #7f8c8d;
+            font-weight: 700;
+            font-size: 18px;
+            padding: 0 0 10px 0;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-item.active {
+            color: var(--accent-color); 
+            border-bottom: 3px solid var(--accent-color); 
+            text-shadow: 0 0 5px var(--shadow-glow);
+        }
+        
+        /* INFO BARS & ONGLES INFÉRIEURS */
+        .inventory-footer-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .info-bars {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        .info-bars span {
+            color: var(--accent-color); 
+            font-weight: 700;
+            margin-left: 8px;
+            text-shadow: 0 0 5px var(--shadow-glow);
+        }
+        .panel-footer-tabs {
+            display: flex;
+            gap: 20px;
+        }
+        .panel-footer-tabs .tab-item { 
+            border-bottom: none;
+            color: #7f8c8d;
+            font-weight: 500;
+        }
+        .panel-footer-tabs .tab-item.active {
+            color: var(--accent-color);
+        }
+
+
+        /* GRILLE DES OBJETS (Zone scrollable) */
+        .item-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr); 
+            gap: 15px;
+            overflow-y: auto; /* Permet le défilement */
+            padding-right: 15px; 
+            padding-bottom: 5px; 
+        }
+        
+        .item-grid::-webkit-scrollbar { width: 10px; }
+        .item-grid::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 5px; }
+        .item-grid::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); border-radius: 5px; }
+
+
+        .item-slot {
+            width: 95px;
+            height: 95px;
+            background: rgba(0, 0, 0, 0.3); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 10px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item-slot:hover {
+            border-color: var(--accent-color); 
+            box-shadow: 0 0 15px var(--shadow-glow); 
+            transform: translateY(-2px);
+        }
+
+        .item-quantity {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--accent-color); 
+            font-size: 14px;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 5px;
+            border: 1px solid var(--border-light);
+            text-shadow: 0 0 3px var(--shadow-glow);
+        }
+        
+        .item-slot .fa-solid {
+            font-size: 50px;
+            color: var(--accent-color);
+            text-shadow: 0 0 10px var(--shadow-glow);
+        }
+        
+        /* PANNEAU DE DROITE : PERSONNAGE ET ÉQUIPEMENT */
+        .character-panel {
+            padding: 30px;
+            display: grid;
+            grid-template-rows: 1fr auto; 
+            background: rgba(0, 0, 0, 0.3); 
+        }
+
+        .equipment-display {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .character-model-area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px 0;
+        }
+        .character-model-placeholder {
+            width: 250px;
+            height: 400px;
+            background: url('https://i.imgur.com/example_char_image.png') center center / contain no-repeat; 
+            filter: drop-shadow(0 0 15px var(--shadow-glow)); 
+        }
+        
+        .equipment-slots {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .equipment-slot-right {
+            align-items: flex-end;
+        }
+
+        .equipment-slot {
+            width: 85px;
+            height: 85px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px dashed var(--border-light); 
+            border-radius: 10px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        .equipment-slot.filled {
+            border: 2px solid var(--accent-color); 
+            box-shadow: 0 0 15px var(--shadow-glow); 
+        }
+        .equipment-slot img {
+            width: 90%;
+            height: 90%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .equipment-slot-bottom {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 20px;
+        }
+
+
+        .detail-item-name { color: var(--accent-color); text-shadow: 0 0 8px var(--shadow-glow); }
+        .detail-item-stat span { color: var(--accent-color); text-shadow: 0 0 5px var(--shadow-glow); }
+        .action-button { border: none; } 
