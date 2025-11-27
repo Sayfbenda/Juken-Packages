@@ -20,10 +20,12 @@ local spelldev = Spell.new(
 "C", 
 "ceci est une description",
 function ()
-        
+    Console.log("test")
 end)
+
 
 
 SPELLS = {
     spelldev
 }
+

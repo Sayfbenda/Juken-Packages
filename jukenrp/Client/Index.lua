@@ -10,6 +10,7 @@ Input.Register("ToggleNoclip", "B")
 Input.Register("ToggleAdminMenu", "F1")
 Input.Register("ToggleSpawnMenu", "A")
 Input.Register("ToggleSpellMenu", "F4")
+Input.Register("LunchSpell", "RightMouseButton")
 
 Package.Require("Spells.lua")
 Package.Require("Admin.lua")
