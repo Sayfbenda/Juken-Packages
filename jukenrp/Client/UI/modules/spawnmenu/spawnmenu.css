@@ -1,0 +1,266 @@
+.spawnmenu-center-container {
+            box-sizing: border-box;
+            height: 100vh;
+            width: 100vw;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        /* --- WRAPPER DU MENU (DESIGN RÉTROUVÉ) --- */
+        .spawnmenu-wrapper {
+            width: 900px;
+            height: 650px;
+            
+            font-family: 'Outfit', sans-serif;
+            color: white;
+            box-sizing: border-box;
+            
+            /* --- FOND D'ORIGINE RÉTROUVÉ --- */
+            background: rgba(10, 10, 15, 0.95); /* Fond sombre légèrement transparent */
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.7);
+            
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px); /* Glassmorphism plus prononcé */
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* --- EN-TÊTE --- */
+        .spawnmenu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background-color: #1c1c25;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .spawnmenu-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: white;
+        }
+
+        .spawnmenu-close {
+            color: #ddd;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: color 0.2s;
+        }
+        .spawnmenu-close:hover {
+            color: #f44336; 
+        }
+
+        /* --- CORPS PRINCIPAL (CATEGORIES + GRILLE D'OBJETS) --- */
+        .spawnmenu-main {
+            display: flex;
+            flex-grow: 1;
+            min-height: 0;
+        }
+
+        /* --- NAVIGATION PAR CATÉGORIES (SIDEBAR) --- */
+        .spawnmenu-categories {
+            width: 160px;
+            background-color: #1c1c25;
+            padding: 20px 0;
+            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+        }
+
+        .spawnmenu-category-item {
+            padding: 12px 15px;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            text-transform: capitalize;
+            border-left: 3px solid transparent;
+        }
+
+        .spawnmenu-category-item:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .spawnmenu-category-item.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-left-color: #2196F3;
+        }
+
+        /* --- ZONE DE GRILLE D'OBJETS --- */
+        .spawnmenu-item-grid-container {
+            flex-grow: 1;
+            padding: 20px 25px;
+            overflow-y: auto;
+        }
+
+        .spawnmenu-item-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 15px;
+        }
+
+        /* --- CARTE D'UN OBJET --- */
+        .spawnmenu-item-card {
+            background-color: rgba(30, 30, 38, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .spawnmenu-item-card:hover {
+            background-color: rgba(40, 40, 50, 0.8);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+        }
+
+        .spawnmenu-item-card.selected {
+            border-color: #2196F3;
+            background-color: rgba(33, 150, 243, 0.2);
+        }
+
+        .spawnmenu-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        .spawnmenu-item-name {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #ddd;
+            line-height: 1.2;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 95%;
+        }
+
+        /* --- PIED DE PAGE --- */
+        .spawnmenu-footer {
+            padding: 15px 25px;
+            background-color: #1c1c25;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .spawnmenu-checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .spawnmenu-checkbox {
+            width: 18px;
+            height: 18px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .spawnmenu-checkbox i {
+            font-size: 0.9rem;
+            color: #2196F3;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .spawnmenu-checkbox.checked {
+            background-color: #2196F3;
+            border-color: #2196F3;
+        }
+        .spawnmenu-checkbox.checked i {
+            opacity: 1;
+            color: white;
+        }
+
+        .spawnmenu-checkbox-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            cursor: pointer;
+        }
+
+        .spawnmenu-button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .spawnmenu-btn {
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            color: white;
+            transition: background-color 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        
+        .spawnmenu-btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        .spawnmenu-btn-dark {
+            background-color: #333;
+            color: #ddd;
+        }
+        .spawnmenu-btn-dark:hover {
+            background-color: #444;
+        }
+
+        .spawnmenu-btn-blue {
+            background-color: #2196F3; 
+        }
+
+        /* SCROLLBAR CUSTOMIZATION */
+        .spawnmenu-categories::-webkit-scrollbar,
+        .spawnmenu-item-grid-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .spawnmenu-categories::-webkit-scrollbar-thumb,
+        .spawnmenu-item-grid-container::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+
+        .spawnmenu-categories::-webkit-scrollbar-track,
+        .spawnmenu-item-grid-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }

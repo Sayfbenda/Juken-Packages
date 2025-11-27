@@ -8,9 +8,11 @@ Input.Register("ToggleCursor", "C")
 Input.Register("DevConsole", "P")
 Input.Register("ToggleNoclip", "B")
 Input.Register("ToggleAdminMenu", "F1")
+Input.Register("ToggleSpawnMenu", "A")
 
 Package.Require("Admin.lua")
 Package.Require("Characterui.lua")
+Package.Require("Spawnmenu.lua")
 
 Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
     Events.CallRemote("ToggleNoclip")
