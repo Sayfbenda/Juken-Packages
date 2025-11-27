@@ -11,6 +11,6 @@ Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
     Events.CallRemote("ToggleNoclip")
 end)
 
-MainHUD:Subscribe("ToggleNoclipWhiteAdminMenu", function ()
+MainHUD:Subscribe("ToggleNoclipWithAdminMenu", function ()
     Events.CallRemote("ToggleNoclip")
 end)

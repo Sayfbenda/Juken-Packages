@@ -1,8 +1,7 @@
 MainHUD = WebUI(
 "MainHUD",
 "file://UI/index.html",
-WidgetVisibility.Visible
-)
+WidgetVisibility.Visible)
 
 Input.Register("ToggleCursor", "C")
 Input.Register("DevConsole", "P")
@@ -98,6 +97,11 @@ function ToggleMouseEnabled()
     else
         Input.SetMouseEnabled(true)
     end
-    
 end
 
+MainHUD:Subscribe("GetCharacterCoordsAdminMenu", function ()
+    local player = Client.GetLocalPlayer()
+    local character = player:GetControlledCharacter()
+    local location = character:GetLocation()
+    MainHUD.CallEvent("SetCharacterCoordsOnrefresh", tostring(location))
+end)

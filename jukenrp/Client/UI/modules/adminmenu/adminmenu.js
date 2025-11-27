@@ -51,11 +51,11 @@ addEventListener("DOMContentLoaded", function(){
                         
                         <div class="adminmenu-stat-line">
                             <span class="adminmenu-stat-label">Coord</span>
-                            <span class="adminmenu-coords-text">Vector(X = 1301.5175734662, Y = 2295.1688905867, Z = 98.149998188019)</span>
+                            <span id="charactercurrentcoords" class="adminmenu-coords-text">Vector(X = 1301.5175734662, Y = 2295.1688905867, Z = 98.149998188019)</span>
                         </div>
 
                         <div class="adminmenu-button-group">
-                            <button class="adminmenu-btn adminmenu-btn-blue">Réafrichir</button>
+                            <button onclick="GetCharacterCoordsAdminMenu()" class="adminmenu-btn adminmenu-btn-blue">Réafrichir</button>
                             <button class="adminmenu-btn adminmenu-btn-blue">Set coords</button>
                         </div>
                     </div>
@@ -69,7 +69,7 @@ addEventListener("DOMContentLoaded", function(){
                         </div>
 
                         <div class="adminmenu-button-group">
-                            <button onclick="ToggleNoclipWhiteAdminMenu()" class="adminmenu-btn adminmenu-btn-dark">Noclip</button>
+                            <button onclick="ToggleNoclipByAdminMenu()" class="adminmenu-btn adminmenu-btn-dark">Noclip</button>
                             <button class="adminmenu-btn adminmenu-btn-dark">Revive</button>
                             <button class="adminmenu-btn adminmenu-btn-green">Se Heal</button>
                         </div>
@@ -205,7 +205,17 @@ Events.Subscribe("UpdateServerInformationAdminMenu", function(playerslength){
     players.innerText = playerslength
 })
 
-function ToggleNoclipWhiteAdminMenu() {
-    Events.Call("ToggleNoclipWhiteAdminMenu")
+function ToggleNoclipByAdminMenu() {
+    Events.Call("ToggleNoclipWithAdminMenu")
 }
+
+function GetCharacterCoordsAdminMenu() {
+    Events.Call("GetCharacterCoordsAdminMenu")
+}
+
+Events.Subscribe("SetCharacterCoordsOnrefresh", function(coords){
+    const charactercurrentcoords = document.getElementById("charactercurrentcoords")
+    charactercurrentcoords.innerText = coords
+})
+
 Events.Subscribe("ToggleAdminMenu", ToggleAdminMenu)
