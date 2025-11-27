@@ -83,7 +83,17 @@ addEventListener("DOMContentLoaded", function(){
 
 </div>
         `)
+
 })
+
+const spells = document.querySelectorAll(".spellmenu-spell-icon")
+spells.forEach(element => {
+    element.addEventListener("click", function(e){
+        console.log("un spell a été cliqué")
+    })
+});
+
+
 
 
 Events.Subscribe("ToggleSpellMenu", function(){
@@ -100,7 +110,21 @@ Events.Subscribe("AddSpellsToSpellMenu", function(spells){
     const spellmenudiv = document.getElementById("spellmenudiv")
     spells.forEach(element => {
         spellmenudiv.insertAdjacentHTML("beforeend", `
-            <div class="spellmenu-spell-icon color-2"><i class="fas fa-hand-holding-heart"></i><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
+            <div draggable="true" class="spellmenu-spell-icon data-target="${element.id}" color-2"><i class="fas fa-hand-holding-heart"></i><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
             `)
     });
+})
+
+Events.Subscribe("GetSelectedSpell", function(){
+    const selectedspell = document.getElementsByClassName("spell-selected")
+    const id = selectedspell.getAttribute('data-target')
+    Events.Call("LunchSpellWithID", id)
+})
+
+Events.Subscribe("SelectSpell", function(index){
+    const spellsinbar = document.querySelectorAll(".spellsinbar")
+    spellsinbar.forEach(element => {
+        element.classList.remove("spell-selected")
+    });
+    spellsinbar[index].classList.add("spell-selected")
 })

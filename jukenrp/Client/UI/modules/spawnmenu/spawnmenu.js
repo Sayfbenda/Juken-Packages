@@ -78,4 +78,5 @@ Events.Subscribe("AddStaticMechesToMenu", function(prop, icon){
         `)
 })
 
+
 Events.Subscribe("ToggleSpawnMenu", ToggleSpawnMenu)

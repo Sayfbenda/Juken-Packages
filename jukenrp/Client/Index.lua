@@ -12,6 +12,13 @@ Input.Register("ToggleSpawnMenu", "A")
 Input.Register("ToggleSpellMenu", "F4")
 Input.Register("LunchSpell", "RightMouseButton")
 
+Input.Register("FirstSpell", "Ampersand")
+Input.Register("SecondSpell", "E_AccentAigu")
+Input.Register("ThirdSpell", "")
+Input.Register("FourthSpell", "Quote")
+Input.Register("FifthSpell", "LeftParantheses")
+Input.Register("SixthSpell", "")
+
 Package.Require("Spells.lua")
 Package.Require("Admin.lua")
 Package.Require("Characterui.lua")
