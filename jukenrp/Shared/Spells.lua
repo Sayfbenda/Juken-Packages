@@ -10,9 +10,10 @@ function Spell.new(name, id, image, categorie, description, lunch)
     self.description = description
     self.lunch = lunch
 
+    return self
 end
 
-local spelldev = Spell(
+local spelldev = Spell.new(
 "Spell Dev",
 "SPELLDEV", 
 "", 
@@ -21,3 +22,8 @@ local spelldev = Spell(
 function ()
         
 end)
+
+
+SPELLS = {
+    spelldev
+}

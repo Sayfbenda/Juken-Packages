@@ -9,10 +9,13 @@ Input.Register("DevConsole", "P")
 Input.Register("ToggleNoclip", "B")
 Input.Register("ToggleAdminMenu", "F1")
 Input.Register("ToggleSpawnMenu", "A")
+Input.Register("ToggleSpellMenu", "F4")
 
+Package.Require("Spells.lua")
 Package.Require("Admin.lua")
 Package.Require("Characterui.lua")
 Package.Require("Spawnmenu.lua")
+Package.Require("Spellmenu.lua")
 
 Input.Bind("ToggleNoclip", InputEvent.Pressed, function ()
     Events.CallRemote("ToggleNoclip")
@@ -38,10 +41,14 @@ end)
 
 Player.Subscribe("Spawn", function (self)
 
-    MainHUD:CallEvent("AddPlayerToAdminMenu", self:GetName(), self:GetAccountName(),self:GetSteamID(), self:GetAccountID(), self:GetID())
-    MainHUD:CallEvent("UpdateServerInformationAdminMenu", #Player.GetAll())
+    UpdateAdminMenu(self)
 
 end)
+
+function UpdateAdminMenu(self)
+    MainHUD:CallEvent("AddPlayerToAdminMenu", self:GetName(), self:GetAccountName(),self:GetSteamID(), self:GetAccountID(), self:GetID())
+    MainHUD:CallEvent("UpdateServerInformationAdminMenu", #Player.GetAll())
+end
 
 Player.Subscribe("Destroy", function (self)
     
@@ -72,6 +79,8 @@ end
 
 function UpdateLocalCharacter(player, character)
     MainHUD:CallEvent("SetValuesToPlayerUi", player:GetAccountIconURL(), character:GetValue("name"), character:GetValue("lastname"), character:GetMaxHealth(), 10, character:GetValue("grade"))
+    Console.Log(NanosTable.Dump(SPELLS))
+    MainHUD:CallEvent("AddSpellsToSpellMenu", SPELLS)
 end
 
 function UpdateHealth(self, old_health, new_health)
