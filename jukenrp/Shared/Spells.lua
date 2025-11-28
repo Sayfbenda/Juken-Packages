@@ -16,7 +16,7 @@ end
 local spelldev = Spell.new(
 "Spell Dev",
 "SPELLDEV", 
-"", 
+"./modules/assets/spellimages/test.png", 
 "C", 
 "ceci est une description",
 function ()

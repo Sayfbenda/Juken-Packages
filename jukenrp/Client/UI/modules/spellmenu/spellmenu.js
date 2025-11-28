@@ -53,33 +53,6 @@ addEventListener("DOMContentLoaded", function(){
         </div>
         
     </div>
-    
-    <div class="spellmenu-hotbar">
-        <div class="spellmenu-hotbar-slot selected">
-            <span class="spellmenu-key-bind">1</span>
-            <i class="fas fa-hand-holding-heart" style="color: #2ecc71;"></i>
-        </div>
-        <div class="spellmenu-hotbar-slot">
-            <span class="spellmenu-key-bind">2</span>
-            <i class="fas fa-wind" style="color: #3498db;"></i>
-        </div>
-        <div class="spellmenu-hotbar-slot">
-            <span class="spellmenu-key-bind">3</span>
-            <i class="fas fa-bolt" style="color: #f1c40f;"></i>
-        </div>
-        <div class="spellmenu-hotbar-slot">
-            <span class="spellmenu-key-bind">4</span>
-            <i class="fas fa-water" style="color: #9b59b6;"></i>
-        </div>
-        <div class="spellmenu-hotbar-slot">
-            <span class="spellmenu-key-bind">5</span>
-            <i class="fas fa-fire-alt" style="color: #e74c3c;"></i>
-        </div>
-        <div class="spellmenu-hotbar-slot">
-            <span class="spellmenu-key-bind">6</span>
-            <i class="fas fa-star-of-david" style="color: #e67e22;"></i>
-        </div>
-    </div>
 
 </div>
 
@@ -131,13 +104,6 @@ addEventListener("DOMContentLoaded", function(){
 
 })
 
-const spells = document.querySelectorAll(".spellmenu-spell-icon")
-spells.forEach(element => {
-    element.addEventListener("click", function(e){
-        console.log("un spell a été cliqué")
-    })
-});
-
 
 
 
@@ -154,9 +120,10 @@ Events.Subscribe("AddSpellsToSpellMenu", function(spells){
     const spellmenudiv = document.getElementById("spellmenudiv")
     spells.forEach(element => {
         spellmenudiv.insertAdjacentHTML("beforeend", `
-            <div draggable="true" class="spellmenu-spell-icon color-2" data-target="${element.id}"><i class="fas fa-hand-holding-heart"></i><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
+            <div draggable="true" class="spellmenu-spell-icon" data-target="${element.id}"><img data-target="${element.id}" src="${element.image}"/><div class="spellmenu-spell-rank rank-s">${element.categorie}</div></div>
             `)
     });
+    addEventListenerToSpells()
 })
 
 Events.Subscribe("GetSelectedSpell", function(){
@@ -174,3 +141,47 @@ Events.Subscribe("SelectSpell", function(index){
     spellsinbar[index].classList.remove("disabled")
     spellsinbar[index].classList.add("selected")
 })
+
+const spells = document.querySelectorAll(".spellmenu-spell-icon")
+console.log(spells)
+
+function addEventListenerToSpells() {
+    const spellIcons  = document.querySelectorAll(".spellmenu-spell-icon")
+    const hotbarSlots  = document.querySelectorAll(".hotbar-spell-slot")
+    spellIcons.forEach(icon => {
+        icon.setAttribute('draggable', true);
+
+        icon.addEventListener('dragstart', (e) => {
+            console.log(e.target.getAttribute('data-target'))
+            e.dataTransfer.setData('text/plain', e.target.src);
+            e.dataTransfer.setData('data-target', e.target.getAttribute('data-target'));
+            e.target.classList.add('dragging');
+        });
+
+        icon.addEventListener('dragend', (e) => {
+            e.target.classList.remove('dragging');
+        });
+    });
+
+    hotbarSlots.forEach(slot => {
+        slot.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            slot.classList.add('drag-over');
+        });
+
+        slot.addEventListener('dragleave', () => {
+            slot.classList.remove('drag-over');
+        });
+
+        slot.addEventListener('drop', (e) => {
+            console.log("test")
+            e.preventDefault();
+            slot.classList.remove('drag-over');
+
+            const iconSrc = e.dataTransfer.getData('text/plain');
+            slot.style.backgroundImage = `url(${iconSrc})`;
+            slot.setAttribute('data-target', e.dataTransfer.getData('data-target'))
+            slot.innerHTML = ''; 
+        });
+    });
+}
