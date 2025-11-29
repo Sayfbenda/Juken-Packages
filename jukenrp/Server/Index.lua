@@ -1,6 +1,8 @@
 Package.Require("Database.lua")
 Package.Require("DiscordConfig.lua")
 Package.Require("Discord.lua")
+Package.Require("Spellsconfig.lua")
+Package.Require("Spells.lua")
 Package.Require("Admin.lua")
 
 Player.Subscribe("Spawn", function (self)

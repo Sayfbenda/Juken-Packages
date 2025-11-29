@@ -58,14 +58,14 @@ addEventListener("DOMContentLoaded", function(){
 
 <div class="spell-hotbar-container">
     
-    <div class="hotbar-spell-slot disabled">
+    <div class="hotbar-spell-slot disabled" data-spellnumber="1">
         <span class="hotbar-key-bind">1</span>
         <div class="hotbar-cooldown-overlay" style="height: 40%;"></div> <div class="hotbar-cooldown">39</div>
         <i class="fas fa-hand-fist hotbar-spell-icon"></i>
         <span class="hotbar-chakra-cost">100</span>
     </div>
 
-    <div class="hotbar-spell-slot disabled">
+    <div class="hotbar-spell-slot disabled" data-spellnumber="2">
         <span class="hotbar-key-bind">2</span>
         <div class="hotbar-cooldown-overlay" style="height: 60%;"></div> 
         <div class="hotbar-cooldown">46</div>
@@ -73,7 +73,7 @@ addEventListener("DOMContentLoaded", function(){
         <span class="hotbar-chakra-cost">120</span>
     </div>
 
-    <div class="hotbar-spell-slot disabled">
+    <div class="hotbar-spell-slot disabled" data-spellnumber="3">
         <span class="hotbar-key-bind">3</span>
         <div class="hotbar-cooldown-overlay" style="height: 20%;"></div>
         <div class="hotbar-cooldown">87</div>
@@ -81,17 +81,17 @@ addEventListener("DOMContentLoaded", function(){
         <span class="hotbar-chakra-cost">150</span>
     </div>
 
-    <div class="hotbar-spell-slot disabled"> <span class="hotbar-key-bind">4</span>
+    <div class="hotbar-spell-slot disabled" data-spellnumber="4"> <span class="hotbar-key-bind">4</span>
         <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
         <i class="fas fa-long-arrow-alt-right hotbar-spell-icon"></i> <span class="hotbar-chakra-cost">90</span>
     </div>
 
-    <div class="hotbar-spell-slot disabled"> <span class="hotbar-key-bind">5</span>
+    <div class="hotbar-spell-slot disabled" data-spell-number="5"> <span class="hotbar-key-bind">5</span>
         <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
         <i class="fas fa-long-arrow-alt-right hotbar-spell-icon"></i> <span class="hotbar-chakra-cost">90</span>
     </div>
 
-    <div class="hotbar-spell-slot disabled">
+    <div class="hotbar-spell-slot disabled" data-spell-number="6">
         <span class="hotbar-key-bind">6</span>
         <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
         <i class="fas fa-dragon hotbar-spell-icon"></i>
@@ -127,7 +127,7 @@ Events.Subscribe("AddSpellsToSpellMenu", function(spells){
 })
 
 Events.Subscribe("GetSelectedSpell", function(){
-    const selectedspell = document.getElementsByClassName("spell-selected")
+    const selectedspell = document.querySelector(".hotbar-spell-slot.selected")
     const id = selectedspell.getAttribute('data-target')
     Events.Call("LunchSpellWithID", id)
 })
@@ -152,7 +152,6 @@ function addEventListenerToSpells() {
         icon.setAttribute('draggable', true);
 
         icon.addEventListener('dragstart', (e) => {
-            console.log(e.target.getAttribute('data-target'))
             e.dataTransfer.setData('text/plain', e.target.src);
             e.dataTransfer.setData('data-target', e.target.getAttribute('data-target'));
             e.target.classList.add('dragging');
@@ -174,14 +173,20 @@ function addEventListenerToSpells() {
         });
 
         slot.addEventListener('drop', (e) => {
-            console.log("test")
             e.preventDefault();
             slot.classList.remove('drag-over');
 
             const iconSrc = e.dataTransfer.getData('text/plain');
+            const spellnumber = slot.getAttribute('data-spellnumber')
             slot.style.backgroundImage = `url(${iconSrc})`;
             slot.setAttribute('data-target', e.dataTransfer.getData('data-target'))
-            slot.innerHTML = ''; 
+            slot.innerHTML = `
+            <span class="hotbar-key-bind">${spellnumber}</span>
+            <div class="hotbar-cooldown-overlay" style="height: 0%;"></div>
+            <i class="fas fa-dragon hotbar-spell-icon"></i>
+            <span class="hotbar-chakra-cost">200</span>
+            
+            `; 
         });
     });
 }

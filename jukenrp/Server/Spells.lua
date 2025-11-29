@@ -1,7 +1,7 @@
-Events.SubscribeRemote("LunchSpell", function (id)
+Events.SubscribeRemote("LunchSpell", function (player, id)
     local spell = GetSpellByID(id)
-    if (not spell) then
-        Console.log("Le spell n'existe pas")
+    if (spell == nil) then
+        Console.Log("Le spell n'existe pas")
         return
     end
     spell.lunch()

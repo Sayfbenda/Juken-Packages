@@ -19,7 +19,7 @@ Input.Register("FourthSpell", "Apostrophe")
 Input.Register("FifthSpell", "LeftParantheses")
 Input.Register("SixthSpell", "Hyphen")
 
-Package.Require("Spells.lua")
+Package.Require("Spellsconfig.lua")
 Package.Require("Admin.lua")
 Package.Require("Characterui.lua")
 Package.Require("Spawnmenu.lua")

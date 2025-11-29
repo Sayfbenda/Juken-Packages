@@ -3,11 +3,11 @@ Input.Bind("ToggleSpellMenu", InputEvent.Pressed, function ()
 end)
 
 MainHUD:Subscribe("LunchSpellWithID", function (id)
-    Events.CallRemote("LunchSpell", Client.GetLocalPlayer(), id)
+    Events.CallRemote("LunchSpell", id)
 end)
 
 Input.Bind("LunchSpell", InputEvent.Pressed, function ()
-    MainHUD:CallEvent("LunchSpellWithSpellMenu")
+    MainHUD:CallEvent("GetSelectedSpell")
 end)
 
 Input.Bind("FirstSpell", InputEvent.Pressed, function ()

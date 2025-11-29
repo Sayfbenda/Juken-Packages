@@ -13,19 +13,18 @@ function Spell.new(name, id, image, categorie, description, lunch)
     return self
 end
 
-local spelldev = Spell.new(
+Spelldev = Spell.new(
 "Spell Dev",
 "SPELLDEV", 
 "./modules/assets/spellimages/test.png", 
 "C", 
 "ceci est une description",
 function ()
-    Console.log("test")
+    local prop = Prop(Vector(0, 0, 0), Rotator(0, 0, 0), "nanos-world::SM_Crate_07")
 end)
 
 
 
 SPELLS = {
-    spelldev
+    Spelldev
 }
-
